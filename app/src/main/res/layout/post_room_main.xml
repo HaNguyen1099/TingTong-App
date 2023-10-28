@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager_post_room"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/linear_layout">
+        </androidx.viewpager.widget.ViewPager>
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/white">
+                <LinearLayout
+                    android:id="@+id/lLay_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:id="@+id/btnImg_location_push_room"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/baseline_location_on_24"
+                        android:background="#FFFFFF"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp" />
+                    <TextView
+                        android:textColor="#666666"
+                        android:id="@+id/txt_location_push_room"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Vị trí"
+                        android:layout_below="@+id/btnImg_location_push_room"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lLay_information"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@+id/line1"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:id="@+id/btnImg_information_push_room"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/baseline_info_24"
+                        android:background="#FFFFFF"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:id="@+id/txt_infomation_push_room"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thông tin"
+                        android:layout_gravity="center"
+                        android:layout_below="@+id/btnImg_information_push_room" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lLay_utility"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@+id/line2"
+                    android:layout_weight="1"
+                    >
+                    <ImageButton
+                        android:id="@+id/btnImg_utility_push_room"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/baseline_maps_home_work_24"
+                        android:background="#FFFFFF"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:id="@+id/txt_utility_push_room"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tiện ích"
+                        android:layout_gravity="center"
+                        android:layout_below="@+id/btnImg_utility_push_room"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lLay_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@+id/line3"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:id="@+id/btnImg_confirm_push_room"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/baseline_check_circle_24"
+                        android:background="#FFFFFF"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"/>
+                    <TextView
+                        android:id="@+id/txt_comfirm_push_room"
+                        android:textColor="#666666"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Xác nhận"
+                        android:layout_gravity="center"
+                        android:layout_below="@+id/btnImg_utility_push_room" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

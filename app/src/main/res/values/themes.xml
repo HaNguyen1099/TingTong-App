@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TingTongApp" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">#F54500</item>
+         <item name="colorPrimaryVariant">#F54500</item>
+         <item name="colorOnPrimary">#FFFFFF</item>
+    </style>
+
+    <style name="Theme.TingTongApp" parent="Base.Theme.TingTongApp" />
+</resources>

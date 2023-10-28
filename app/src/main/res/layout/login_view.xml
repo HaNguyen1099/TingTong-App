@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".LoginView">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/background" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:text="Xin"
+            android:textColor="#F54500"
+            android:textSize="55dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:text="Chào,"
+            android:textColor="#F54500"
+            android:textSize="50dp" />
+
+        <EditText
+            android:id="@+id/edt_username_login"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/custom_edit_text_login"
+            android:drawableLeft="@drawable/user"
+            android:drawablePadding="8dp"
+            android:hint="Tên tài khoản"
+            android:paddingLeft="20dp"
+            android:textColor="#000000"
+            android:textColorHint="@android:color/black"
+            android:textCursorDrawable="@drawable/cursor_edittext"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edt_password_login"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edit_text_login"
+            android:drawableLeft="@drawable/lock"
+            android:drawablePadding="8dp"
+            android:hint="Mật khẩu"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textCursorDrawable="@drawable/cursor_edittext"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tv_forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="180dp"
+            android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:text="Quên mật khẩu"
+            android:textColor="#F54500"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_button_login"
+            android:text="Đăng nhập"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="22dp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="700dp">
+
+        <TextView
+            android:id="@+id/tv_no_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Bạn chưa có tài khoản?"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tv_signup"
+            android:layout_toRightOf="@id/tv_no_account"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký"
+            android:textColor="#F54500"
+            android:textSize="20dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

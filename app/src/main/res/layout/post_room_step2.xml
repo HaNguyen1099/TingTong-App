@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="35dp"
+            android:paddingLeft="35dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="30dp"
+            android:orientation="vertical"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loại phòng"
+                android:textColor="#666666"
+                android:textStyle="bold"/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <RadioButton
+                    android:checked="true"
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:buttonTint="#F54500"
+                    android:id="@+id/rBtn_type1_push_room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trọ" />
+
+                <RadioButton
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:buttonTint="#F54500"
+                    android:id="@+id/rBtn_type2_push_room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ký túc xá" />
+
+                <RadioButton
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:buttonTint="#F54500"
+                    android:id="@+id/rBtn_type3_push_room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chung cư" />
+
+                <RadioButton
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:buttonTint="#F54500"
+                    android:id="@+id/rBtn_type4_push_room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nhà nguyên căn" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Phòng dành cho"
+                android:textColor="#666666"
+                android:textStyle="bold"/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+                <RadioButton
+                    android:checked="true"
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:buttonTint="#F54500"
+                    android:id="@+id/rBtn_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nam" />
+
+                <RadioButton
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:buttonTint="#F54500"
+                    android:id="@+id/rBtn_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nữ" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số người"
+                android:layout_marginTop="10dp"
+                android:textColor="#666666"
+                android:textStyle="bold" />
+
+            <EditText
+                android:textCursorDrawable="@drawable/cursor_edittext"
+                android:inputType="number"
+                android:id="@+id/edt_number_people_push_room"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_spinner_rim"
+                android:gravity="center"
+                android:hint="Số người ở tối đa"
+                android:textColor="#666666"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Chiều dài phòng"
+                android:textColor="#666666"
+                android:textStyle="bold" />
+
+            <EditText
+                android:textCursorDrawable="@drawable/cursor_edittext"
+                android:inputType="numberDecimal|numberSigned"
+                android:id="@+id/edt_length_push_room"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_spinner_rim"
+                android:gravity="center"
+                android:hint="(m)"
+                android:textColor="#666666"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Chiều rộng phòng"
+                android:textColor="#666666"
+                android:textStyle="bold" />
+
+            <EditText
+                android:textCursorDrawable="@drawable/cursor_edittext"
+                android:inputType="numberDecimal|numberSigned"
+                android:id="@+id/edt_width_push_room"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_spinner_rim"
+                android:gravity="center"
+                android:hint="(m)"
+                android:textColor="#666666"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Giá phòng"
+                android:textColor="#666666"
+                android:textStyle="bold" />
+
+            <EditText
+                android:textCursorDrawable="@drawable/cursor_edittext"
+                android:inputType="numberDecimal|numberSigned"
+                android:id="@+id/edt_priceRoom_push_room"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_spinner_rim"
+                android:gravity="center"
+                android:hint="Nhập giá"
+                android:textColor="#666666"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Tiền điện (nghìn đồng/số)"
+                android:textColor="#666666"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:textCursorDrawable="@drawable/cursor_edittext"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:id="@+id/edt_electricBill_push_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#666666"
+                    android:textSize="14sp"
+                    android:layout_weight="1"
+                    android:hint="Nhập giá" />
+
+                <CheckBox
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:buttonTint="#F54500"
+                    android:id="@+id/chBox_freeElectric_push_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/edt_electricBill_push_room"
+                    android:text="Miễn phí"
+                    android:layout_weight="2"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Tiền nước (nghìn đồng/m3)"
+                android:textColor="#666666"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:textCursorDrawable="@drawable/cursor_edittext"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:id="@+id/edt_waterBill_push_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="Nhập giá"
+                    android:textColor="#666666"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+
+                <CheckBox
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:buttonTint="#F54500"
+                    android:id="@+id/chBox_freeWater_push_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/edt_waterBill_push_room"
+                    android:text="Miễn phí"
+                    android:layout_weight="2"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Internet (nghìn đồng/tháng)"
+                android:textColor="#666666"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:textCursorDrawable="@drawable/cursor_edittext"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:id="@+id/edt_internet_push_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#666666"
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
+                    android:hint="Nhập giá"
+                    android:layout_weight="1"/>
+
+                <CheckBox
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:buttonTint="#F54500"
+                    android:id="@+id/chBox_freeInternet_push_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/edt_internet_push_room"
+                    android:text="Miễn phí"
+                    android:layout_weight="2"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Tiền giữ xe (nghìn đồng/tháng)"
+                android:textColor="#666666"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:textCursorDrawable="@drawable/cursor_edittext"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:id="@+id/edt_parking_push_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#666666"
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
+                    android:hint="Nhập giá"
+                    android:layout_weight="1"/>
+
+                <CheckBox
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:buttonTint="#F54500"
+                    android:id="@+id/chBox_freeParking_push_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/edt_internet_push_room"
+                    android:text="Miễn phí"
+                    android:layout_weight="2"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_nextStep2_post_room"
+                android:layout_width="match_parent"
+                android:height="30dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/custom_button_login"
+                android:text="Xác nhận"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="35dp"
+            android:paddingLeft="35dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="30dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/location" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_choose_location"
+                    android:text="Chọn địa chỉ của bạn"
+                    android:textColor="#F54500"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="344dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Thành phố"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <Spinner
+                    android:id="@+id/spn_city_push_room"
+                    android:layout_width="330dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/custom_spinner_rim" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/baseline_arrow_drop_down_24"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="344dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Quận"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <Spinner
+                    android:id="@+id/spn_district_push_room"
+                    android:layout_width="330dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/custom_spinner_rim" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/baseline_arrow_drop_down_24"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="344dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Phường"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <Spinner
+                    android:id="@+id/spn_ward_push_room"
+                    android:layout_width="330dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/custom_spinner_rim" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/baseline_arrow_drop_down_24"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="344dp"
+                android:layout_height="wrap_content"
+                android:text="Đường"
+                android:layout_marginTop="20dp"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:layout_width="330dp"
+                    android:layout_height="40dp"
+                    android:textCursorDrawable="@drawable/cursor_edittext"
+                    android:id="@+id/edt_street_push_room"
+                    android:background="@drawable/custom_spinner_rim"
+                    android:gravity="center"
+                    android:hint="Ví dụ: Trần Phú"
+                    android:textSize="14sp"
+                    android:textColor="#666666"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="344dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Số nhà"
+                android:textColor="#666666"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:textCursorDrawable="@drawable/cursor_edittext"
+                    android:id="@+id/edt_no_push_room"
+                    android:layout_width="330dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/custom_spinner_rim"
+                    android:gravity="center"
+                    android:hint="Ví dụ: 96A"
+                    android:textColor="#666666"
+                    android:textSize="14sp"/>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_nextStep1_post_room"
+                android:layout_width="match_parent"
+                android:height="30dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/custom_button_login"
+                android:text="Xác nhận"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

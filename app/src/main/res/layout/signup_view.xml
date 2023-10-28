@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".LoginView">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="100dp"
+            android:text="Đăng ký"
+            android:textColor="#F54500"
+            android:textSize="45dp" />
+
+        <EditText
+            android:id="@+id/edt_username_signup"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/custom_edit_text_login"
+            android:drawableLeft="@drawable/user"
+            android:drawablePadding="8dp"
+            android:hint="Họ tên"
+            android:paddingLeft="20dp"
+            android:textColor="#000000"
+            android:textColorHint="@android:color/black"
+            android:textCursorDrawable="@drawable/cursor_edittext"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edt_email_signup"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edit_text_login"
+            android:drawableLeft="@drawable/mail"
+            android:drawablePadding="8dp"
+            android:hint="Email"
+            android:paddingLeft="20dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textCursorDrawable="@drawable/cursor_edittext"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edt_phone_signup"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edit_text_login"
+            android:drawableLeft="@drawable/phone"
+            android:drawablePadding="8dp"
+            android:hint="Số diện thoại"
+            android:paddingLeft="20dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textCursorDrawable="@drawable/cursor_edittext"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edt_password_signup"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edit_text_login"
+            android:drawableLeft="@drawable/lock"
+            android:drawablePadding="8dp"
+            android:hint="Mật khẩu"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textCursorDrawable="@drawable/cursor_edittext"
+            android:textSize="20dp" />
+
+        <CheckBox
+            android:id="@+id/cb_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Tôi đồng ý với các điều khoản sử dụng"
+            android:textSize="15dp"/>
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/custom_button_login"
+            android:text="Đăng ký"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="22dp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="700dp">
+
+        <TextView
+            android:id="@+id/tv_no_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Bạn đã có tài khoản?"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_toRightOf="@id/tv_no_account"
+            android:id="@+id/tv_login"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng nhập"
+            android:textColor="#F54500"
+            android:textSize="20dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="35dp"
+            android:paddingLeft="35dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="30dp"
+            android:orientation="vertical"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hình ảnh"
+                android:textStyle="bold"
+                android:textColor="#666666" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:background="@drawable/custom_rim"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp">
+
+                <ImageButton
+                    android:id="@+id/btnImg_upLoad_push_room"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/white"
+                    android:src="@drawable/image" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chọn hình ảnh từ thư viện"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/btnImg_upLoad_push_room"
+                    android:gravity="center"
+                    android:textColor="#F54500"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiện ích"
+                android:textStyle="bold"
+                android:textColor="#666666"
+                android:layout_marginTop="20dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:weightSum="7"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:textColor="@drawable/custom_radio_text_color"
+                        android:id="@+id/chBox_wc"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/custom_checkbox"
+                        android:drawableLeft="@drawable/toilet"
+
+                        android:text="WC riêng"
+                        android:gravity="center"
+                        android:layout_weight="3"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <CheckBox
+                        android:textColor="@drawable/custom_radio_text_color"
+                        android:id="@+id/chBox_wifi"
+                        android:gravity="center"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/custom_checkbox"
+                        android:drawableLeft="@drawable/wifi"
+                        android:text="Wifi"
+                        android:padding="10dp"
+                        android:layout_weight="3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="7"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:textColor="@drawable/custom_radio_text_color"
+                        android:id="@+id/chBox_clock"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/custom_checkbox"
+                        android:drawableLeft="@drawable/clock"
+                        android:text="Tự do"
+                        android:gravity="center"
+                        android:layout_weight="3"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <CheckBox
+                        android:textColor="@drawable/custom_radio_text_color"
+                        android:id="@+id/chBox_bed"
+                        android:gravity="center"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/custom_checkbox"
+                        android:drawableLeft="@drawable/bed"
+                        android:text="Giường"
+                        android:padding="10dp"
+                        android:layout_weight="3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_nextStep3_post_room"
+                android:layout_width="match_parent"
+                android:height="30dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/custom_button_login"
+                android:text="Xác nhận"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
