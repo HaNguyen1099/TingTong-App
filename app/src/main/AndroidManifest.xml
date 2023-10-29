@@ -39,18 +39,6 @@
         <activity
             android:name=".SignupView"
             android:exported="false" />
-        <activity
-            android:name=".PostRoomStep1"
-            android:exported="false" />
-        <activity
-            android:name=".PostRoomStep2"
-            android:exported="false" />
-        <activity
-            android:name=".PostRoomStep3"
-            android:exported="false" />
-        <activity
-            android:name=".PostRoomStep4"
-            android:exported="false" />
     </application>
 
 </manifest>

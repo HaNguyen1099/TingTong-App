@@ -56,7 +56,7 @@
                 android:textColor="#666666"
                 android:background="@drawable/custom_spinner_rim"/>
             <Button
-                android:id="@+id/btn_nextStep3_post_room"
+                android:id="@+id/btn_nextStep4_post_room"
                 android:layout_width="match_parent"
                 android:height="30dp"
                 android:layout_height="wrap_content"

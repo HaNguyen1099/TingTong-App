@@ -20,7 +20,6 @@ import android.widget.ProgressBar;
 import android.view.View;
 
 public class MainActivity extends Fragment {
-    RecyclerView recyclerMainRoom;
     RecyclerView recyclerGridMainRoom;
     ProgressBar progressBarMain;
     NestedScrollView nestedScrollMainView;
@@ -57,7 +56,6 @@ public class MainActivity extends Fragment {
         progressBarLoadMoreGridMainRoom.getIndeterminateDrawable().setColorFilter(Color.parseColor("#00DDFF"),
                 android.graphics.PorterDuff.Mode.MULTIPLY);
 
-        recyclerMainRoom = (RecyclerView)layout.findViewById(R.id.recycler_Main_Room);
         recyclerGridMainRoom = (RecyclerView)layout.findViewById(R.id.recycler_Grid_Main_Room);
         progressBarMain = (ProgressBar)layout.findViewById(R.id.Progress_Main);
         progressBarMain.getIndeterminateDrawable().setColorFilter(Color.parseColor("#00DDFF"),

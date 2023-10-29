@@ -8,6 +8,6 @@
     app:titleTextColor="@color/white"
     android:elevation="4dp"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:titleTextAppearance="@style/ToolbarTitleStyle">
 </androidx.appcompat.widget.Toolbar>

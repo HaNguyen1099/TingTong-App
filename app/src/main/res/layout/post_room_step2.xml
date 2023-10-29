@@ -194,7 +194,7 @@
                     android:textCursorDrawable="@drawable/cursor_edittext"
                     android:inputType="numberDecimal|numberSigned"
                     android:id="@+id/edt_electricBill_push_room"
-                    android:layout_width="match_parent"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textColor="#666666"
@@ -204,7 +204,6 @@
 
                 <CheckBox
                     android:textColor="@drawable/custom_radio_text_color"
-                    android:buttonTint="#F54500"
                     android:id="@+id/chBox_freeElectric_push_room"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -230,7 +229,7 @@
                     android:textCursorDrawable="@drawable/cursor_edittext"
                     android:inputType="numberDecimal|numberSigned"
                     android:id="@+id/edt_waterBill_push_room"
-                    android:layout_width="match_parent"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:hint="Nhập giá"
@@ -240,7 +239,6 @@
 
                 <CheckBox
                     android:textColor="@drawable/custom_radio_text_color"
-                    android:buttonTint="#F54500"
                     android:id="@+id/chBox_freeWater_push_room"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -264,7 +262,7 @@
                     android:textCursorDrawable="@drawable/cursor_edittext"
                     android:inputType="numberDecimal|numberSigned"
                     android:id="@+id/edt_internet_push_room"
-                    android:layout_width="match_parent"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:textColor="#666666"
                     android:textSize="14sp"
@@ -274,7 +272,6 @@
 
                 <CheckBox
                     android:textColor="@drawable/custom_radio_text_color"
-                    android:buttonTint="#F54500"
                     android:id="@+id/chBox_freeInternet_push_room"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -298,7 +295,7 @@
                     android:textCursorDrawable="@drawable/cursor_edittext"
                     android:inputType="numberDecimal|numberSigned"
                     android:id="@+id/edt_parking_push_room"
-                    android:layout_width="match_parent"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:textColor="#666666"
                     android:textSize="14sp"
@@ -308,7 +305,6 @@
 
                 <CheckBox
                     android:textColor="@drawable/custom_radio_text_color"
-                    android:buttonTint="#F54500"
                     android:id="@+id/chBox_freeParking_push_room"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

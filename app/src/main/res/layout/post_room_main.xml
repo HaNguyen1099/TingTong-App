@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/white"
     android:orientation="vertical">
     <include
         android:id="@+id/toolbar"
@@ -12,8 +14,16 @@
             android:id="@+id/viewpager_post_room"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/linear_layout">
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintBottom_toTopOf="@id/imageView">
         </androidx.viewpager.widget.ViewPager>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            app:layout_constraintBottom_toTopOf="@id/linear_layout"
+            android:background="@drawable/blur_line" />
 
         <LinearLayout
             android:id="@+id/linear_layout"
@@ -65,7 +75,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_gravity="center"/>
                     <TextView
-                        android:id="@+id/txt_infomation_push_room"
+                        android:id="@+id/txt_info_push_room"
                         android:textColor="#666666"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

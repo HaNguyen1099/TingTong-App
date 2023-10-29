@@ -47,10 +47,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Chọn hình ảnh từ thư viện"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="8dp"
                     android:layout_below="@+id/btnImg_upLoad_push_room"
                     android:gravity="center"
-                    android:textColor="#F54500"/>
+                    android:textColor="#D34B16"/>
             </RelativeLayout>
 
             <TextView
@@ -73,12 +73,11 @@
                     android:orientation="horizontal">
                     <CheckBox
                         android:textColor="@drawable/custom_radio_text_color"
-                        android:id="@+id/chBox_wc"
+                        android:id="@+id/chBox_clock"
                         android:button="@android:color/transparent"
                         android:background="@drawable/custom_checkbox"
-                        android:drawableLeft="@drawable/toilet"
-
-                        android:text="WC riêng"
+                        android:drawableLeft="@drawable/clock"
+                        android:text="Tự do"
                         android:gravity="center"
                         android:layout_weight="3"
                         android:padding="10dp"
@@ -111,11 +110,47 @@
                     android:orientation="horizontal">
                     <CheckBox
                         android:textColor="@drawable/custom_radio_text_color"
-                        android:id="@+id/chBox_clock"
+                        android:id="@+id/chBox_bed"
+                        android:gravity="center"
                         android:button="@android:color/transparent"
                         android:background="@drawable/custom_checkbox"
-                        android:drawableLeft="@drawable/clock"
-                        android:text="Tự do"
+                        android:drawableLeft="@drawable/bed"
+                        android:text="Giường"
+                        android:padding="10dp"
+                        android:layout_weight="3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <CheckBox
+                        android:textColor="@drawable/custom_radio_text_color"
+                        android:id="@+id/chBox_wardrobe"
+                        android:gravity="center"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/custom_checkbox"
+                        android:drawableLeft="@drawable/wardrobe"
+                        android:text="Tủ quần áo"
+                        android:padding="10dp"
+                        android:layout_weight="3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="7"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:textColor="@drawable/custom_radio_text_color"
+                        android:id="@+id/chBox_fridge"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/custom_checkbox"
+                        android:drawableLeft="@drawable/refrigerator"
+                        android:text="Tủ lạnh"
                         android:gravity="center"
                         android:layout_weight="3"
                         android:padding="10dp"
@@ -127,12 +162,84 @@
                         android:layout_weight="1"/>
                     <CheckBox
                         android:textColor="@drawable/custom_radio_text_color"
-                        android:id="@+id/chBox_bed"
+                        android:id="@+id/chBox_arcondition"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/custom_checkbox"
+                        android:drawableLeft="@drawable/aircondition"
+                        android:text="Điều hòa"
+                        android:gravity="center"
+                        android:layout_weight="3"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="7"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:textColor="@drawable/custom_radio_text_color"
+                        android:id="@+id/chBox_washmachine"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/custom_checkbox"
+                        android:drawableLeft="@drawable/washing"
+                        android:text="Máy giặt"
+                        android:gravity="center"
+                        android:layout_weight="3"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <CheckBox
+                        android:textColor="@drawable/custom_radio_text_color"
+                        android:id="@+id/chBox_waterheater"
                         android:gravity="center"
                         android:button="@android:color/transparent"
                         android:background="@drawable/custom_checkbox"
-                        android:drawableLeft="@drawable/bed"
-                        android:text="Giường"
+                        android:drawableLeft="@drawable/heater"
+                        android:text="Nước nóng"
+                        android:padding="10dp"
+                        android:layout_weight="3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="7"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:textColor="@drawable/custom_radio_text_color"
+                        android:id="@+id/chBox_security"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/custom_checkbox"
+                        android:drawableLeft="@drawable/policeman"
+                        android:text="An ninh"
+                        android:gravity="center"
+                        android:layout_weight="3"
+                        android:padding="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <CheckBox
+                        android:textColor="@drawable/custom_radio_text_color"
+                        android:id="@+id/chBox_parking"
+                        android:gravity="center"
+                        android:button="@android:color/transparent"
+                        android:background="@drawable/custom_checkbox"
+                        android:drawableLeft="@drawable/motorcycle"
+                        android:text="Chỗ để xe"
                         android:padding="10dp"
                         android:layout_weight="3"
                         android:layout_width="0dp"
