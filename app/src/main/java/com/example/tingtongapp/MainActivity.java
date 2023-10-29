@@ -53,12 +53,12 @@ public class MainActivity extends Fragment {
 
         nestedScrollMainView = (NestedScrollView) layout.findViewById(R.id.nested_scroll_main_view);
         progressBarLoadMoreGridMainRoom = (ProgressBar) layout.findViewById(R.id.progress_bar_grid_main_rooms);
-        progressBarLoadMoreGridMainRoom.getIndeterminateDrawable().setColorFilter(Color.parseColor("#00DDFF"),
+        progressBarLoadMoreGridMainRoom.getIndeterminateDrawable().setColorFilter(Color.parseColor("#F54500"),
                 android.graphics.PorterDuff.Mode.MULTIPLY);
 
         recyclerGridMainRoom = (RecyclerView)layout.findViewById(R.id.recycler_Grid_Main_Room);
         progressBarMain = (ProgressBar)layout.findViewById(R.id.Progress_Main);
-        progressBarMain.getIndeterminateDrawable().setColorFilter(Color.parseColor("#00DDFF"),
+        progressBarMain.getIndeterminateDrawable().setColorFilter(Color.parseColor("#F54500"),
                 android.graphics.PorterDuff.Mode.MULTIPLY);
     }
 
