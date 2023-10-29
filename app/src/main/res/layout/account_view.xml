@@ -14,8 +14,8 @@
         android:layout_marginLeft="20dp">
             <ImageView
                 android:id="@+id/iv_profile"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:layout_marginTop="5dp"
                 android:src="@drawable/profile"/>
             <TextView
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:text="Chúc bạn có một ngày vui vẻ!"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="3dp"
                 android:layout_marginRight="30dp"
                 android:layout_below="@id/tv_hi"
                 android:layout_toRightOf="@id/iv_profile"
