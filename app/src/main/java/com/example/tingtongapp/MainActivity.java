@@ -78,7 +78,7 @@ public class MainActivity extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("checkclick", "onClick: ");
-                Intent intentSearchLocation = new Intent(getContext(),location_search.class);
+                Intent intentSearchLocation = new Intent(getContext(),LocationSearch.class);
                 startActivity(intentSearchLocation);
             }
         });

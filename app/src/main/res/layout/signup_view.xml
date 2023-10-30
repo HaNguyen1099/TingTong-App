@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="77dp"
             android:text="Đăng ký"
             android:textColor="#F54500"
             android:textSize="45dp" />
@@ -27,7 +27,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="35dp"
             android:background="@drawable/custom_edit_text_login"
             android:drawableLeft="@drawable/user"
             android:drawablePadding="8dp"
@@ -115,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="60dp">
+        android:layout_marginBottom="40dp">
 
         <TextView
             android:id="@+id/tv_no_account"

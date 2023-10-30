@@ -16,6 +16,9 @@
         android:theme="@style/Theme.TingTongApp"
         tools:targetApi="31">
         <activity
+            android:name=".LocationSearch"
+            android:exported="false" />
+        <activity
             android:name=".Account_View"
             android:exported="false" />
         <activity
