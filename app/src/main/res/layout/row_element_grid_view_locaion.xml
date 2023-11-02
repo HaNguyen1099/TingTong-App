@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+    <RelativeLayout
+        android:id="@+id/rLT_image"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:padding="5dp">
+        <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/img_location"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_alignParentLeft="true"
+            android:scaleType="fitXY"
+            app:riv_corner_radius="5dip"
+            app:riv_oval="false" />
+        <LinearLayout
+            android:background="@drawable/custom_location"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_name_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="Hà Đông"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textSize="14dp" />
+        <TextView
+            android:id="@+id/txt_room_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="12 phòng"
+            android:layout_marginTop="50dp"
+            android:textSize="12dp"
+            android:textColor="#E86E3E"/>
+    </RelativeLayout>
+</LinearLayout>
+

@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.tingtongapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.tingtongapp"
@@ -38,6 +38,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("com.makeramen:roundedimageview:2.3.0")
     implementation("com.google.android.material:material:1.3.0-alpha03")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

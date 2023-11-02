@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LocationSearch"
+    tools:context=".Views.LocationSearch"
     android:orientation="vertical"
     android:backgroundTint="@color/white"
     android:background="@color/white">
@@ -79,7 +79,7 @@
                 android:layout_marginLeft="7dp"
                 android:layout_marginTop="2dp"
                 android:textSize="18dp"
-                android:text="Phòng gần các địa điểm nổi tiếng"
+                android:text="Gợi ý địa điểm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

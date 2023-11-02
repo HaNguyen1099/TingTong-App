@@ -1,4 +1,4 @@
-package com.example.tingtongapp;
+package com.example.tingtongapp.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewKt;
@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.tingtongapp.R;
 
 public class Account_View extends Fragment implements View.OnClickListener {
 

@@ -16,22 +16,22 @@
         android:theme="@style/Theme.TingTongApp"
         tools:targetApi="31">
         <activity
-            android:name=".LocationSearch"
+            android:name=".Views.LocationSearch"
             android:exported="false" />
         <activity
-            android:name=".Account_View"
+            android:name=".Views.Account_View"
             android:exported="false" />
         <activity
-            android:name=".PostRoom"
+            android:name=".Views.PostRoom"
             android:exported="false" />
         <activity
-            android:name=".Main_Menu"
+            android:name=".Views.Main_Menu"
             android:exported="false" />
         <activity
-            android:name=".ResetPassword"
+            android:name=".Views.ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".LoginView"
+            android:name=".Views.LoginView"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignupView"
+            android:name=".Views.SignupView"
             android:exported="false" />
     </application>
 

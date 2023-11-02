@@ -1,10 +1,12 @@
-package com.example.tingtongapp;
+package com.example.tingtongapp.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.tingtongapp.R;
 
 public class ResetPassword extends AppCompatActivity {
     private EditText edtEmailResetPass;

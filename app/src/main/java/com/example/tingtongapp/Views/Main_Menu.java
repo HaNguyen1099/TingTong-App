@@ -1,4 +1,4 @@
-package com.example.tingtongapp;
+package com.example.tingtongapp.Views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.example.tingtongapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Main_Menu extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.tingtongapp;
+package com.example.tingtongapp.Views;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
@@ -18,6 +18,8 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.view.View;
+
+import com.example.tingtongapp.R;
 
 public class MainActivity extends Fragment {
     RecyclerView recyclerGridMainRoom;
@@ -83,5 +85,20 @@ public class MainActivity extends Fragment {
             }
         });
     }
+    @Override
+    public void onStart() {
+        super.onStart();
 
+        setView();
+
+//        // detail room dùng
+//        RoomModel.getListFavoriteRoomsId(UID);
+//
+//        mainActivityController = new MainActivityController(getContext(), UID);
+//        mainActivityController.ListMainRoom(recyclerGridMainRoom, progressBarMain,
+//                nestedScrollMainView, progressBarLoadMoreGridMainRoom);
+//
+//        //Load top địa điểm nhiều phòng
+//        mainActivityController.loadTopLocation(grVLocation);
+    }
 }

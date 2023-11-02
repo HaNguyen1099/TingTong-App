@@ -1,4 +1,4 @@
-package com.example.tingtongapp;
+package com.example.tingtongapp.Views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.example.tingtongapp.R;
 
 public class PostRoomStep2 extends Fragment implements View.OnClickListener{
     RadioButton rBtnType1PushRoom,rBtnType2PushRoom,rBtnType3PushRoom,rBtnType4PushRoom,rBtnMale,rBtnFemale;

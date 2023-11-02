@@ -1,4 +1,4 @@
-package com.example.tingtongapp;
+package com.example.tingtongapp.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.example.tingtongapp.R;
 
 public class LocationSearch extends AppCompatActivity {
     ImageView ivBack;

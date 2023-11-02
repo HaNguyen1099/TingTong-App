@@ -1,4 +1,4 @@
-package com.example.tingtongapp;
+package com.example.tingtongapp.Views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.fragment.app.Fragment;
+
+import com.example.tingtongapp.R;
 
 public class PostRoomStep4 extends Fragment implements View.OnClickListener {
     Button btnNextStep4PostRoom;

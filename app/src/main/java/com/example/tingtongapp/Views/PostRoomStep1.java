@@ -1,4 +1,4 @@
-package com.example.tingtongapp;
+package com.example.tingtongapp.Views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.example.tingtongapp.R;
 
 public class PostRoomStep1 extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener{
     private Spinner spnDistrictPushRoom, spnCityPushRoom, spnWardPushRoom;

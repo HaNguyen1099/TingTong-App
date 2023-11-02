@@ -1,4 +1,4 @@
-package com.example.tingtongapp;
+package com.example.tingtongapp.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.tingtongapp.R;
 
 public class SignupView extends AppCompatActivity implements View.OnClickListener{
     EditText edt_email_signUp, edt_password_signUp, edt_name_signUp, edt_phone_signUp;
