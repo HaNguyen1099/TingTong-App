@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.tingtongapp.R;
-
+// comment test git
 public class Account_View extends Fragment implements View.OnClickListener {
 
     private Button btnEditAccount;
