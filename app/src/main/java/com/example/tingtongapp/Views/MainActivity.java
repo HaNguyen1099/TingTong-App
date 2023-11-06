@@ -91,14 +91,5 @@ public class MainActivity extends Fragment {
 
         setView();
 
-//        // detail room dùng
-//        RoomModel.getListFavoriteRoomsId(UID);
-//
-//        mainActivityController = new MainActivityController(getContext(), UID);
-//        mainActivityController.ListMainRoom(recyclerGridMainRoom, progressBarMain,
-//                nestedScrollMainView, progressBarLoadMoreGridMainRoom);
-//
-//        //Load top địa điểm nhiều phòng
-//        mainActivityController.loadTopLocation(grVLocation);
     }
 }

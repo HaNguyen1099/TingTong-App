@@ -1,17 +1,26 @@
 package com.example.tingtongapp.Views;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewKt;
-import androidx.fragment.app.Fragment;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.example.tingtongapp.Model.UserModel;
 import com.example.tingtongapp.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 // comment test git
 public class Account_View extends Fragment implements View.OnClickListener {
 
@@ -37,6 +46,12 @@ public class Account_View extends Fragment implements View.OnClickListener {
         return layout;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        displayUserInfo();
+    }
+
     private void initControl() {
         btnEditAccount = (Button) layout.findViewById(R.id.btn_edit_account);
         btnMyRoom = layout.findViewById(R.id.btn_my_Room);
@@ -54,35 +69,41 @@ public class Account_View extends Fragment implements View.OnClickListener {
         btnLogout.setOnClickListener(this);
     }
 
+    private void displayUserInfo(){
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        TextView usernameTv = (TextView) layout.findViewById(R.id.tv_hi2);
+
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    UserModel currentUser = dataSnapshot.getValue(UserModel.class);
+                    if (currentUser != null) {
+                        String userName = currentUser.getName();
+                        usernameTv.setText(userName);
+                    } else {
+                        usernameTv.setText("User");
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Xử lý lỗi khi truy cập cơ sở dữ liệu
+            }
+        });
+    }
+
     @Override
     public void onClick(View v) {
         int id = v.getId();
-//        switch (id) {
-//            case R.id.btn_edit_account:
-//                Intent intent = new Intent(getContext(), personalPage.class);
-//                startActivity(intent);
-//                break;
-//            case R.id.btn_my_Room:
-//                Intent intent1 = new Intent(getContext(), roomManagementModel.class);
-//                startActivity(intent1);
-//                break;
-//
-//            case R.id.btn_my_favorite_room:
-//                Intent intentFavoriteRooms = new Intent(getContext(), favoriteRoomsView.class);
-//                startActivity(intentFavoriteRooms);
-//                break;
-//
-//            case R.id.btn_my_find_room:
-//                Intent intentMyFindRooms = new Intent(getContext(), FindRoomMine.class);
-//                startActivity(intentMyFindRooms);
-//                break;
-//
-//            case R.id.btn_logout:
-//                //Khởi tạo firebaseAuth
-//                firebaseAuth = FirebaseAuth.getInstance();
-//                //Text Đăng xuất
-//                firebaseAuth.signOut();
-//                getActivity().finish();
-//        }
+
+        if(id == R.id.btn_logout){
+            FirebaseAuth.getInstance().signOut();
+
+            Intent logout = new Intent(requireActivity(), LoginView.class);
+            startActivity(logout);
+        }
     }
 }

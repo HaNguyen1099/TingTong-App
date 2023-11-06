@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1069268655270",
+    "firebase_url": "https://roomfinder-ce2b5-default-rtdb.firebaseio.com",
+    "project_id": "roomfinder-ce2b5",
+    "storage_bucket": "roomfinder-ce2b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069268655270:android:ce4c62d97b74efab72e867",
+        "android_client_info": {
+          "package_name": "com.example.tingtongapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmdg61ot_0140PJS8Lrbc-NQl0lkThwE4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

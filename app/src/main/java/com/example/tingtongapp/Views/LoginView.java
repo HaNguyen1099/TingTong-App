@@ -1,5 +1,6 @@
 package com.example.tingtongapp.Views;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,8 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tingtongapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginView extends AppCompatActivity implements View.OnClickListener{
     Button btn_login;
@@ -44,8 +50,29 @@ public class LoginView extends AppCompatActivity implements View.OnClickListener
             startActivity(iReset);
         }
         else if(id == R.id.btn_login){
-            Intent iMain = new Intent(LoginView.this, Main_Menu.class);
-            startActivity(iMain);
+            String email = edt_username_login.getText().toString().trim();
+            String password = edt_password_login.getText().toString().trim();
+
+            if (email.equals("") || password.equals("")){
+                Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+            }else{
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+
+                auth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(LoginView.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+
+                                    Intent iMain = new Intent(LoginView.this, Main_Menu.class);
+                                    startActivity(iMain);
+                                } else {
+                                    Toast.makeText(LoginView.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
         }
     }
 }
