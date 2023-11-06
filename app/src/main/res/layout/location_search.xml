@@ -56,14 +56,16 @@
                 android:text="Hà Nội"
                 android:textColor="@color/white"
                 android:textSize="15dp" />
-        </RelativeLayout>
 
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
-            android:src="@drawable/search"/>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/search"/>
+        </RelativeLayout>
 
     </LinearLayout>
 
