@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#F54500"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:src="@drawable/baseline_arrow_back_ios_24" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Trang cá nhân"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="10pt"
+                    android:layout_marginTop="5dp"/>
+
+                <CheckBox
+                    android:id="@+id/chBox_edit_personal_page"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_svg_edit_24"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
+                    android:button="@android:color/transparent" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:background="@drawable/profile"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp">
+
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/txt_change_avt_personal_page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="10pt"
+                android:textColor="#F54500"
+                android:layout_below="@+id/img_avt_personal_page" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Họ tên" />
+                <EditText
+                    android:id="@+id/edt_name_personal_page"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:enabled="false"
+                    android:background="@drawable/custom_spinner" />
+                <TextView
+                    android:id="@+id/tv_gender_personal_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giới tính"
+                    android:layout_below="@+id/edt_name_personal_page"
+                    android:layout_marginTop="20dp" />
+                <Spinner
+                    android:id="@+id/spn_gender_personal_page"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/tv_gender_personal_page"
+                    android:enabled="false"
+                    android:background="@drawable/custom_spinner" />
+                <TextView
+                    android:id="@+id/tv_phone_personal_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Số điện thoại"
+                    android:layout_below="@+id/spn_gender_personal_page"
+                    android:layout_marginTop="20dp" />
+                <EditText
+                    android:id="@+id/edt_phone_personal_page"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_phone_personal_page"
+                    android:enabled="false"
+                    android:background="@drawable/custom_spinner"
+                    android:layout_marginTop="15dp"/>
+                <TextView
+                    android:id="@+id/tv_password_personal_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edt_phone_personal_page"
+                    android:layout_marginTop="25dp"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="#FF0000"
+                    android:clickable="true"
+                    android:onClick="ChangePass" />
+                <EditText
+                    android:id="@+id/edt_old_password_personal_page"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_password_personal_page"
+                    android:background="@drawable/custom_spinner"
+                    android:layout_marginTop="25dp"
+                    android:visibility="invisible"
+                    android:hint="Nhập mật khẩu cũ"
+                    android:inputType="textPassword"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/edt_new_password_personal_page"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edt_old_password_personal_page"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/custom_spinner"
+                    android:visibility="invisible"
+                    android:hint="Nhập mật khẩu mới"
+                    android:inputType="textPassword"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:id="@+id/edt_retype_new_password_personal_page"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edt_new_password_personal_page"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/custom_spinner"
+                    android:visibility="invisible"
+                    android:hint="Xác nhận mật khẩu mới"
+                    android:inputType="textPassword"
+                    android:textSize="12dp"/>
+                <Button
+                    android:id="@+id/btn_change_password_personal_page"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edt_retype_new_password_personal_page"
+                    android:text="Lưu mật khẩu"
+                    android:textColor="@color/white"
+                    android:background="@drawable/custom_button_login"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginRight="90dp"
+                    android:visibility="invisible" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

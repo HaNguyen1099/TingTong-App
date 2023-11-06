@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_popup_activity"
+    android:orientation="vertical">
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_above="@+id/linearLayout">-->
+<!--        <fragment-->
+<!--            android:id="@+id/mapfragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:textCursorDrawable="@drawable/cursor_edittext"-->
+<!--            android:elevation="1dp"-->
+<!--            android:id="@+id/floating_search_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:floatingSearch_searchBarMarginLeft="5dp"-->
+<!--            app:floatingSearch_searchBarMarginTop="5dp"-->
+<!--            app:floatingSearch_searchBarMarginRight="5dp"-->
+<!--            app:floatingSearch_searchHint="Nhập địa chỉ..."-->
+<!--            app:floatingSearch_suggestionsListAnimDuration="250"-->
+<!--            app:floatingSearch_showSearchKey="true"-->
+<!--            app:floatingSearch_leftActionMode="showHamburger"-->
+<!--            app:floatingSearch_close_search_on_keyboard_dismiss="true"-->
+<!--            tools:layout_editor_absoluteY="8dp"-->
+<!--            tools:layout_editor_absoluteX="8dp" />-->
+
+<!--        <ProgressBar-->
+<!--            android:elevation="2dp"-->
+<!--            android:id="@+id/progess_bar_load_map"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true" />-->
+<!--    </RelativeLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="3dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:weightSum="5"-->
+<!--        android:background="#FFFFFF">-->
+
+<!--        <View-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:layout_weight="2"-->
+<!--            android:layout_height="0.5dip"-->
+<!--            android:layout_marginTop="1dp"-->
+<!--            android:layout_marginBottom="1dp"-->
+<!--            android:background="#666666"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="4"-->
+<!--            android:paddingLeft="5dp"-->
+<!--            android:gravity="left"-->
+<!--            android:textColor="#000000"-->
+<!--            android:text="Vị trí hiện tại (Chạm và giữ để thay đổi)"-->
+<!--            android:textSize="14sp"/>-->
+<!--        <TableLayout-->
+<!--            android:layout_marginBottom="3dp"-->
+<!--            android:layout_marginLeft="5dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+<!--            <TableRow android:layout_marginTop="5dp">-->
+<!--                <TextView-->
+<!--                    android:layout_column="1"-->
+<!--                    android:text="Đường"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="14dp"/>-->
+<!--                <TextView-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:id="@+id/txt_street"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--            </TableRow>-->
+
+<!--            <TableRow android:layout_marginTop="5dp">-->
+<!--                <TextView-->
+<!--                    android:layout_column="1"-->
+<!--                    android:text="Phường"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--                <TextView-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:id="@+id/txt_ward"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--            </TableRow>-->
+
+<!--            <TableRow android:layout_marginTop="5dp">-->
+<!--                <TextView-->
+<!--                    android:layout_column="1"-->
+<!--                    android:text="Quận"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--                <TextView-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:id="@+id/txt_district"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--            </TableRow>-->
+
+<!--            <TableRow android:layout_marginTop="5dp">-->
+<!--                <TextView-->
+<!--                    android:layout_column="1"-->
+<!--                    android:text="Sô nhà"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--                <TextView-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:id="@+id/txt_no"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--            </TableRow>-->
+<!--        </TableLayout>-->
+
+<!--        <View-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:layout_weight="2"-->
+<!--            android:layout_height="0.5dip"-->
+<!--            android:layout_marginTop="1dp"-->
+<!--            android:layout_marginBottom="1dp"-->
+<!--            android:background="#666666"/>-->
+<!--        <Button-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:background="@drawable/custom_button_check_map_detail"-->
+<!--            android:id="@+id/btn_exit"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:text="Xác nhận" />-->
+<!--    </LinearLayout>-->
+</RelativeLayout>

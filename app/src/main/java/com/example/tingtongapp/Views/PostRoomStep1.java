@@ -11,7 +11,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.tingtongapp.R;
@@ -21,6 +20,8 @@ public class PostRoomStep1 extends Fragment implements AdapterView.OnItemSelecte
     private EditText edtStreetPushRoom, edtNoPushRoom;
     private Button btnNextStep1PostRoom;
     private TextView txtChooseLocation;
+    public final static String SHARE_LONGTITUDE = "LONGTITUDE";
+    public final static String SHARE_LATITUDE = "LATITUDE";
 
     PostRoom postRoom;
 

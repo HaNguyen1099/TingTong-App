@@ -1,15 +1,13 @@
 package com.example.tingtongapp.Views;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewKt;
-import androidx.fragment.app.Fragment;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.tingtongapp.R;
 
@@ -20,7 +18,7 @@ public class Account_View extends Fragment implements View.OnClickListener {
     private Button btnMyFavoriteRoom;
     private Button btnMyFindRoom;
     private Button btnLogout;
-
+//    FirebaseAuth firebaseAuth;
     View layout;
 
     @Override
@@ -57,32 +55,20 @@ public class Account_View extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int id = v.getId();
-//        switch (id) {
-//            case R.id.btn_edit_account:
-//                Intent intent = new Intent(getContext(), personalPage.class);
-//                startActivity(intent);
-//                break;
-//            case R.id.btn_my_Room:
-//                Intent intent1 = new Intent(getContext(), roomManagementModel.class);
-//                startActivity(intent1);
-//                break;
-//
-//            case R.id.btn_my_favorite_room:
-//                Intent intentFavoriteRooms = new Intent(getContext(), favoriteRoomsView.class);
-//                startActivity(intentFavoriteRooms);
-//                break;
-//
-//            case R.id.btn_my_find_room:
-//                Intent intentMyFindRooms = new Intent(getContext(), FindRoomMine.class);
-//                startActivity(intentMyFindRooms);
-//                break;
-//
+        if (id == R.id.btn_edit_account){
+            Intent intent = new Intent(getContext(), personalPage.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.btn_my_Room) {
+            Intent intent1 = new Intent(getContext(), roomManagementModel.class);
+            startActivity(intent1);
+        }
+
 //            case R.id.btn_logout:
 //                //Khởi tạo firebaseAuth
 //                firebaseAuth = FirebaseAuth.getInstance();
 //                //Text Đăng xuất
 //                firebaseAuth.signOut();
 //                getActivity().finish();
-//        }
     }
 }

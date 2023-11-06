@@ -2,22 +2,21 @@ package com.example.tingtongapp.Views;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.widget.NestedScrollView;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ProgressBar;
-import android.view.View;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.widget.NestedScrollView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tingtongapp.R;
 
@@ -26,7 +25,6 @@ public class MainActivity extends Fragment {
     ProgressBar progressBarMain;
     NestedScrollView nestedScrollMainView;
     ProgressBar progressBarLoadMoreGridMainRoom;
-
     GridView grVLocation;
 
     EditText edTSearch;
@@ -84,21 +82,5 @@ public class MainActivity extends Fragment {
                 startActivity(intentSearchLocation);
             }
         });
-    }
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        setView();
-
-//        // detail room dùng
-//        RoomModel.getListFavoriteRoomsId(UID);
-//
-//        mainActivityController = new MainActivityController(getContext(), UID);
-//        mainActivityController.ListMainRoom(recyclerGridMainRoom, progressBarMain,
-//                nestedScrollMainView, progressBarLoadMoreGridMainRoom);
-//
-//        //Load top địa điểm nhiều phòng
-//        mainActivityController.loadTopLocation(grVLocation);
     }
 }
