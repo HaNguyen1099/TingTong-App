@@ -51,6 +51,9 @@ public class UserModel implements Parcelable {
     public String getName() {
         return name;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getEmail() {
         return email;
@@ -59,6 +62,9 @@ public class UserModel implements Parcelable {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public boolean isOwner() {
         return owner;
@@ -66,6 +72,9 @@ public class UserModel implements Parcelable {
 
     public boolean isGender() {
         return gender;
+    }
+    public void setGender(boolean gender) {
+        this.gender = gender;
     }
 
     @Override

@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Views.Account_View"
+    android:backgroundTint="@color/white"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -79,7 +81,7 @@
                 android:paddingLeft="10dp"
                 android:text="Chỉnh sửa thông tin"
                 android:textAllCaps="false"
-                android:textColor="#666666"
+                android:textColor="@color/black"
                 android:textSize="18dp" />
         </LinearLayout>
 
@@ -101,7 +103,7 @@
                 android:layout_height="60dp"
                 android:text="Bài đăng của tôi"
                 android:paddingLeft="10dp"
-                android:textColor="#666666"
+                android:textColor="@color/black"
                 android:textAllCaps="false"
                 style="@style/Widget.Material3.Button.IconButton"
                 android:gravity="left|center"
@@ -130,7 +132,7 @@
                 android:paddingLeft="7dp"
                 android:text="Phòng yêu thích"
                 android:textAllCaps="false"
-                android:textColor="#666666"
+                android:textColor="@color/black"
                 android:textSize="18dp" />
         </LinearLayout>
         <LinearLayout
@@ -155,7 +157,7 @@
                 android:paddingLeft="10dp"
                 android:text="Tìm ở ghép"
                 android:textAllCaps="false"
-                android:textColor="#666666"
+                android:textColor="@color/black"
                 android:textSize="18dp" />
         </LinearLayout>
 

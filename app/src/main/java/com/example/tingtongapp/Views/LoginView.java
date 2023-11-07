@@ -1,8 +1,5 @@
 package com.example.tingtongapp.Views;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tingtongapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +21,9 @@ public class LoginView extends AppCompatActivity implements View.OnClickListener
     Button btn_login;
     EditText edt_username_login, edt_password_login;
     TextView tvForgotPassword, tvSignUp;
+
+    public static final String SHARE_UID = "currentUserId";
+    public static final String PREFS_DATA_NAME = "currentUserId";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,8 @@ public class LoginView extends AppCompatActivity implements View.OnClickListener
 
             if (email.equals("") || password.equals("")){
                 Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-            }else{
+            }
+            else{
                 FirebaseAuth auth = FirebaseAuth.getInstance();
 
                 auth.signInWithEmailAndPassword(email, password)
