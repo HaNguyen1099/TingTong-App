@@ -73,7 +73,6 @@
                         android:layout_centerVertical="true"
                         android:src="@drawable/search"/>
                 </RelativeLayout>
-
             </LinearLayout>
 
             <LinearLayout

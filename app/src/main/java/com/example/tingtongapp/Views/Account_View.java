@@ -28,7 +28,7 @@ public class Account_View extends Fragment implements View.OnClickListener {
     private Button btnMyFavoriteRoom;
     private Button btnMyFindRoom;
     private Button btnLogout;
-//    FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuth;
     View layout;
 
     @Override
@@ -36,6 +36,7 @@ public class Account_View extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
     }
 
+    // inflate: chuyển đổi tệp layout XML thành đối tượng View
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -97,7 +98,6 @@ public class Account_View extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int id = v.getId();
-
         if (id == R.id.btn_edit_account){
             Intent intent = new Intent(getContext(), personalPage.class);
             startActivity(intent);
@@ -105,9 +105,9 @@ public class Account_View extends Fragment implements View.OnClickListener {
         else if (id == R.id.btn_my_Room) {
             Intent intent1 = new Intent(getContext(), roomManagementModel.class);
             startActivity(intent1);
-        }else if(id == R.id.btn_logout){
+        }
+        else if(id == R.id.btn_logout){
             FirebaseAuth.getInstance().signOut();
-
             Intent logout = new Intent(requireActivity(), LoginView.class);
             startActivity(logout);
         }
