@@ -63,8 +63,8 @@
                                 android:layout_marginTop="5dp"
                                 android:text="Gần đây"
                                 android:textAlignment="center"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -84,9 +84,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:text="Vận chuyển"
+                                android:textColor="@color/black"
                                 android:textAlignment="center"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
+                                android:textSize="15dp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -106,9 +106,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:text="Tìm ở ghép"
+                                android:textColor="@color/black"
                                 android:textAlignment="center"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
+                                android:textSize="15dp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -128,9 +128,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:text="Giặt là"
+                                android:textColor="@color/black"
                                 android:textAlignment="center"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
+                                android:textSize="15dp" />
                         </LinearLayout>
 
                     </TableRow>
@@ -163,7 +163,7 @@
                             android:drawablePadding="16dp"
                             android:textColor="#000000"
                             android:textColorHint="#000000"
-                            android:textSize="16dp" />
+                            android:textSize="18dp" />
                     </RelativeLayout>
                 </LinearLayout>
             </RelativeLayout>

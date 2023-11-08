@@ -57,6 +57,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Vị trí"
+                        android:textSize="20dp"
                         android:layout_below="@+id/btnImg_location_push_room"/>
                 </LinearLayout>
 
@@ -81,6 +82,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Thông tin"
+                        android:textSize="20dp"
                         android:layout_gravity="center"
                         android:layout_below="@+id/btnImg_information_push_room" />
                 </LinearLayout>
@@ -107,6 +109,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tiện ích"
+                        android:textSize="20dp"
                         android:layout_gravity="center"
                         android:layout_below="@+id/btnImg_utility_push_room"/>
                 </LinearLayout>
@@ -132,6 +135,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Xác nhận"
+                        android:textSize="20dp"
                         android:layout_gravity="center"
                         android:layout_below="@+id/btnImg_utility_push_room" />
                 </LinearLayout>
