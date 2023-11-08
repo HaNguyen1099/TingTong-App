@@ -27,6 +27,14 @@ public class LoginView extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_view);
 
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        if (auth.getCurrentUser() != null) {
+            Intent iMain = new Intent(LoginView.this, Main_Menu.class);
+            startActivity(iMain);
+            finish();
+        }
+
         btn_login = (Button) findViewById(R.id.btn_login);
         edt_username_login = (EditText) findViewById(R.id.edt_username_login);
         edt_password_login = (EditText) findViewById(R.id.edt_password_login);
