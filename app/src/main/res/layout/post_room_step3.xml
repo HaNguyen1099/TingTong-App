@@ -28,7 +28,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
+                android:layout_height="150dp"
                 android:background="@drawable/custom_rim"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp">
@@ -39,7 +39,7 @@
                     android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
                     android:background="@android:color/white"
                     android:src="@drawable/image" />
@@ -49,10 +49,22 @@
                     android:layout_height="wrap_content"
                     android:text="Chọn hình ảnh từ thư viện"
                     android:layout_marginTop="8dp"
-                    android:textSize="17dp"
+                    android:textSize="15dp"
                     android:layout_below="@+id/btnImg_upLoad_push_room"
                     android:gravity="center"
-                    android:textColor="#EC6835"/>
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:background="@drawable/dotted"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_img_upload"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </androidx.recyclerview.widget.RecyclerView>
             </RelativeLayout>
 
             <TextView

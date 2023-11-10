@@ -71,39 +71,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Phòng dành cho"
-                android:textSize="20dp"
-                android:textColor="#666666"
-                android:textStyle="bold"/>
-
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-                <RadioButton
-                    android:checked="true"
-                    android:textColor="@drawable/custom_radio_text_color"
-                    android:buttonTint="#F54500"
-                    android:id="@+id/rBtn_male"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nam"
-                    android:textSize="19dp"/>
-
-                <RadioButton
-                    android:textColor="@drawable/custom_radio_text_color"
-                    android:buttonTint="#F54500"
-                    android:id="@+id/rBtn_female"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nữ"
-                    android:textSize="19dp"/>
-            </RadioGroup>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Số người"
                 android:textSize="20dp"
                 android:layout_marginTop="10dp"

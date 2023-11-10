@@ -9,7 +9,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.tingtongapp.R;
@@ -39,8 +38,6 @@ public class PostRoomStep2 extends Fragment implements View.OnClickListener{
         rBtnType2PushRoom = view.findViewById(R.id.rBtn_type2_push_room);
         rBtnType3PushRoom = view.findViewById(R.id.rBtn_type3_push_room);
         rBtnType4PushRoom = view.findViewById(R.id.rBtn_type4_push_room);
-        rBtnMale=view.findViewById(R.id.rBtn_male);
-        rBtnFemale=view.findViewById(R.id.rBtn_female);
 
         edtNumberPeoplePushRoom =view.findViewById(R.id.edt_number_people_push_room);
         edtLengthPushRoom =view.findViewById(R.id.edt_length_push_room);

@@ -4,12 +4,14 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -89,4 +91,19 @@ public class ImageRoomModel implements Parcelable {
             return new ImageRoomModel[size];
         }
     };
+
+    public void loadInto(ImageView imageView) {
+        if (imageUrls != null && imageUrls.size() > 0) {
+            String imageUrl = imageUrls.get(0);
+
+            Picasso.get()
+                    .load(imageUrl)
+                    .fit()
+                    .into(imageView);
+        }
+    }
+
+    public void addImageUrl(String imageUrl) {
+        imageUrls.add(imageUrl);
+    }
 }
