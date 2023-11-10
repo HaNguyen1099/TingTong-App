@@ -20,13 +20,13 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="110dp">
+                android:layout_height="100dp">
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal">
                     <LinearLayout android:layout_width="110dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginRight="15dp"
                         android:layout_height="100dp"
                         android:orientation="vertical"
                         android:background="@drawable/custom_user_view">
@@ -44,19 +44,20 @@
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="#FFFFFF"
-                            android:textSize="16sp"
+                            android:textSize="18dp"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Phòng đăng"
-                            android:textSize="14sp"
+                            android:textSize="18dp"
                             android:textColor="#FFFFFF"
                             android:layout_marginTop="0dp"
                             android:textAlignment="center"/>
                     </LinearLayout>
                     <LinearLayout android:layout_width="110dp"
                         android:layout_height="100dp"
+                        android:layout_marginRight="15dp"
                         android:orientation="vertical"
                         android:background="@drawable/custom_user_comment">
                         <ImageView
@@ -73,13 +74,13 @@
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="#FFFFFF"
-                            android:textSize="16sp"
+                            android:textSize="18dp"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Lượt xem"
-                            android:textSize="14sp"
+                            android:textSize="18dp"
                             android:textColor="#FFFFFF"
                             android:layout_marginTop="0dp"
                             android:textAlignment="center"/>
@@ -87,8 +88,7 @@
                     <LinearLayout android:layout_width="110dp"
                         android:layout_height="100dp"
                         android:orientation="vertical"
-                        android:background="@drawable/custom_user_room"
-                        android:layout_marginLeft="10dp">
+                        android:background="@drawable/custom_user_room">
                         <ImageView
                             android:layout_width="25dp"
                             android:layout_height="25dp"
@@ -102,14 +102,14 @@
                             android:layout_marginTop="5dp"
                             android:text="0"
                             android:textAlignment="center"
-                            android:textColor="#FFDFFF"
-                            android:textSize="16sp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18dp"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Bình luận"
-                            android:textSize="14sp"
+                            android:textSize="18dp"
                             android:textColor="#FFFFFF"
                             android:layout_marginTop="0dp"
                             android:textAlignment="center"/>
@@ -117,30 +117,29 @@
                 </TableRow>
             </TableLayout>
 
-            <!--Processbar-->
             <ProgressBar
                 android:id="@+id/progress_bar_my_rooms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp" />
-            <!--End Processbar-->
 
             <LinearLayout
                 android:id="@+id/lnLt_quantity_top_my_rooms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="#FBCEB9"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:baselineAligned="false"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:text="Số lượng"
-                    android:textSize="15sp" />
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txt_quantity_my_rooms"
@@ -148,7 +147,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="0"
-                    android:textSize="15sp" />
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout

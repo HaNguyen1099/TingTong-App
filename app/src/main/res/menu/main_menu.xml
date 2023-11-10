@@ -6,9 +6,9 @@
 
     <item android:id="@+id/nav_room"
         android:icon="@drawable/menu3"
-        android:title="Đăng phòng"/>
+        android:title="Đăng phòng" />
 
     <item android:id="@+id/nav_acount"
         android:icon="@drawable/menu5"
-        android:title="Cá nhân"/>
+        android:title="Cá nhân" />
 </menu>

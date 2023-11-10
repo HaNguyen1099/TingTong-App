@@ -21,6 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Loại phòng"
+                android:textSize="20dp"
                 android:textColor="#666666"
                 android:textStyle="bold"/>
 
@@ -36,7 +37,8 @@
                     android:id="@+id/rBtn_type1_push_room"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Trọ" />
+                    android:text="Trọ"
+                    android:textSize="19dp"/>
 
                 <RadioButton
                     android:textColor="@drawable/custom_radio_text_color"
@@ -44,7 +46,8 @@
                     android:id="@+id/rBtn_type2_push_room"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ký túc xá" />
+                    android:text="Ký túc xá"
+                    android:textSize="19dp"/>
 
                 <RadioButton
                     android:textColor="@drawable/custom_radio_text_color"
@@ -52,7 +55,8 @@
                     android:id="@+id/rBtn_type3_push_room"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chung cư" />
+                    android:text="Chung cư"
+                    android:textSize="19dp"/>
 
                 <RadioButton
                     android:textColor="@drawable/custom_radio_text_color"
@@ -60,7 +64,8 @@
                     android:id="@+id/rBtn_type4_push_room"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nhà nguyên căn" />
+                    android:text="Nhà nguyên căn"
+                    android:textSize="19dp"/>
             </RadioGroup>
 
             <TextView
@@ -68,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Phòng dành cho"
+                android:textSize="20dp"
                 android:textColor="#666666"
                 android:textStyle="bold"/>
 
@@ -82,7 +88,8 @@
                     android:id="@+id/rBtn_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nam" />
+                    android:text="Nam"
+                    android:textSize="19dp"/>
 
                 <RadioButton
                     android:textColor="@drawable/custom_radio_text_color"
@@ -90,13 +97,15 @@
                     android:id="@+id/rBtn_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nữ" />
+                    android:text="Nữ"
+                    android:textSize="19dp"/>
             </RadioGroup>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Số người"
+                android:textSize="20dp"
                 android:layout_marginTop="10dp"
                 android:textColor="#666666"
                 android:textStyle="bold" />
@@ -112,13 +121,14 @@
                 android:gravity="center"
                 android:hint="Số người ở tối đa"
                 android:textColor="#666666"
-                android:textSize="14sp"/>
+                android:textSize="18dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Chiều dài phòng"
+                android:textSize="20dp"
                 android:textColor="#666666"
                 android:textStyle="bold" />
 
@@ -133,13 +143,14 @@
                 android:gravity="center"
                 android:hint="(m)"
                 android:textColor="#666666"
-                android:textSize="14sp"/>
+                android:textSize="18dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Chiều rộng phòng"
+                android:textSize="20dp"
                 android:textColor="#666666"
                 android:textStyle="bold" />
 
@@ -154,13 +165,14 @@
                 android:gravity="center"
                 android:hint="(m)"
                 android:textColor="#666666"
-                android:textSize="14sp"/>
+                android:textSize="18dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Giá phòng"
+                android:textSize="20dp"
                 android:textColor="#666666"
                 android:textStyle="bold" />
 
@@ -175,13 +187,14 @@
                 android:gravity="center"
                 android:hint="Nhập giá"
                 android:textColor="#666666"
-                android:textSize="14sp"/>
+                android:textSize="18dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Tiền điện (nghìn đồng/số)"
+                android:textSize="20dp"
                 android:textColor="#666666"
                 android:textStyle="bold" />
 
@@ -198,7 +211,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textColor="#666666"
-                    android:textSize="14sp"
+                    android:textSize="18dp"
                     android:layout_weight="1"
                     android:hint="Nhập giá" />
 
@@ -209,6 +222,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/edt_electricBill_push_room"
                     android:text="Miễn phí"
+                    android:textSize="18dp"
                     android:layout_weight="2"/>
             </LinearLayout>
 
@@ -217,6 +231,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Tiền nước (nghìn đồng/m3)"
+                android:textSize="20dp"
                 android:textColor="#666666"
                 android:textStyle="bold" />
 
@@ -234,7 +249,7 @@
                     android:layout_marginTop="5dp"
                     android:hint="Nhập giá"
                     android:textColor="#666666"
-                    android:textSize="14sp"
+                    android:textSize="18dp"
                     android:layout_weight="1"/>
 
                 <CheckBox
@@ -244,6 +259,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/edt_waterBill_push_room"
                     android:text="Miễn phí"
+                    android:textSize="18dp"
                     android:layout_weight="2"/>
             </LinearLayout>
 
@@ -252,6 +268,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Internet (nghìn đồng/tháng)"
+                android:textSize="20dp"
                 android:textColor="#666666"
                 android:textStyle="bold" />
             <LinearLayout
@@ -265,7 +282,7 @@
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:textColor="#666666"
-                    android:textSize="14sp"
+                    android:textSize="18dp"
                     android:layout_marginTop="5dp"
                     android:hint="Nhập giá"
                     android:layout_weight="1"/>
@@ -277,6 +294,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/edt_internet_push_room"
                     android:text="Miễn phí"
+                    android:textSize="18dp"
                     android:layout_weight="2"/>
             </LinearLayout>
 
@@ -285,6 +303,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Tiền giữ xe (nghìn đồng/tháng)"
+                android:textSize="20dp"
                 android:textColor="#666666"
                 android:textStyle="bold" />
             <LinearLayout
@@ -298,7 +317,7 @@
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:textColor="#666666"
-                    android:textSize="14sp"
+                    android:textSize="18dp"
                     android:layout_marginTop="5dp"
                     android:hint="Nhập giá"
                     android:layout_weight="1"/>
@@ -310,18 +329,20 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/edt_internet_push_room"
                     android:text="Miễn phí"
+                    android:textSize="18dp"
                     android:layout_weight="2"/>
             </LinearLayout>
 
             <Button
                 android:id="@+id/btn_nextStep2_post_room"
                 android:layout_width="match_parent"
-                android:height="30dp"
+                android:height="40dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/custom_button_login"
                 android:text="Xác nhận"
+                android:textSize="20dp"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
         </LinearLayout>

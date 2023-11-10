@@ -22,6 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hình ảnh"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="#666666" />
 
@@ -48,25 +49,27 @@
                     android:layout_height="wrap_content"
                     android:text="Chọn hình ảnh từ thư viện"
                     android:layout_marginTop="8dp"
+                    android:textSize="17dp"
                     android:layout_below="@+id/btnImg_upLoad_push_room"
                     android:gravity="center"
-                    android:textColor="#D34B16"/>
+                    android:textColor="#EC6835"/>
             </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tiện ích"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="#666666"
                 android:layout_marginTop="20dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
                 <LinearLayout
-                    android:weightSum="7"
+                    android:weightSum="9"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,8 +81,9 @@
                         android:background="@drawable/custom_checkbox"
                         android:drawableLeft="@drawable/clock"
                         android:text="Tự do"
+                        android:textSize="18dp"
                         android:gravity="center"
-                        android:layout_weight="3"
+                        android:layout_weight="4"
                         android:padding="10dp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
@@ -95,15 +99,16 @@
                         android:background="@drawable/custom_checkbox"
                         android:drawableLeft="@drawable/wifi"
                         android:text="Wifi"
+                        android:textSize="18dp"
                         android:padding="10dp"
-                        android:layout_weight="3"
+                        android:layout_weight="4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:weightSum="7"
+                    android:weightSum="9"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -116,8 +121,9 @@
                         android:background="@drawable/custom_checkbox"
                         android:drawableLeft="@drawable/bed"
                         android:text="Giường"
+                        android:textSize="18dp"
                         android:padding="10dp"
-                        android:layout_weight="3"
+                        android:layout_weight="4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
                     <TextView
@@ -132,14 +138,15 @@
                         android:background="@drawable/custom_checkbox"
                         android:drawableLeft="@drawable/wardrobe"
                         android:text="Tủ quần áo"
+                        android:textSize="18dp"
                         android:padding="10dp"
-                        android:layout_weight="3"
+                        android:layout_weight="4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:weightSum="7"
+                    android:weightSum="9"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -151,8 +158,9 @@
                         android:background="@drawable/custom_checkbox"
                         android:drawableLeft="@drawable/refrigerator"
                         android:text="Tủ lạnh"
+                        android:textSize="18dp"
                         android:gravity="center"
-                        android:layout_weight="3"
+                        android:layout_weight="4"
                         android:padding="10dp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
@@ -167,15 +175,16 @@
                         android:background="@drawable/custom_checkbox"
                         android:drawableLeft="@drawable/aircondition"
                         android:text="Điều hòa"
+                        android:textSize="18dp"
                         android:gravity="center"
-                        android:layout_weight="3"
+                        android:layout_weight="4"
                         android:padding="10dp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:weightSum="7"
+                    android:weightSum="9"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -187,8 +196,9 @@
                         android:background="@drawable/custom_checkbox"
                         android:drawableLeft="@drawable/washing"
                         android:text="Máy giặt"
+                        android:textSize="18dp"
                         android:gravity="center"
-                        android:layout_weight="3"
+                        android:layout_weight="4"
                         android:padding="10dp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
@@ -204,14 +214,15 @@
                         android:background="@drawable/custom_checkbox"
                         android:drawableLeft="@drawable/heater"
                         android:text="Nước nóng"
+                        android:textSize="18dp"
                         android:padding="10dp"
-                        android:layout_weight="3"
+                        android:layout_weight="4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:weightSum="7"
+                    android:weightSum="9"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -223,8 +234,9 @@
                         android:background="@drawable/custom_checkbox"
                         android:drawableLeft="@drawable/policeman"
                         android:text="An ninh"
+                        android:textSize="18dp"
                         android:gravity="center"
-                        android:layout_weight="3"
+                        android:layout_weight="4"
                         android:padding="10dp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
@@ -240,8 +252,9 @@
                         android:background="@drawable/custom_checkbox"
                         android:drawableLeft="@drawable/motorcycle"
                         android:text="Chỗ để xe"
+                        android:textSize="18dp"
                         android:padding="10dp"
-                        android:layout_weight="3"
+                        android:layout_weight="4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -249,12 +262,13 @@
             <Button
                 android:id="@+id/btn_nextStep3_post_room"
                 android:layout_width="match_parent"
-                android:height="30dp"
+                android:height="40dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/custom_button_login"
                 android:text="Xác nhận"
+                android:textSize="20dp"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
