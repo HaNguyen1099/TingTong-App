@@ -19,12 +19,13 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <ImageView
                     android:id="@+id/img_room"
-                    android:layout_width="150dp"
+                    android:layout_width="130dp"
                     android:layout_height="130dp"
+                    android:layout_marginLeft="10dp"
                     android:scaleType="centerCrop"
-                    app:riv_corner_radius="5dip"
+                    android:src="@drawable/ic_room"
                     app:riv_oval="false" />
             </RelativeLayout>
 
@@ -34,10 +35,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerInParent="true"
-                android:text="10/22/2018 "
+                android:text="10/10/2023"
                 android:layout_gravity="center"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="12dp" />
+                android:textSize="13dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,7 +59,7 @@
                     android:gravity="right"
                     android:text="KÍ TÚC XÁ"
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
             </RelativeLayout>
 
             <TextView
@@ -68,7 +69,7 @@
                 android:layout_marginTop="5dp"
                 android:text="Cho thuê phòng trọ giá rẻ"
                 android:textColor="#666666"
-                android:textSize="14sp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:maxLines="2"
                 android:lineSpacingExtra="3dp"
@@ -88,7 +89,7 @@
                     android:gravity="right"
                     android:text="2.5 triệu/phòng"
                     android:textColor="#F54500"
-                    android:textSize="12sp" />
+                    android:textSize="16dp" />
                 />
 
                 <TextView
@@ -99,8 +100,8 @@
                     android:layout_marginTop="5dp"
                     android:text="5m x 4m"
                     android:textColor="#666666"
-                    android:textSize="12sp"
-                    android:layout_marginRight="5dp"/>
+                    android:textSize="16dp"
+                    android:layout_marginRight="15dp"/>
                 />
             </RelativeLayout>
 
@@ -109,9 +110,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:text="127 An Dương Vương, Bình Tân, TP Hồ Chí Minh"
+                android:text="96A, Mộ Lao, Hà Đông, Hà Nội"
                 android:textColor="#666666"
-                android:textSize="12sp"
+                android:textSize="16dp"
                 android:maxLines="2"
                 android:ellipsize="end"
                 android:lineSpacingExtra="5dp"
