@@ -1,4 +1,4 @@
-package com.example.tingtongapp.Adapter;
+package com.example.tingtongapp.Adapters;
 
 import android.content.Context;
 import android.content.Intent;

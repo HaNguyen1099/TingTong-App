@@ -21,7 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tingtongapp.Adapter.AdapterRoomSuggestions;
+import com.example.tingtongapp.Adapters.AdapterRoomSuggestions;
 import com.example.tingtongapp.Model.RoomModel;
 import com.example.tingtongapp.R;
 
