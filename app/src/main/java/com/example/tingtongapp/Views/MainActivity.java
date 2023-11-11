@@ -86,7 +86,7 @@ public class MainActivity extends Fragment {
         a1.setTypeOfRoom("Phong tro");
         a1.setLengthRoom(10);
         a1.setWidthRoom(5);
-        a1.setLocation("Ha Dong, Ha Noi");
+        a1.setAddress("Ha Dong, Ha Noi");
         a1.setRentingPrice("2.5tr/thang");
 
         RoomModel a2 = new RoomModel();
@@ -94,7 +94,7 @@ public class MainActivity extends Fragment {
         a2.setTypeOfRoom("Căn hộ");
         a2.setLengthRoom(15);
         a2.setWidthRoom(8);
-        a2.setLocation("Cau giay, Ha Noi");
+        a2.setAddress("Cau giay, Ha Noi");
         a2.setRentingPrice("3.2tr/thang");
 
         listRoom.add(a1);

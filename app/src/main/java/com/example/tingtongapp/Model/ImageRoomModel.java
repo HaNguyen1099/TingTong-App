@@ -4,12 +4,14 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -31,7 +33,7 @@ public class ImageRoomModel implements Parcelable {
             return imageUrls.get(0);
         }
 
-        return "https://firebasestorage.googleapis.com/v0/b/roomfinder-ce2b5.appspot.com/o/images%2Fbackground.jpg?alt=media&token=7e18202d-7191-4191-8090-4d791d2dd5ad";
+        return "https://firebasestorage.googleapis.com/v0/b/roomfinder-ce2b5.appspot.com/o/images%2Fic_room.png?alt=media&token=1c81d779-47f5-41f0-90a9-fff43d2ede14";
     }
 
     public void addImage(Uri imageUri) {
@@ -89,4 +91,19 @@ public class ImageRoomModel implements Parcelable {
             return new ImageRoomModel[size];
         }
     };
+
+    public void loadInto(ImageView imageView) {
+        if (imageUrls != null && imageUrls.size() > 0) {
+            String imageUrl = imageUrls.get(0);
+
+            Picasso.get()
+                    .load(imageUrl)
+                    .fit()
+                    .into(imageView);
+        }
+    }
+
+    public void addImageUrl(String imageUrl) {
+        imageUrls.add(imageUrl);
+    }
 }

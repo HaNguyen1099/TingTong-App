@@ -64,7 +64,7 @@ public class AdapterRoomSuggestions extends RecyclerView.Adapter<AdapterRoomSugg
 
             @Override
             public void onError(Exception e) {
-                int resId = context.getResources().getIdentifier("avt_jpg_room", "drawable", context.getPackageName());
+                int resId = context.getResources().getIdentifier("ic_room", "drawable", context.getPackageName());
                 holder.demoRoomImg.setImageResource(resId);
                 e.printStackTrace();
             }
