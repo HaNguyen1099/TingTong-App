@@ -44,6 +44,9 @@
             android:name=".Views.roomManagementModel"
             android:exported="false" />
         <activity
+            android:name=".Views.DetailRoom"
+            android:exported="false" />
+        <activity
             android:name=".Views.PostRoom"
             android:exported="false" />
         <activity

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Views.DetailRoom">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -133,7 +136,7 @@
                         android:lineSpacingExtra="5dp"
                         android:text="Trọ cho người lao động"
                         android:textColor="#666666"
-                        android:textSize="20dp"
+                        android:textSize="22dp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -155,7 +158,7 @@
                                 android:text="Giá phòng"
                                 android:textAlignment="center"
                                 android:textColor="#666666"
-                                android:textSize="15dp" />
+                                android:textSize="18dp" />
 
                             <TextView
                                 android:id="@+id/txt_roomPrice"
@@ -165,7 +168,7 @@
                                 android:text="4.500.000đ"
                                 android:textAlignment="center"
                                 android:textColor="#F54500"
-                                android:textSize="14dp"
+                                android:textSize="18dp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
@@ -181,7 +184,7 @@
                                 android:text="Tình trạng"
                                 android:textAlignment="center"
                                 android:textColor="#666666"
-                                android:textSize="15dp" />
+                                android:textSize="18dp" />
 
                             <TextView
                                 android:id="@+id/txt_roomStatus"
@@ -191,7 +194,7 @@
                                 android:text="Còn"
                                 android:textAlignment="center"
                                 android:textColor="#F54500"
-                                android:textSize="14dp"
+                                android:textSize="18dp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
@@ -207,7 +210,7 @@
                                 android:text="Diện tích"
                                 android:textAlignment="center"
                                 android:textColor="#666666"
-                                android:textSize="15dp" />
+                                android:textSize="18dp" />
 
                             <TextView
                                 android:id="@+id/txt_roomArea"
@@ -217,32 +220,7 @@
                                 android:text="5mx5m"
                                 android:textAlignment="center"
                                 android:textColor="#F54500"
-                                android:textSize="14dp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Đặt cọc"
-                                android:textAlignment="center"
-                                android:textColor="#666666"
-                                android:textSize="15dp" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:text="1 tháng"
-                                android:textAlignment="center"
-                                android:textColor="#F54500"
-                                android:textSize="14dp"
+                                android:textSize="18dp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
@@ -258,7 +236,7 @@
                                 android:text="Số người ở"
                                 android:textAlignment="center"
                                 android:textColor="#666666"
-                                android:textSize="15dp" />
+                                android:textSize="18dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -267,7 +245,7 @@
                                 android:text="3 người"
                                 android:textAlignment="center"
                                 android:textColor="#F54500"
-                                android:textSize="14dp"
+                                android:textSize="18dp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
@@ -315,7 +293,7 @@
                         android:layout_marginRight="10dp"
                         android:text="Tiện ích"
                         android:textColor="#666666"
-                        android:textSize="16sp"
+                        android:textSize="20dp"
                         android:textStyle="bold" />
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -350,12 +328,12 @@
                         <TextView
                             android:id="@+id/txt_expand_convenients"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:padding="2dp"
                             android:text="Mở rộng"
                             android:textColor="#D34B16"
-                            android:textSize="14sp" />
+                            android:textSize="18dp" />
 
                         <ImageView
                             android:layout_width="16dp"
@@ -383,7 +361,7 @@
                         android:layout_marginRight="10dp"
                         android:text="Địa chỉ"
                         android:textColor="#666666"
-                        android:textSize="18dp"
+                        android:textSize="20dp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -397,7 +375,7 @@
 
                         <ImageView
                             android:layout_width="18dp"
-                            android:layout_height="16dp"
+                            android:layout_height="18dp"
                             android:layout_gravity="center"
                             android:src="@drawable/location2" />
 
@@ -408,7 +386,7 @@
                             android:layout_margin="5dp"
                             android:layout_marginLeft="10dp"
                             android:text="96B, phường Mộ Lao, quận Hà Đông, Hà Nội"
-                            android:textSize="16dp" />
+                            android:textSize="18dp" />
 
                     </LinearLayout>
 
@@ -422,8 +400,8 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
                             android:layout_gravity="center"
                             android:src="@drawable/phone" />
 
@@ -434,7 +412,7 @@
                             android:layout_margin="5dp"
                             android:layout_marginLeft="10dp"
                             android:text="0123456789"
-                            android:textSize="14sp" />
+                            android:textSize="18dp" />
 
                     </LinearLayout>
 
@@ -453,22 +431,24 @@
 
                         <Button
                             android:id="@+id/btn_callPhone"
-                            android:layout_width="120dp"
-                            android:layout_height="30dp"
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
                             android:height="30dp"
                             android:background="@drawable/custom_button_call_detail"
                             android:text="Liên hệ"
+                            android:textSize="16dp"
                             android:textAllCaps="false"
                             android:textColor="@android:color/white" />
 
                         <Button
                             android:id="@+id/btn_directMap"
-                            android:layout_width="120dp"
-                            android:layout_height="30dp"
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
                             android:height="30dp"
                             android:layout_marginLeft="20dp"
                             android:background="@drawable/custom_button_call_detail"
                             android:text="Check map"
+                            android:textSize="16dp"
                             android:textAllCaps="false"
                             android:textColor="@android:color/white" />
                     </LinearLayout>
@@ -491,7 +471,7 @@
                         android:layout_marginRight="10dp"
                         android:text="Mô tả"
                         android:textColor="#666666"
-                        android:textSize="16sp"
+                        android:textSize="20dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -502,7 +482,7 @@
                         android:lineSpacingExtra="5dp"
                         android:maxLines="5"
                         android:text="Liên hệ: 0966.332.775 - 0969.676.678 Thắng Điện: 3500k/kWH, nước 100.000đ/người, internet: 100.000đ/phòng Địa chỉ: 113 Trần Kế Xương. P7, Phú Nhuận"
-                        android:textSize="14sp" />
+                        android:textSize="18dp" />
 
                     <View
                         android:layout_width="fill_parent"
@@ -521,12 +501,12 @@
                         <TextView
                             android:id="@+id/txt_expand_description"
                             android:layout_width="wrap_content"
-                            android:layout_height="16dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:padding="2dp"
                             android:text="Mở rộng"
                             android:textColor="#D34B16"
-                            android:textSize="14sp" />
+                            android:textSize="18dp" />
 
                         <ImageView
                             android:layout_width="16dp"
@@ -555,7 +535,7 @@
                         android:layout_marginRight="10dp"
                         android:text="Cùng tiêu chí"
                         android:textColor="#666666"
-                        android:textSize="16dp"
+                        android:textSize="20dp"
                         android:textStyle="bold" />
 
                     <LinearLayout
