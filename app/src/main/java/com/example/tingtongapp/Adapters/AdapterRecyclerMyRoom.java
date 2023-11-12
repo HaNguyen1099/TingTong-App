@@ -39,7 +39,6 @@ public class AdapterRecyclerMyRoom extends Adapter<AdapterRecyclerMyRoom.ViewHol
             txtName = (TextView) itemView.findViewById(R.id.txt_name);
             txtAddress = (TextView) itemView.findViewById(R.id.txt_address);
             imgRoom = (ImageView) itemView.findViewById(R.id.img_room);
-            imgVerified = (ImageView)itemView.findViewById(R.id.img_verified);
 //            btnUpdate =(Button)itemView.findViewById(R.id.btn_update);
             btnDelete =(Button)itemView.findViewById(R.id.btn_delete);
 //            btnChange = itemView.findViewById(R.id.btn_change);

@@ -2,6 +2,7 @@ package com.example.tingtongapp.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,8 @@ public class Account_View extends Fragment implements View.OnClickListener {
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                Object receivedData = dataSnapshot.getValue();
+                Log.d("Firebase", "Received data: " + receivedData);
                 if (dataSnapshot.exists()) {
                     UserModel currentUser = dataSnapshot.getValue(UserModel.class);
                     if (currentUser != null) {

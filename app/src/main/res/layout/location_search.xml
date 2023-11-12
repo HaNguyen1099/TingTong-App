@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -38,14 +37,14 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/frame"
-                android:hint="Gần trường, công ty, chợ..."
-                android:paddingLeft="110dp"
+                android:hint="Quận"
+                android:paddingLeft="130dp"
                 android:textColor="#666666"
                 android:textCursorDrawable="@drawable/cursor_edittext"
-                android:textSize="14dp" />
+                android:textSize="18dp" />
 
             <Button
-                android:id="@+id/btn_clear"
+                android:id="@+id/btn_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_centerVertical="false"
@@ -55,9 +54,10 @@
                 android:paddingLeft="10dp"
                 android:text="Hà Nội"
                 android:textColor="@color/white"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <ImageView
+                android:id="@+id/iv_ok"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="10dp"
@@ -83,23 +83,22 @@
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="30dp"
-                android:layout_height="25dp"
+                android:layout_height="30dp"
                 android:src="@drawable/hint"/>
             <TextView
-                android:layout_marginLeft="7dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="2dp"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:text="Gợi ý địa điểm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="5dp"
             android:id="@+id/recycler_suggestion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -113,8 +112,8 @@
             android:orientation="horizontal"
             android:layout_marginTop="20dp">
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="2dp"
                 android:src="@drawable/history"/>
 
@@ -124,7 +123,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="2dp"
                 android:text="Lịch sử tìm kiếm"
-                android:textSize="18dp" />
+                android:textSize="20dp" />
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_history_search"
