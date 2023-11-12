@@ -20,6 +20,9 @@ import com.example.tingtongapp.Views.DetailRoom;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class AdapterRoomSuggestions extends RecyclerView.Adapter<AdapterRoomSuggestions.RoomViewHolder>{
@@ -48,9 +51,24 @@ public class AdapterRoomSuggestions extends RecyclerView.Adapter<AdapterRoomSugg
             holder.title.setText(roomModel.getTitle());
             holder.typeOfRoom.setText(roomModel.getTypeOfRoom());
             holder.address.setText(roomModel.getAddress());
-            holder.rentingPrice.setText(roomModel.getRentingPrice() + "/tháng");
+            holder.rentingPrice.setText(roomModel.getRentingPrice() + " tr/tháng");
             holder.sizeRoom.setText(roomModel.getLengthRoom() + "m x " + roomModel.getWidthRoom() + "m");
-            holder.dateAdded.setText(roomModel.getDateAdded());
+
+            String dateAddedString = roomModel.getDateAdded();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate dateAdded = LocalDate.parse(dateAddedString, formatter);
+            LocalDate now = LocalDate.now();
+
+            long daysBetween = ChronoUnit.DAYS.between(dateAdded, now);
+
+            if (daysBetween == 0) {
+                holder.dateAdded.setText("Hôm nay");
+            } else if (daysBetween < 7) {
+                holder.dateAdded.setText(daysBetween + " ngày trước");
+            } else {
+                holder.dateAdded.setText(dateAdded.toString());
+            }
+
         }catch (Exception e){
             e.printStackTrace();
         }

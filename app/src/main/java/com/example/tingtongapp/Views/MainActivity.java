@@ -87,7 +87,7 @@ public class MainActivity extends Fragment {
         a1.setLengthRoom(10);
         a1.setWidthRoom(5);
         a1.setAddress("Hà Đông, Hà Nội");
-        a1.setRentingPrice("2.5tr");
+        a1.setRentingPrice("2.5");
         a1.setRoomOwner(new UserModel());
         a1.setDescription("Phòng trọ giá rẻ, khép kín, gần đường lớn, bến xe buýt, thuận tiện đi lại cho các bạn sinh viên");
         a1.setConditionRoom("Còn");
@@ -99,7 +99,7 @@ public class MainActivity extends Fragment {
         a2.setLengthRoom(15);
         a2.setWidthRoom(8);
         a2.setAddress("55 Trung Văn, Phùng Khoang, Hà Nội");
-        a2.setRentingPrice("8.2tr");
+        a2.setRentingPrice("8.2");
         a2.setRoomOwner(new UserModel());
         a2.setDescription("Phòng trọ cao cấp, phù hợp với người đi làm, gia đình nhỏ, đầy đủ tiện nghi");
         a2.setConditionRoom("Hết");

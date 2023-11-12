@@ -73,7 +73,6 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
 
     private void setInfoRoom(){
         try {
-            int area = roomModel.getLengthRoom() * roomModel.getWidthRoom();
             imageRoomModel = roomModel.getImagesRoom();
             ArrayList<String> imageUrls = imageRoomModel.getAll();
 
@@ -85,10 +84,10 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
 
             title.setText(roomModel.getTitle());
             typeOfRoom.setText(roomModel.getTypeOfRoom());
-            rentingPrice.setText(roomModel.getRentingPrice());
+            rentingPrice.setText(roomModel.getRentingPrice() + " triệu");
             conditionRoom.setText(roomModel.getConditionRoom());
             amountOfPeople.setText(roomModel.getAmountOfPeople() + "");
-            acreageRoom.setText(area + " m2");
+            acreageRoom.setText(roomModel.getLengthRoom() + "m x " + roomModel.getWidthRoom() + "m");
             description.setText(roomModel.getDescription());
             address.setText(roomModel.getAddress());
             UserModel use1r = roomModel.getRoomOwner();

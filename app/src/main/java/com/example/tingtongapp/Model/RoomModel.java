@@ -121,6 +121,14 @@ public class RoomModel implements Parcelable {
         city = in.readString();
         listRoomPrice = new ArrayList<>();
         in.readTypedList(listRoomPrice, RoomPriceModel.CREATOR);
+
+        int size = in.readInt();
+        listServicesRoom = new LinkedHashMap<String, Boolean>(size);
+        for(int i = 0; i < size; i++) {
+            String key = in.readString();
+            Boolean value = in.readInt() != 0;
+            listServicesRoom.put(key, value);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -279,6 +287,11 @@ public class RoomModel implements Parcelable {
         dest.writeString(ward);
         dest.writeString(city);
         dest.writeTypedList(listRoomPrice);
+        dest.writeInt(listServicesRoom.size());
+        for(Map.Entry<String, Boolean> entry : listServicesRoom.entrySet()) {
+            dest.writeString(entry.getKey());
+            dest.writeInt(entry.getValue() ? 1 : 0);
+        }
     }
 
     public void infoOfAllRoomOfUser(String UID, IInfoOfAllRoomUser iInfoOfAllRoomUser) {
