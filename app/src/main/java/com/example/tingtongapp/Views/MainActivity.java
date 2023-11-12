@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tingtongapp.Adapters.AdapterRoomSuggestions;
 import com.example.tingtongapp.Model.RoomModel;
+import com.example.tingtongapp.Model.UserModel;
 import com.example.tingtongapp.R;
 
 import java.util.ArrayList;
@@ -79,27 +80,35 @@ public class MainActivity extends Fragment {
     private void initRecyclerView() {
         listRoomSuggestions = layout.findViewById(R.id.recycler_Grid_Main_Room);
         listRoom = new ArrayList<>();
-        adapterListRoom = new AdapterRoomSuggestions(getActivity(), listRoom);
 
         RoomModel a1 = new RoomModel();
-        a1.setTitle("Phong tro sinh viên");
-        a1.setTypeOfRoom("Phong tro");
+        a1.setTitle("Phòng trọ giá rẻ cho sinh viên");
+        a1.setTypeOfRoom("Nhà trọ");
         a1.setLengthRoom(10);
         a1.setWidthRoom(5);
-        a1.setAddress("Ha Dong, Ha Noi");
-        a1.setRentingPrice("2.5tr/thang");
+        a1.setAddress("Hà Đông, Hà Nội");
+        a1.setRentingPrice("2.5tr");
+        a1.setRoomOwner(new UserModel());
+        a1.setDescription("Phòng trọ giá rẻ, khép kín, gần đường lớn, bến xe buýt, thuận tiện đi lại cho các bạn sinh viên");
+        a1.setConditionRoom("Còn");
+        a1.setAmountOfPeople(3);
 
         RoomModel a2 = new RoomModel();
-        a2.setTitle("Phong tro giá rẻ cho ngưỡi đi làm");
+        a2.setTitle("Phòng trọ cao cấp");
         a2.setTypeOfRoom("Căn hộ");
         a2.setLengthRoom(15);
         a2.setWidthRoom(8);
-        a2.setAddress("Cau giay, Ha Noi");
-        a2.setRentingPrice("3.2tr/thang");
+        a2.setAddress("55 Trung Văn, Phùng Khoang, Hà Nội");
+        a2.setRentingPrice("8.2tr");
+        a2.setRoomOwner(new UserModel());
+        a2.setDescription("Phòng trọ cao cấp, phù hợp với người đi làm, gia đình nhỏ, đầy đủ tiện nghi");
+        a2.setConditionRoom("Hết");
+        a2.setAmountOfPeople(1);
 
         listRoom.add(a1);
         listRoom.add(a2);
 
+        adapterListRoom = new AdapterRoomSuggestions(getActivity(), listRoom);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         listRoomSuggestions.setLayoutManager(linearLayoutManager);
         listRoomSuggestions.setAdapter(adapterListRoom);

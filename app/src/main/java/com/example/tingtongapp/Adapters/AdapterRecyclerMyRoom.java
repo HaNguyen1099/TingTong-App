@@ -65,7 +65,7 @@ public class AdapterRecyclerMyRoom extends Adapter<AdapterRecyclerMyRoom.ViewHol
         //End Set address for room
         viewHolder.txtTimeCreated.setText(roomModel.getTimeCreated());
         // hiển thị ảnh từ roomModel vào imgRoom
-        roomModel.getImages().loadInto(viewHolder.imgRoom);
+        roomModel.getImagesRoom().loadInto(viewHolder.imgRoom);
 
 //        viewHolder.btnUpdate.setOnClickListener(new View.OnClickListener() {
 //            @Override

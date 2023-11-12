@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RoomModel implements Parcelable {
-    private String idRoom, title, description, address, typeOfRoom, rentingPrice, timeCreated, owner;
+    private String idRoom, title, description, address, typeOfRoom, rentingPrice, timeCreated, owner, conditionRoom;
     private int acreageRoom, amountOfPeople, lengthRoom, widthRoom;
     private LocalDate dateAdded;
     private ImageRoomModel imagesRoom;
@@ -100,18 +101,19 @@ public class RoomModel implements Parcelable {
     protected RoomModel(Parcel in) {
         idRoom = in.readString();
         title = in.readString();
-        description = in.readString();
-        typeID = in.readString();
-        address = in.readString();
         typeOfRoom = in.readString();
+        conditionRoom = in.readString();
+        address = in.readString();
         rentingPrice = in.readString();
-        timeCreated = in.readString();
         acreageRoom = in.readInt();
         amountOfPeople = in.readInt();
         lengthRoom = in.readInt();
         widthRoom = in.readInt();
-        imagesRoom = in.readParcelable(ImageRoomModel.class.getClassLoader());
+        description = in.readString();
         roomOwner = in.readParcelable(UserModel.class.getClassLoader());
+        imagesRoom = in.readParcelable(ImageRoomModel.class.getClassLoader());
+        timeCreated = in.readString();
+        typeID = in.readString();
         no = in.readString();
         county = in.readString();
         street = in.readString();
@@ -134,6 +136,22 @@ public class RoomModel implements Parcelable {
     }
     public void setIdRoom(String idRoom) {
         this.idRoom = idRoom;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setConditionRoom(String conditionRoom) {
+        this.conditionRoom = conditionRoom;
+    }
+
+    public void setAcreageRoom(int acreageRoom) {
+        this.acreageRoom = acreageRoom;
+    }
+
+    public void setAmountOfPeople(int amountOfPeople) {
+        this.amountOfPeople = amountOfPeople;
     }
 
     public UserModel getRoomOwner() {
@@ -213,10 +231,6 @@ public class RoomModel implements Parcelable {
     public void setCity(String city) {
         this.city = city;
     }
-
-    public ImageRoomModel getImages() {
-        return imagesRoom;
-    }
     public void setImages(ImageRoomModel images) {
         this.imagesRoom = images;
     }
@@ -229,6 +243,14 @@ public class RoomModel implements Parcelable {
         this.listRoomPrice = listRoomPrice;
     }
 
+    public String getConditionRoom() {
+        return conditionRoom;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -238,15 +260,25 @@ public class RoomModel implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(idRoom);
         dest.writeString(title);
-        dest.writeString(description);
-        dest.writeString(address);
         dest.writeString(typeOfRoom);
+        dest.writeString(conditionRoom);
+        dest.writeString(address);
         dest.writeString(rentingPrice);
         dest.writeInt(acreageRoom);
         dest.writeInt(amountOfPeople);
         dest.writeInt(lengthRoom);
         dest.writeInt(widthRoom);
+        dest.writeString(description);
+        dest.writeParcelable(roomOwner, flags);
         dest.writeParcelable(imagesRoom, flags);
+        dest.writeString(timeCreated);
+        dest.writeString(typeID);
+        dest.writeString(no);
+        dest.writeString(county);
+        dest.writeString(street);
+        dest.writeString(ward);
+        dest.writeString(city);
+        dest.writeTypedList(listRoomPrice);
     }
 
     public void infoOfAllRoomOfUser(String UID, IInfoOfAllRoomUser iInfoOfAllRoomUser) {

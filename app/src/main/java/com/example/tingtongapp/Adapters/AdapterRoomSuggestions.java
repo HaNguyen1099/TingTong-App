@@ -48,7 +48,7 @@ public class AdapterRoomSuggestions extends RecyclerView.Adapter<AdapterRoomSugg
             holder.title.setText(roomModel.getTitle());
             holder.typeOfRoom.setText(roomModel.getTypeOfRoom());
             holder.address.setText(roomModel.getAddress());
-            holder.rentingPrice.setText(roomModel.getRentingPrice());
+            holder.rentingPrice.setText(roomModel.getRentingPrice() + "/tháng");
             holder.sizeRoom.setText(roomModel.getLengthRoom() + "m x " + roomModel.getWidthRoom() + "m");
             holder.dateAdded.setText(roomModel.getDateAdded());
         }catch (Exception e){
@@ -73,10 +73,13 @@ public class AdapterRoomSuggestions extends RecyclerView.Adapter<AdapterRoomSugg
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                RoomModel roomModel = roomModels.get(holder.getAdapterPosition());
 
-                Intent intent = new Intent(context, DetailRoom.class);
-                intent.putExtra("intentDetailRoom", roomModel);
-                context.startActivity(intent);
+                if(roomModel != null){
+                    Intent intent = new Intent(context, DetailRoom.class);
+                    intent.putExtra("intentDetailRoom", roomModel);
+                    context.startActivity(intent);
+                }
             }
         });
     }
