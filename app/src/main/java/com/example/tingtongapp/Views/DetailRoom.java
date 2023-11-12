@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -120,10 +121,18 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
                 }
             }
 
+//            AdapterListServices adapterListServices = new AdapterListServices(roomModel);
+//            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+//            layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+//            listServicesRoom.setLayoutManager(layoutManager);
+//            listServicesRoom.setAdapter(adapterListServices);
+
             // Set list services for recycler view
             AdapterListServices adapterListServices = new AdapterListServices(roomModel);
-            listServicesRoom.setLayoutManager(new LinearLayoutManager(this));
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
+            listServicesRoom.setLayoutManager(gridLayoutManager);
             listServicesRoom.setAdapter(adapterListServices);
+
         } catch (Exception e){
             e.printStackTrace();
         }

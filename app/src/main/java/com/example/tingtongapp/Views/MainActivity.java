@@ -95,6 +95,15 @@ public class MainActivity extends Fragment {
         a1.setDescription("Phòng trọ giá rẻ, khép kín, gần đường lớn, bến xe buýt, thuận tiện đi lại cho các bạn sinh viên");
         a1.setConditionRoom("Còn");
         a1.setAmountOfPeople(3);
+        Map<String, Boolean> map3 = new LinkedHashMap<>();
+        map3.put("Tủ lạnh", true);
+        map3.put("Giường", true);
+        map3.put("Tủ quần áo", true);
+        map3.put("Wifi", true);
+        map3.put("Tự do", true);
+        map3.put("Chỗ để xe", true);
+        a1.setListServicesRoom(map3);
+
 
         RoomModel a2 = new RoomModel();
         a2.setTitle("Phòng trọ cao cấp");
