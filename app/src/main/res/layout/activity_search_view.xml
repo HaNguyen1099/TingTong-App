@@ -45,14 +45,14 @@
                         android:layout_height="50dp"
                         android:layout_marginLeft="5dp"
                         android:background="@drawable/frame"
-                        android:hint="Gần trường, công ty, chợ..."
-                        android:paddingLeft="110dp"
+                        android:hint="Quận"
+                        android:paddingLeft="130dp"
                         android:textColor="#666666"
                         android:textCursorDrawable="@drawable/cursor_edittext"
-                        android:textSize="14dp" />
+                        android:textSize="18dp" />
 
                     <Button
-                        android:id="@+id/btn_clear"
+                        android:id="@+id/btn_filter"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_centerVertical="false"
@@ -62,9 +62,10 @@
                         android:paddingLeft="10dp"
                         android:text="Hà Nội"
                         android:textColor="@color/white"
-                        android:textSize="15dp" />
+                        android:textSize="18dp" />
 
                     <ImageView
+                        android:id="@+id/iv_ok"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginTop="10dp"
@@ -80,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="11">
+                android:weightSum="9">
 
                 <CheckBox
                     android:paddingLeft="7dp"
@@ -91,31 +92,19 @@
                     android:background="@drawable/custom_checkbox_search"
                     android:button="@android:color/transparent"
                     android:drawableRight="@drawable/ic_svg_down"
-                    android:paddingRight="12dp"
+                    android:paddingRight="18dp"
                     android:text="Giá"
-                    android:textColor="#666666" />
-
-                <CheckBox
-                    android:id="@+id/chBox_convenient"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:background="@drawable/custom_checkbox_search"
-                    android:button="@android:color/transparent"
-                    android:drawableRight="@drawable/ic_svg_down"
-                    android:paddingRight="12dp"
-                    android:text="Tiện ích"
                     android:textColor="#666666" />
 
                 <CheckBox
                     android:id="@+id/chBox_type"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="4"
                     android:background="@drawable/custom_checkbox_search"
                     android:button="@android:color/transparent"
                     android:drawableRight="@drawable/ic_svg_down"
-                    android:paddingRight="12dp"
+                    android:paddingRight="18dp"
                     android:text="Loại phòng"
                     android:textColor="#666666" />
 
@@ -127,7 +116,7 @@
                     android:background="@drawable/custom_checkbox_search"
                     android:button="@android:color/transparent"
                     android:drawableRight="@drawable/ic_svg_down"
-                    android:paddingRight="12dp"
+                    android:paddingRight="18dp"
                     android:text="Số người"
                     android:textColor="#666666" />
             </LinearLayout>
@@ -141,14 +130,16 @@
 
             <Button
                 android:id="@+id/btn_submit"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/custom_button_login"
                 android:text="Áp dụng"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="17dp" />
 
         </LinearLayout>
 
@@ -184,7 +175,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="5dp"
                     android:text="0"
-                    android:textSize="15sp" />
+                    android:textSize="18dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -193,7 +184,7 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:text="kết quả"
-                    android:textSize="15sp" />
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <androidx.core.widget.NestedScrollView
