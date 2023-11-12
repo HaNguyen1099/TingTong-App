@@ -5,11 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tingtongapp.Adapters.AdapterListServices;
 import com.example.tingtongapp.Model.ImageRoomModel;
 import com.example.tingtongapp.Model.RoomModel;
 import com.example.tingtongapp.Model.UserModel;
@@ -26,6 +30,7 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
     private ImageRoomModel imageRoomModel;
     private ArrayList<ImageView> imageView;
     private TextView moreImg;
+    private RecyclerView listServicesRoom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -61,6 +66,7 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
         imageView.add((ImageView) findViewById(R.id.img_room3));
         imageView.add((ImageView) findViewById(R.id.img_room4));
 
+        listServicesRoom = findViewById(R.id.recycler_convenients_room_detail);
         toolbar = findViewById(R.id.toolbar);
 
         if (toolbar != null) {
@@ -113,6 +119,11 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
                     imageView.get(indexImageView).setImageResource(resId);
                 }
             }
+
+            // Set list services for recycler view
+            AdapterListServices adapterListServices = new AdapterListServices(roomModel);
+            listServicesRoom.setLayoutManager(new LinearLayoutManager(this));
+            listServicesRoom.setAdapter(adapterListServices);
         } catch (Exception e){
             e.printStackTrace();
         }

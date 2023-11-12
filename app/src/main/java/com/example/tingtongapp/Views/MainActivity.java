@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
@@ -27,6 +28,8 @@ import com.example.tingtongapp.Model.UserModel;
 import com.example.tingtongapp.R;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class MainActivity extends Fragment {
     RecyclerView recyclerGridMainRoom;
@@ -104,6 +107,11 @@ public class MainActivity extends Fragment {
         a2.setDescription("Phòng trọ cao cấp, phù hợp với người đi làm, gia đình nhỏ, đầy đủ tiện nghi");
         a2.setConditionRoom("Hết");
         a2.setAmountOfPeople(1);
+
+        Map<String, Boolean> map = new LinkedHashMap<>();
+        map.put("Wifi", true);
+        map.put("Tự do", true);
+        a2.setListServicesRoom(map);
 
         listRoom.add(a1);
         listRoom.add(a2);
