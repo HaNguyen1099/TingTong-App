@@ -173,14 +173,13 @@ public class PostRoomStep1 extends Fragment implements AdapterView.OnItemSelecte
                         + selectedWard + ", " + selectedDistrict + ", " + selectedCity;
 
                 // Save data to SharePreferences
-                SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences preferences = getActivity().getSharedPreferences("postRoomData" ,Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("addressRoom", addressRoom);
                 editor.apply();
 
                 // Go to next step post room
                 if (isAdded() && getActivity() != null) {
-                    PostRoom postRoom = (PostRoom) getActivity();
                     postRoom.setCurrentPage(1);
                 }
             }

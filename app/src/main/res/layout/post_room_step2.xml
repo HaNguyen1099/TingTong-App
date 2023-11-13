@@ -26,46 +26,47 @@
                 android:textStyle="bold"/>
 
             <RadioGroup
+                android:id="@+id/radio_check_type_room"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp">
 
                 <RadioButton
-                    android:checked="true"
-                    android:textColor="@drawable/custom_radio_text_color"
-                    android:buttonTint="#F54500"
                     android:id="@+id/rBtn_type1_push_room"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#F54500"
+                    android:checked="true"
                     android:text="Trọ"
-                    android:textSize="19dp"/>
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:textSize="19dp" />
 
                 <RadioButton
-                    android:textColor="@drawable/custom_radio_text_color"
-                    android:buttonTint="#F54500"
                     android:id="@+id/rBtn_type2_push_room"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#F54500"
                     android:text="Ký túc xá"
-                    android:textSize="19dp"/>
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:textSize="19dp" />
 
                 <RadioButton
-                    android:textColor="@drawable/custom_radio_text_color"
-                    android:buttonTint="#F54500"
                     android:id="@+id/rBtn_type3_push_room"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#F54500"
                     android:text="Chung cư"
-                    android:textSize="19dp"/>
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:textSize="19dp" />
 
                 <RadioButton
-                    android:textColor="@drawable/custom_radio_text_color"
-                    android:buttonTint="#F54500"
                     android:id="@+id/rBtn_type4_push_room"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:buttonTint="#F54500"
                     android:text="Nhà nguyên căn"
-                    android:textSize="19dp"/>
+                    android:textColor="@drawable/custom_radio_text_color"
+                    android:textSize="19dp" />
             </RadioGroup>
 
             <TextView
@@ -144,17 +145,17 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:textCursorDrawable="@drawable/cursor_edittext"
-                android:inputType="numberDecimal|numberSigned"
                 android:id="@+id/edt_priceRoom_push_room"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/custom_spinner_rim"
                 android:gravity="center"
-                android:hint="Nhập giá"
+                android:hint="VD: 2000000"
+                android:inputType="numberDecimal|numberSigned"
                 android:textColor="#666666"
-                android:textSize="18dp"/>
+                android:textCursorDrawable="@drawable/cursor_edittext"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"

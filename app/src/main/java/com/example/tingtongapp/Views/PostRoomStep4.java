@@ -1,5 +1,7 @@
 package com.example.tingtongapp.Views;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +39,8 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
     }
     @Override
     public void onClick(View view) {
-
+        // Get data from SharedPreferences
+        SharedPreferences preferences = getActivity().getSharedPreferences("postRoomData", Context.MODE_PRIVATE);
+        String addressRoom = preferences.getString("addressRoom", "Chưa cập nhật");
     }
 }

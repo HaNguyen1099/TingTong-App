@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class RoomModel implements Parcelable {
     private String idRoom, title, description, address, typeOfRoom, rentingPrice, timeCreated, owner, conditionRoom;
-    private int acreageRoom, amountOfPeople, lengthRoom, widthRoom;
+    private int acreageRoom, amountOfPeople, lengthRoom, widthRoom, electricityPrice, waterPrice, internetPrice, parkingFee;
     private LocalDate dateAdded;
     private ImageRoomModel imagesRoom;
     private Map<String, Boolean> listServicesRoom = new LinkedHashMap<>();
@@ -53,6 +53,29 @@ public class RoomModel implements Parcelable {
         initListServicesRoom();
         nodeRoot = FirebaseDatabase.getInstance().getReference();
         dateAdded = LocalDate.now();
+    }
+
+    public void setPricePostRoom(int electricityPrice, int waterPrice, int internetPrice, int parkingFee){
+        this.electricityPrice = electricityPrice;
+        this.waterPrice = waterPrice;
+        this.internetPrice = internetPrice;
+        this.parkingFee = parkingFee;
+    }
+
+    public int getElectricityPrice(){
+        return electricityPrice;
+    }
+
+    public int getWaterPrice(){
+        return waterPrice;
+    }
+
+    public int getInternetPrice(){
+        return internetPrice;
+    }
+
+    public int getParkingFee(){
+        return parkingFee;
     }
 
     public String getTitle() {
