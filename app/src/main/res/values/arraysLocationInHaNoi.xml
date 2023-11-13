@@ -5,40 +5,39 @@
         <item>Hà Nội</item>
     </string-array>
 
-    <string-array name="hanoi_districts">
-        <item>Ba Đình</item>
-        <item>Hoàn Kiếm</item>
-        <item>Tây Hồ</item>
-        <item>Long Biên</item>
-        <item>Cầu Giấy</item>
-        <item>Đống Đa</item>
-        <item>Hai Bà Trưng</item>
-        <item>Hoàng Mai</item>
-        <item>Thanh Xuân</item>
-        <item>Bắc Từ Liêm</item>
-        <item>Nam Từ Liêm</item>
-        <item>Hà Đông</item>
-    </string-array>
+    <string-array name="ha_noi_districts">
+        <item>Quận Ba Đình</item>
+        <item>Quận Hoàn Kiếm</item>
+        <item>Quận Tây Hồ</item>
+        <item>Quận Long Biên</item>
+        <item>Quận Cầu Giấy</item>
+        <item>Quận Đống Đa</item>
+        <item>Quận Hai Bà Trưng</item>
+        <item>Quận Hoàng Mai</item>
+        <item>Quận Thanh Xuân</item>
+        <item>Quận Bắc Từ Liêm</item>
+        <item>Quận Nam Từ Liêm</item>
+        <item>Quận Hà Đông</item>
 
-    <string-array name="hanoi_suburbs">
-        <item>Gia Lâm</item>
-        <item>Đông Anh</item>
-        <item>Sóc Sơn</item>
-        <item>Thanh Trì</item>
-        <item>Mê Linh</item>
+        <!--  List suburbs in Ha Noi  -->
+        <item>Huyện Gia Lâm</item>
+        <item>Huyện Đông Anh</item>
+        <item>Huyện Sóc Sơn</item>
+        <item>Huyện Thanh Trì</item>
+        <item>Huyện Mê Linh</item>
         <item>Thị xã Sơn Tây</item>
-        <item>Ba Vì</item>
-        <item>Phúc Thọ</item>
-        <item>Đan Phượng</item>
-        <item>Hoài Đức</item>
-        <item>Quốc Oai</item>
-        <item>Thạch Thất</item>
-        <item>Chương Mỹ</item>
-        <item>Thanh Oai</item>
-        <item>Thường Tín</item>
-        <item>Phú Xuyên</item>
-        <item>Ứng Hòa</item>
-        <item>Mỹ Đức</item>
+        <item>Huyện Ba Vì</item>
+        <item>Huyện Phúc Thọ</item>
+        <item>Huyện Đan Phượng</item>
+        <item>Huyện Hoài Đức</item>
+        <item>Huyện Quốc Oai</item>
+        <item>Huyện Thạch Thất</item>
+        <item>Huyện Chương Mỹ</item>
+        <item>Huyện Thanh Oai</item>
+        <item>Huyện Thường Tín</item>
+        <item>Huyện Phú Xuyên</item>
+        <item>Huyện Ứng Hòa</item>
+        <item>Huyện Mỹ Đức</item>
     </string-array>
 
     <!--  List wards of districts  -->
