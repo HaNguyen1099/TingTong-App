@@ -16,7 +16,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -34,9 +33,10 @@ public class RoomModel implements Parcelable {
     //id để generate từ firebase
     private String typeID;
 
+    private double rentalCosts;
+
     //Chủ phòng trọ
     private UserModel roomOwner;
-
     private String no, county, street, ward, city;
     private DatabaseReference nodeRoot;
 
@@ -45,6 +45,7 @@ public class RoomModel implements Parcelable {
 
     private List<String> listRoomsID = new ArrayList<>();
     private List<RoomPriceModel> listRoomPrice;
+    private long currentNumber, maxNumber;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public RoomModel(){
@@ -52,6 +53,210 @@ public class RoomModel implements Parcelable {
         initListServicesRoom();
         nodeRoot = FirebaseDatabase.getInstance().getReference();
         dateAdded = LocalDate.now();
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getTypeOfRoom() {
+        return typeOfRoom;
+    }
+
+    public String getRentingPrice() {
+        return rentingPrice;
+    }
+
+    public String getTimeCreated() {
+        return timeCreated;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public String getConditionRoom() {
+        return conditionRoom;
+    }
+
+    public int getAcreageRoom() {
+        return acreageRoom;
+    }
+
+    public int getAmountOfPeople() {
+        return amountOfPeople;
+    }
+
+    public int getLengthRoom() {
+        return lengthRoom;
+    }
+
+    public int getWidthRoom() {
+        return widthRoom;
+    }
+
+    public ImageRoomModel getImagesRoom() {
+        return imagesRoom;
+    }
+
+    public String getTypeID() {
+        return typeID;
+    }
+
+    public double getRentalCosts() {
+        return rentalCosts;
+    }
+
+    public long getCurrentNumber() {
+        return currentNumber;
+    }
+
+    public long getMaxNumber() {
+        return maxNumber;
+    }
+
+    public UserModel getRoomOwner() {
+        return roomOwner;
+    }
+
+    public String getNo() {
+        return no;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getWard() {
+        return ward;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public List<String> getListRoomsID() {
+        return listRoomsID;
+    }
+
+    public List<RoomPriceModel> getListRoomPrice() {
+        return listRoomPrice;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setTypeOfRoom(String typeOfRoom) {
+        this.typeOfRoom = typeOfRoom;
+    }
+
+    public void setRentingPrice(String rentingPrice) {
+        this.rentingPrice = rentingPrice;
+    }
+
+    public void setTimeCreated(String timeCreated) {
+        this.timeCreated = timeCreated;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public void setConditionRoom(String conditionRoom) {
+        this.conditionRoom = conditionRoom;
+    }
+
+    public void setAcreageRoom(int acreageRoom) {
+        this.acreageRoom = acreageRoom;
+    }
+
+    public void setAmountOfPeople(int amountOfPeople) {
+        this.amountOfPeople = amountOfPeople;
+    }
+
+    public void setLengthRoom(int lengthRoom) {
+        this.lengthRoom = lengthRoom;
+    }
+
+    public void setWidthRoom(int widthRoom) {
+        this.widthRoom = widthRoom;
+    }
+
+    public void setImagesRoom(ImageRoomModel imagesRoom) {
+        this.imagesRoom = imagesRoom;
+    }
+
+    public void setTypeID(String typeID) {
+        this.typeID = typeID;
+    }
+
+    public void setIdRoom(String idRoom) {
+        this.idRoom = idRoom;
+    }
+
+    public void setRentalCosts(double rentalCosts) {
+        this.rentalCosts = rentalCosts;
+    }
+
+    public void setRoomOwner(UserModel roomOwner) {
+        this.roomOwner = roomOwner;
+    }
+
+    public void setNo(String no) {
+        this.no = no;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setWard(String ward) {
+        this.ward = ward;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setListRoomsID(List<String> listRoomsID) {
+        this.listRoomsID = listRoomsID;
+    }
+
+    public void setListRoomPrice(List<RoomPriceModel> listRoomPrice) {
+        this.listRoomPrice = listRoomPrice;
+    }
+
+    public void setCurrentNumber(long currentNumber) {
+        this.currentNumber = currentNumber;
+    }
+
+    public void setMaxNumber(long maxNumber) {
+        this.maxNumber = maxNumber;
     }
 
     public void initListServicesRoom(){
@@ -129,139 +334,11 @@ public class RoomModel implements Parcelable {
             Boolean value = in.readInt() != 0;
             listServicesRoom.put(key, value);
         }
-    }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public String getDateAdded(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String formattedDate = dateAdded.format(formatter);
-
-        return formattedDate;
-    }
-
-    public String getIdRoom() {
-        return idRoom;
-    }
-    public void setIdRoom(String idRoom) {
-        this.idRoom = idRoom;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setConditionRoom(String conditionRoom) {
-        this.conditionRoom = conditionRoom;
-    }
-
-    public void setAcreageRoom(int acreageRoom) {
-        this.acreageRoom = acreageRoom;
-    }
-
-    public void setAmountOfPeople(int amountOfPeople) {
-        this.amountOfPeople = amountOfPeople;
-    }
-
-    public UserModel getRoomOwner() {
-        return roomOwner;
-    }
-    public void setRoomOwner(UserModel roomOwner) {
-        this.roomOwner = roomOwner;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public String getTypeID() {
-        return typeID;
-    }
-    public void setTypeID(String typeID) {
-        this.typeID = typeID;
-    }
-
-    public String getTypeOfRoom() {
-        return typeOfRoom;
-    }
-    public void setTypeOfRoom(String typeOfRoom) {
-        this.typeOfRoom = typeOfRoom;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-    public void setTitle(String name) {
-        this.title = name;
-    }
-
-    public String getTimeCreated() {
-        return timeCreated;
-    }
-    public void setTimeCreated(String timeCreated) {
-        this.timeCreated = timeCreated;
-    }
-
-    public String getNo() {
-        return no;
-    }
-    public void setNo(String apartmentNumber) {
-        this.no = apartmentNumber;
-    }
-
-    public String getCounty() {
-        return county;
-    }
-    public void setCounty(String county) {
-        this.county = county;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getWard() {
-        return ward;
-    }
-    public void setWard(String ward) {
-        this.ward = ward;
-    }
-
-    public String getCity() {
-        return city;
-    }
-    public void setCity(String city) {
-        this.city = city;
-    }
-    public void setImages(ImageRoomModel images) {
-        this.imagesRoom = images;
-    }
-
-    public List<RoomPriceModel> getListRoomPrice() {
-        return listRoomPrice;
-    }
-
-    public void setListRoomPrice(List<RoomPriceModel> listRoomPrice) {
-        this.listRoomPrice = listRoomPrice;
-    }
-
-    public String getConditionRoom() {
-        return conditionRoom;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
+        currentNumber = in.readLong();
+        maxNumber = in.readLong();
+        typeID = in.readString();
+        rentalCosts = in.readDouble();
     }
 
     @Override
@@ -292,6 +369,24 @@ public class RoomModel implements Parcelable {
             dest.writeString(entry.getKey());
             dest.writeInt(entry.getValue() ? 1 : 0);
         }
+
+        dest.writeLong(currentNumber);
+        dest.writeLong(maxNumber);
+        dest.writeString(typeID);
+        dest.writeDouble(rentalCosts);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public String getDateAdded(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = dateAdded.format(formatter);
+
+        return formattedDate;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public void infoOfAllRoomOfUser(String UID, IInfoOfAllRoomUser iInfoOfAllRoomUser) {
@@ -351,7 +446,7 @@ public class RoomModel implements Parcelable {
                 String imageUrl = imageSnapshot.getValue(String.class);
                 imageRoomModel.addImageUrl(imageUrl);
             }
-            roomModel.setImages(imageRoomModel);
+            roomModel.setImagesRoom(imageRoomModel);
 
             // Thêm danh sách dịch vụ
             DataSnapshot servicesSnapshot = dataSnapshotValueRoom.child("listServicesRoom");
@@ -398,46 +493,6 @@ public class RoomModel implements Parcelable {
 
         // Ẩn progress bar load more.
         mainRoomModelInterface.setProgressBarLoadMore();
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getRentingPrice() {
-        return rentingPrice;
-    }
-
-    public int getAmountOfPeople() {
-        return amountOfPeople;
-    }
-
-    public int getLengthRoom() {
-        return lengthRoom;
-    }
-
-    public int getWidthRoom() {
-        return widthRoom;
-    }
-
-    public void setRentingPrice(String rentingPrice) {
-        this.rentingPrice = rentingPrice;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setLengthRoom(int lengthRoom) {
-        this.lengthRoom = lengthRoom;
-    }
-
-    public void setWidthRoom(int widthRoom) {
-        this.widthRoom = widthRoom;
-    }
-
-    public ImageRoomModel getImagesRoom() {
-        return imagesRoom;
     }
 
     public void ListRoomUser(final IMainRoomModel mainRoomModelInterface, String userID, int quantityRoomToLoad, int quantityRoomLoaded) {
