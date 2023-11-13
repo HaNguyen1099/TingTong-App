@@ -75,10 +75,10 @@
                 android:layout_width="344dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Quận"
+                android:text="Quận / Huyện"
                 android:textColor="#666666"
                 android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -106,10 +106,10 @@
                 android:layout_width="344dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Phường"
+                android:text="Phường / Xã"
                 android:textColor="#666666"
                 android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
