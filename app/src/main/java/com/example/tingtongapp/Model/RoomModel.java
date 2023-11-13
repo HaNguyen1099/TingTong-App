@@ -28,6 +28,10 @@ public class RoomModel implements Parcelable {
     //id để generate từ firebase
     private String typeID;
 
+    private double rentalCosts;
+
+    private long currentNumber, maxNumber;
+
     //Chủ phòng trọ
     private UserModel roomOwner;
 
@@ -94,10 +98,13 @@ public class RoomModel implements Parcelable {
         idRoom = in.readString();
         title = in.readString();
         description = in.readString();
+        currentNumber = in.readLong();
+        maxNumber = in.readLong();
         typeID = in.readString();
         location = in.readString();
         typeOfRoom = in.readString();
         rentingPrice = in.readString();
+        rentalCosts = in.readDouble();
         timeCreated = in.readString();
         acreageRoom = in.readInt();
         amountOfPeople = in.readInt();
@@ -212,6 +219,20 @@ public class RoomModel implements Parcelable {
 
     public void setListRoomPrice(List<RoomPriceModel> listRoomPrice) {
         this.listRoomPrice = listRoomPrice;
+    }
+
+    public long getMaxNumber() {
+        return maxNumber;
+    }
+    public void setMaxNumber(long maxNumber) {
+        this.maxNumber = maxNumber;
+    }
+
+    public double getRentalCosts() {
+        return rentalCosts;
+    }
+    public void setRentalCosts(double rentalCosts) {
+        this.rentalCosts = rentalCosts;
     }
 
     @Override

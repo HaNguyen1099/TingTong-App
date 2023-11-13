@@ -6,42 +6,55 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.tingtongapp.Adapters.AdapterRecyclerFilter;
 import com.example.tingtongapp.Adapters.AdapterRecyclerSuggestions;
+import com.example.tingtongapp.ClassOther.myFilter;
+import com.example.tingtongapp.Controller.Interfaces.ICallBackSearchView;
 import com.example.tingtongapp.R;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class searchView extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class searchView extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, ICallBackSearchView {
 
     public static final String REQUEST = "requestcode";
     public final static int REQUEST_DISTRICT = 99;
 
-    CheckBox chBoxPrice, chBoxType, chBoxNumber;
+    //Lưu lại trạng thái của 4 fragment thay vì tạo mới
+    private HashMap<Integer, Fragment> fragmentHashMap = new HashMap<>();
+    ImageView ivBack;
+    CheckBox chBoxPrice, chBoxType, chBoxNumber, chBoxConvenient;
     RecyclerView recyclerFilter,recyclerSearchRoom;
     Button btnsSubmit;
     EditText edTSearch;
     ImageButton btnDeleteAllFilter ;
-    TextView txtCancel;
-
     ProgressBar progessBarLoad;
     LinearLayout lnLtResultReturnSearchView;
     TextView txtNumberRoom;
-
     NestedScrollView nestedScrollSearchView;
     ProgressBar progressBarLoadMoreSearchView;
-
     FrameLayout fragmentContainer;
-
     String district;
+    List<myFilter> filterList;
+    AdapterRecyclerFilter adapterRecyclerFilter;
+    String userId;
 
 
     @Override
@@ -49,8 +62,18 @@ public class searchView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_view);
 
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        initData();
         initControl();
         getDistrict();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //Gọi hàm tìm kiếm
+        callSearchRoomController();
     }
 
     private void getDistrict(){
@@ -58,6 +81,10 @@ public class searchView extends AppCompatActivity {
         district = intent.getStringExtra(AdapterRecyclerSuggestions.INTENT_DISTRICT);
         //Set text cho district
         edTSearch.setText(district);
+    }
+
+    private void initData(){
+        filterList = new ArrayList<myFilter>();
     }
 
     private void initControl(){
@@ -71,12 +98,12 @@ public class searchView extends AppCompatActivity {
             }
         });
 
-        txtNumberRoom =findViewById(R.id.txt_number_room);
+        txtNumberRoom = findViewById(R.id.txt_number_room);
         //Ẩn text
 
         progessBarLoad = findViewById(R.id.progress_bar_search_view);
         //Đổi màu cho progessbar
-        progessBarLoad.getIndeterminateDrawable().setColorFilter(Color.parseColor("#00DDFF"),
+        progessBarLoad.getIndeterminateDrawable().setColorFilter(Color.parseColor("#F54500"),
                 android.graphics.PorterDuff.Mode.MULTIPLY);
         //Ẩn lần đầu
         progessBarLoad.setVisibility(View.GONE);
@@ -85,7 +112,7 @@ public class searchView extends AppCompatActivity {
 
         nestedScrollSearchView = (NestedScrollView) findViewById(R.id.nested_scroll_search_view);
         progressBarLoadMoreSearchView = (ProgressBar) findViewById(R.id.progress_bar_load_more_search_view);
-        progressBarLoadMoreSearchView.getIndeterminateDrawable().setColorFilter(Color.parseColor("#00DDFF"),
+        progressBarLoadMoreSearchView.getIndeterminateDrawable().setColorFilter(Color.parseColor("#F54500"),
                 android.graphics.PorterDuff.Mode.MULTIPLY);
 
         chBoxPrice=findViewById(R.id.chBox_price);
@@ -109,21 +136,65 @@ public class searchView extends AppCompatActivity {
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL);
         recyclerFilter.setLayoutManager(staggeredGridLayoutManager);
 
-        adapterRecyclerFilter = new AdapterRecyclerFilter(this,R.layout.search_filter_element_recyclerview,filterList);
+        adapterRecyclerFilter = new AdapterRecyclerFilter(this,R.layout.search_filter_element_recyclerview, filterList);
         recyclerFilter.setAdapter(adapterRecyclerFilter);
 
         recyclerSearchRoom = findViewById(R.id.recycler_search_room);
 
         btnsSubmit = findViewById(R.id.btn_submit);
         btnsSubmit.setOnClickListener(this);
+
         //Ẩn nút bấm lần đầu khởi tạo
         btnsSubmit.setVisibility(View.GONE);
 
         btnDeleteAllFilter = findViewById(R.id.btn_delete_all_filter);
         btnDeleteAllFilter.setOnClickListener(this);
 
-        txtCancel = findViewById(R.id.txt_cancel);
-        txtCancel.setOnClickListener(this);
+        ivBack = findViewById(R.id.iv_back);
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
 
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+    }
+
+    @Override
+    public void addFilter(myFilter filter) {
+
+    }
+
+    @Override
+    public void replaceFilter(myFilter filter) {
+
+    }
+
+    @Override
+    public void removeFilter(myFilter filter) {
+
+    }
+
+    //Hàm gọi hàm tìm kiếm trong controller
+    private void callSearchRoomController(){
+        //Hiện progess bar
+        progessBarLoad.setVisibility(View.VISIBLE);
+        //Ẩn số lượng kết quả
+        lnLtResultReturnSearchView.setVisibility(View.GONE);
+        // Ẩn progress bar load more
+        progressBarLoadMoreSearchView.setVisibility(View.GONE);
+
+//        searchViewController controller = new searchViewController(this, district, filterList, userId);
+//        controller.loadSearchRoom(recyclerSearchRoom,txtNumberRoom,progessBarLoad,lnLtResultReturnSearchView,
+//                nestedScrollSearchView, progressBarLoadMoreSearchView);
     }
 }

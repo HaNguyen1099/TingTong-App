@@ -1,7 +1,5 @@
 package com.example.tingtongapp.Controller.Interfaces;
 
-public class IDistrictFilterModel {
-    public void sendDistrict(String District){
-
-    }
+public interface IDistrictFilterModel {
+    public void sendDistrict(String District);
 }
