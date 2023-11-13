@@ -48,7 +48,7 @@ public class PostRoom extends AppCompatActivity implements View.OnClickListener 
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle("Hủy bỏ");
+            getSupportActionBar().setTitle("Bài đăng của bạn");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }

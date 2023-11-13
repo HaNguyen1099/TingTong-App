@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
@@ -23,9 +22,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tingtongapp.Adapters.AdapterRoomSuggestions;
+import com.example.tingtongapp.Controller.MainActivityController;
 import com.example.tingtongapp.Model.RoomModel;
 import com.example.tingtongapp.Model.UserModel;
 import com.example.tingtongapp.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -44,6 +45,8 @@ public class MainActivity extends Fragment {
     private RecyclerView listRoomSuggestions;
     private ArrayList<RoomModel> listRoom;
     private AdapterRoomSuggestions adapterListRoom;
+
+    MainActivityController mainActivityController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -151,5 +154,17 @@ public class MainActivity extends Fragment {
                 startActivity(intentSearchLocation);
             }
         });
+    }
+
+    //Load dữ liệu vào List danh sách trong lần đầu chạy
+    @Override
+    public void onStart() {
+        super.onStart();
+        setView();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mainActivityController = new MainActivityController(getContext(), userId);
+        //Load top địa điểm nhiều phòng
+        mainActivityController.loadTopLocation(grVLocation);
+        progressBarMain.setVisibility(View.GONE);
     }
 }
