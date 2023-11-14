@@ -17,13 +17,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.tingtongapp.Model.ImageRoomModel;
 import com.example.tingtongapp.Model.RoomModel;
+import com.example.tingtongapp.Model.UserModel;
 import com.example.tingtongapp.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -125,6 +125,8 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                     newPostRoom.setPricePostRoom(electricityPrice, waterPrice, internetPrice, parkingFee);
                     newPostRoom.setImagesRoom(imageRoomModel);
                     newPostRoom.setListServicesRoom(listServicesRoom);
+                    newPostRoom.setConditionRoom("Còn");
+                    newPostRoom.setRoomOwner(new UserModel());
 
                     // Post room up to Firebase
                     DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();

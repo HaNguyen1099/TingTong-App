@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 public class PostRoom extends AppCompatActivity implements View.OnClickListener {
     ImageButton btnImgLocationPushRoom, btnImgInformationPushRoom, btnImgUtilityPushRoom, btnImgConfirmPushRoom;
-    TextView txtLocationPushRoom, txtInfoPushRoom, txtUtilityPushRoom, txtComfirmPushRoom;
+    TextView txtLocationPushRoom, txtInfoPushRoom, txtUtilityPushRoom, txtConfirmPushRoom;
     Toolbar toolbar;
     private ViewPager pager;
     @Override
@@ -32,7 +32,7 @@ public class PostRoom extends AppCompatActivity implements View.OnClickListener 
 
     private void initControl() {
         txtLocationPushRoom = findViewById(R.id.txt_location_push_room);
-        txtComfirmPushRoom = findViewById(R.id.txt_comfirm_push_room);
+        txtConfirmPushRoom = findViewById(R.id.txt_comfirm_push_room);
         txtInfoPushRoom = findViewById(R.id.txt_info_push_room);
         txtUtilityPushRoom = findViewById(R.id.txt_utility_push_room);
 
@@ -50,7 +50,7 @@ public class PostRoom extends AppCompatActivity implements View.OnClickListener 
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle("Hủy bỏ");
+            getSupportActionBar().setTitle("Bài đăng của bạn");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
