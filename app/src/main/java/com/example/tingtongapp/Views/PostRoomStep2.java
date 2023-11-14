@@ -279,6 +279,7 @@ public class PostRoomStep2 extends Fragment implements View.OnClickListener{
                         editor.putInt("waterPrice", waterPrice);
                         editor.putInt("internetPrice", internetPrice);
                         editor.putInt("parkingFee", parkingFee);
+                        editor.putBoolean("checkStep2", true);
                         editor.apply();
 
                         // Go to next step post room

@@ -121,12 +121,6 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
                 }
             }
 
-//            AdapterListServices adapterListServices = new AdapterListServices(roomModel);
-//            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-//            layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-//            listServicesRoom.setLayoutManager(layoutManager);
-//            listServicesRoom.setAdapter(adapterListServices);
-
             // Set list services for recycler view
             AdapterListServices adapterListServices = new AdapterListServices(roomModel);
             GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);

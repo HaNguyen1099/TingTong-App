@@ -176,6 +176,7 @@ public class PostRoomStep1 extends Fragment implements AdapterView.OnItemSelecte
                 SharedPreferences preferences = getActivity().getSharedPreferences("postRoomData" ,Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("addressRoom", addressRoom);
+                editor.putBoolean("checkStep1", true);
                 editor.apply();
 
                 // Go to next step post room

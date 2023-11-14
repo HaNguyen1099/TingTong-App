@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/image_post_room_demo_view"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/move_image_post_room"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/background_button_delete_img_post_room"
+        android:clipToOutline="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/icon_delete_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 package com.example.tingtongapp.Views;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -125,5 +127,15 @@ public class PostRoom extends AppCompatActivity implements View.OnClickListener 
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        SharedPreferences preferences = getSharedPreferences("postRoomData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+
+        super.onBackPressed();
     }
 }
