@@ -12,15 +12,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.tingtongapp.Model.ImageRoomModel;
-import com.example.tingtongapp.Model.RoomModel;
+import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.Model.UserModel;
 import com.example.tingtongapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -113,7 +116,7 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                         imageRoomModel.addImage(uri);
                     }
 
-                    RoomModel newPostRoom = new RoomModel();
+                    Room newPostRoom = new Room();
                     newPostRoom.setTitle(title);
                     newPostRoom.setDescription(descriptionRoom);
                     newPostRoom.setTypeOfRoom(typeOfRoom);
@@ -129,11 +132,23 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                     newPostRoom.setRoomOwner(new UserModel());
 
                     // Post room up to Firebase
-                    DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
-                    DatabaseReference newPostRef = databaseRef.child("listRoom").push();
-                    newPostRef.setValue(newPostRoom);
+                    DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("ListRoom");
+                    String key = databaseRef.push().getKey();  // Tạo ID duy nhất
+                    newPostRoom.setIdRoom(key);
+                    databaseRef.child(key).setValue(newPostRoom, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                            if (error == null) {
+                                Toast.makeText(getContext(), "Đăng phòng thành công", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(), "Đăng phòng thất bại: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
 
-                    Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                    if(isAdded()){
+                        getActivity().finish();
+                    }
                 }
             }
         }

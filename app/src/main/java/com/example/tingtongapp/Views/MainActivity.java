@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.widget.NestedScrollView;
@@ -21,16 +23,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tingtongapp.Adapters.AdapterRoomSuggestions;
+import com.example.tingtongapp.Adapters.AdapterRoomSuggestion;
 import com.example.tingtongapp.Controller.MainActivityController;
-import com.example.tingtongapp.Model.RoomModel;
-import com.example.tingtongapp.Model.UserModel;
+import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.R;
+
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class MainActivity extends Fragment {
     RecyclerView recyclerGridMainRoom;
@@ -38,14 +43,8 @@ public class MainActivity extends Fragment {
     NestedScrollView nestedScrollMainView;
     ProgressBar progressBarLoadMoreGridMainRoom;
     GridView grVLocation;
-
     EditText edTSearch;
     View layout;
-
-    private RecyclerView listRoomSuggestions;
-    private ArrayList<RoomModel> listRoom;
-    private AdapterRoomSuggestions adapterListRoom;
-
     MainActivityController mainActivityController;
 
     @Override
@@ -84,54 +83,35 @@ public class MainActivity extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initRecyclerView() {
-        listRoomSuggestions = layout.findViewById(R.id.recycler_Grid_Main_Room);
-        listRoom = new ArrayList<>();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("ListRoom");
 
-        RoomModel a1 = new RoomModel();
-        a1.setTitle("Phòng trọ giá rẻ cho sinh viên");
-        a1.setTypeOfRoom("Nhà trọ");
-        a1.setLengthRoom(10);
-        a1.setWidthRoom(5);
-        a1.setAddress("Hà Đông, Hà Nội");
-        a1.setRentingPrice("2.5");
-        a1.setRoomOwner(new UserModel());
-        a1.setDescription("Phòng trọ giá rẻ, khép kín, gần đường lớn, bến xe buýt, thuận tiện đi lại cho các bạn sinh viên");
-        a1.setConditionRoom("Còn");
-        a1.setAmountOfPeople(3);
-        Map<String, Boolean> map3 = new LinkedHashMap<>();
-        map3.put("Tủ lạnh", true);
-        map3.put("Giường", true);
-        map3.put("Tủ quần áo", true);
-        map3.put("Wifi", true);
-        map3.put("Tự do", true);
-        map3.put("Chỗ để xe", true);
-        a1.setListServicesRoom(map3);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Room> roomArrayList = new ArrayList<>();
 
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    try {
+                        Room room = dataSnapshot.getValue(Room.class);
+                        roomArrayList.add(room);
+                    }catch (Exception e){
+                        Toast.makeText(getContext(), "Lỗi tải dữ liệu phòng", Toast.LENGTH_SHORT).show();
+                    }
+                }
 
-        RoomModel a2 = new RoomModel();
-        a2.setTitle("Phòng trọ cao cấp");
-        a2.setTypeOfRoom("Căn hộ");
-        a2.setLengthRoom(15);
-        a2.setWidthRoom(8);
-        a2.setAddress("55 Trung Văn, Phùng Khoang, Hà Nội");
-        a2.setRentingPrice("8.2");
-        a2.setRoomOwner(new UserModel());
-        a2.setDescription("Phòng trọ cao cấp, phù hợp với người đi làm, gia đình nhỏ, đầy đủ tiện nghi");
-        a2.setConditionRoom("Hết");
-        a2.setAmountOfPeople(1);
+                AdapterRoomSuggestion listRoomSuggestions = new AdapterRoomSuggestion(getActivity(), roomArrayList);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                RecyclerView recyclerViewListRoomSuggestions = layout.findViewById(R.id.recycler_Grid_Main_Room);
+                recyclerViewListRoomSuggestions.setLayoutManager(linearLayoutManager);
+                recyclerViewListRoomSuggestions.setAdapter(listRoomSuggestions);
+            }
 
-        Map<String, Boolean> map = new LinkedHashMap<>();
-        map.put("Wifi", true);
-        map.put("Tự do", true);
-        a2.setListServicesRoom(map);
-
-        listRoom.add(a1);
-        listRoom.add(a2);
-
-        adapterListRoom = new AdapterRoomSuggestions(getActivity(), listRoom);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        listRoomSuggestions.setLayoutManager(linearLayoutManager);
-        listRoomSuggestions.setAdapter(adapterListRoom);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "Lỗi kết nối cơ sở dữ liệu", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void setView() {
@@ -162,7 +142,9 @@ public class MainActivity extends Fragment {
         super.onStart();
         setView();
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mainActivityController = new MainActivityController(getContext(), userId);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mainActivityController = new MainActivityController(getContext(), userId);
+        }
         //Load top địa điểm nhiều phòng
         mainActivityController.loadTopLocation(grVLocation);
         progressBarMain.setVisibility(View.GONE);

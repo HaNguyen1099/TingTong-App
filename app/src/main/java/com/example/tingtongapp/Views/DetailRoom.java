@@ -91,7 +91,8 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
 
             title.setText(roomModel.getTitle());
             typeOfRoom.setText(roomModel.getTypeOfRoom());
-            rentingPrice.setText(roomModel.getRentingPrice() + " triệu");
+            int rentingRoomPrice = Integer.parseInt(roomModel.getRentingPrice());
+            rentingPrice.setText((float)((float)rentingRoomPrice/1000000.0) + " triệu");
             conditionRoom.setText(roomModel.getConditionRoom());
             amountOfPeople.setText(roomModel.getAmountOfPeople() + "");
             acreageRoom.setText(roomModel.getLengthRoom() + "m x " + roomModel.getWidthRoom() + "m");
