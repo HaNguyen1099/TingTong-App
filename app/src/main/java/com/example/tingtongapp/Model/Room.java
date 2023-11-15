@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class Room implements Parcelable {
     private String idRoom = "n", title = "n", description = "n", address = "n", typeOfRoom = "n", rentingPrice = "n", timeCreated = "n", owner, conditionRoom = "n", dateAdded = "15/11/2023";
-    private int acreageRoom = 0, amountOfPeople = 0, lengthRoom = 0, widthRoom = 0, electricityPrice = 0, waterPrice = 0, internetPrice = 0, parkingFee = 0;
+    private int amountOfPeople = 0, lengthRoom = 0, widthRoom = 0, electricityPrice = 0, waterPrice = 0, internetPrice = 0, parkingFee = 0;
     private ImageRoomModel imagesRoom = new ImageRoomModel();
     private Map<String, Boolean> listServicesRoom = new LinkedHashMap<>();
 
@@ -27,6 +27,7 @@ public class Room implements Parcelable {
 
     public Room(){
         initListServicesRoom();
+        setDateAdded();
     }
 
     public String getIdRoom(){
@@ -65,7 +66,7 @@ public class Room implements Parcelable {
         return listServiceAvailable;
     }
 
-    public void setDateAdded(){
+    private void setDateAdded(){
         LocalDate currentDate = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             currentDate = LocalDate.now();
@@ -135,7 +136,7 @@ public class Room implements Parcelable {
     }
 
     public int getAcreageRoom() {
-        return acreageRoom;
+        return lengthRoom * widthRoom;
     }
 
     public int getAmountOfPeople() {
@@ -226,10 +227,6 @@ public class Room implements Parcelable {
         this.conditionRoom = conditionRoom;
     }
 
-    public void setAcreageRoom(int acreageRoom) {
-        this.acreageRoom = acreageRoom;
-    }
-
     public void setAmountOfPeople(int amountOfPeople) {
         this.amountOfPeople = amountOfPeople;
     }
@@ -305,19 +302,41 @@ public class Room implements Parcelable {
     protected Room(Parcel in) {
         idRoom = in.readString();
         title = in.readString();
-        typeOfRoom = in.readString();
-        conditionRoom = in.readString();
+        description = in.readString();
         address = in.readString();
+        typeOfRoom = in.readString();
         rentingPrice = in.readString();
-        acreageRoom = in.readInt();
+        timeCreated = in.readString();
+        owner = in.readString();
+        conditionRoom = in.readString();
+        dateAdded = in.readString();
+
         amountOfPeople = in.readInt();
         lengthRoom = in.readInt();
         widthRoom = in.readInt();
-        description = in.readString();
-        roomOwner = in.readParcelable(UserModel.class.getClassLoader());
-        imagesRoom = in.readParcelable(ImageRoomModel.class.getClassLoader());
-        timeCreated = in.readString();
+        electricityPrice = in.readInt();
+        waterPrice = in.readInt();
+        internetPrice = in.readInt();
+        parkingFee = in.readInt();
+
+        // Read ImageRoomModel from the Parcel
+//        imagesRoom = in.readParcelable(ImageRoomModel.class.getClassLoader());
+
+        // Read Map<String, Boolean> from the Parcel
+        int size = in.readInt();
+        listServicesRoom = new LinkedHashMap<>(size);
+        for (int i = 0; i < size; i++) {
+            String key = in.readString();
+            boolean value = in.readByte() != 0;
+            listServicesRoom.put(key, value);
+        }
+
         typeID = in.readString();
+        rentalCosts = in.readDouble();
+
+        // Read UserModel from the Parcel
+        roomOwner = in.readParcelable(UserModel.class.getClassLoader());
+
         no = in.readString();
         county = in.readString();
         street = in.readString();
@@ -326,27 +345,46 @@ public class Room implements Parcelable {
 
         currentNumber = in.readLong();
         maxNumber = in.readLong();
-        typeID = in.readString();
-        rentalCosts = in.readDouble();
     }
+
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(idRoom);
         dest.writeString(title);
-        dest.writeString(typeOfRoom);
-        dest.writeString(conditionRoom);
+        dest.writeString(description);
         dest.writeString(address);
+        dest.writeString(typeOfRoom);
         dest.writeString(rentingPrice);
-        dest.writeInt(acreageRoom);
+        dest.writeString(timeCreated);
+        dest.writeString(owner);
+        dest.writeString(conditionRoom);
+        dest.writeString(dateAdded);
+
         dest.writeInt(amountOfPeople);
         dest.writeInt(lengthRoom);
         dest.writeInt(widthRoom);
-        dest.writeString(description);
-        dest.writeParcelable(roomOwner, flags);
-        dest.writeParcelable(imagesRoom, flags);
-        dest.writeString(timeCreated);
+        dest.writeInt(electricityPrice);
+        dest.writeInt(waterPrice);
+        dest.writeInt(internetPrice);
+        dest.writeInt(parkingFee);
+
+        // Write ImageRoomModel to the Parcel
+//        dest.writeParcelable(imagesRoom, flags);
+
+        // Write Map<String, Boolean> to the Parcel
+        dest.writeInt(listServicesRoom.size());
+        for (Map.Entry<String, Boolean> entry : listServicesRoom.entrySet()) {
+            dest.writeString(entry.getKey());
+            dest.writeByte((byte) (entry.getValue() ? 1 : 0));
+        }
+
         dest.writeString(typeID);
+        dest.writeDouble(rentalCosts);
+
+        // Write UserModel to the Parcel
+        dest.writeParcelable(roomOwner, flags);
+
         dest.writeString(no);
         dest.writeString(county);
         dest.writeString(street);
@@ -355,9 +393,8 @@ public class Room implements Parcelable {
 
         dest.writeLong(currentNumber);
         dest.writeLong(maxNumber);
-        dest.writeString(typeID);
-        dest.writeDouble(rentalCosts);
     }
+
 
     @Override
     public int describeContents() {

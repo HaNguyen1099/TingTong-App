@@ -12,8 +12,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class UserModel implements Parcelable {
     private String userID;  // uid in firebase of user
-    private String name, email, phoneNumber;
-    private boolean owner, gender;
+    private String name = "0", email = "0", phoneNumber = "0";
+    private boolean owner = false, gender = false;
 
     protected UserModel(Parcel in){
         userID = in.readString();

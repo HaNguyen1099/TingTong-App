@@ -9,14 +9,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tingtongapp.Model.RoomModel;
+import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.R;
 
 import java.util.ArrayList;
 
 public class AdapterListServices extends RecyclerView.Adapter<AdapterListServices.ListServiceViewHolder>{
     private ArrayList<String> listServicesRoom;
-    public AdapterListServices(RoomModel roomModel){
+    public AdapterListServices(Room roomModel){
         listServicesRoom = roomModel.getListServicesAvailable();
     }
 

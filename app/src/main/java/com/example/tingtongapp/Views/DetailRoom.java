@@ -11,14 +11,18 @@ import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tingtongapp.Adapters.AdapterListServices;
 import com.example.tingtongapp.Model.ImageRoomModel;
-import com.example.tingtongapp.Model.RoomModel;
+import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.Model.UserModel;
 import com.example.tingtongapp.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -26,7 +30,7 @@ import java.util.ArrayList;
 
 public class DetailRoom extends AppCompatActivity implements View.OnClickListener {
     private Toolbar toolbar;
-    private RoomModel roomModel;
+    private Room room;
     private TextView typeOfRoom, title, rentingPrice, conditionRoom, amountOfPeople, acreageRoom, description, address, phoneContact;
     private ImageRoomModel imageRoomModel;
     private ArrayList<ImageView> imageView;
@@ -41,11 +45,28 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
 
         Intent intent = getIntent();
 
-        if (intent != null && intent.hasExtra("intentDetailRoom")) {
-            this.roomModel = (RoomModel) intent.getParcelableExtra("intentDetailRoom");
+        try {
+            if(intent != null && intent.hasExtra("intentDetailRoom")) {
+                String idRoom = intent.getStringExtra("intentDetailRoom");
 
-            if(this.roomModel != null)
-                setInfoRoom();
+                DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("ListRoom");
+                databaseRef.child(idRoom).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        room = dataSnapshot.getValue(Room.class);
+                        if (room != null) {
+                            setInfoRoom();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        } catch (Exception e){
+            Toast.makeText(this, "Try catch error", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -80,7 +101,7 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
 
     private void setInfoRoom(){
         try {
-            imageRoomModel = roomModel.getImagesRoom();
+            imageRoomModel = room.getImagesRoom();
             ArrayList<String> imageUrls = imageRoomModel.getAll();
 
             if(imageUrls.size() > 4){
@@ -89,16 +110,17 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
                 moreImg.setText("");
             }
 
-            title.setText(roomModel.getTitle());
-            typeOfRoom.setText(roomModel.getTypeOfRoom());
-            int rentingRoomPrice = Integer.parseInt(roomModel.getRentingPrice());
+            title.setText(room.getTitle());
+            typeOfRoom.setText(room.getTypeOfRoom());
+            int rentingRoomPrice = Integer.parseInt(room.getRentingPrice());
             rentingPrice.setText((float)((float)rentingRoomPrice/1000000.0) + " triệu");
-            conditionRoom.setText(roomModel.getConditionRoom());
-            amountOfPeople.setText(roomModel.getAmountOfPeople() + "");
-            acreageRoom.setText(roomModel.getLengthRoom() + "m x " + roomModel.getWidthRoom() + "m");
-            description.setText(roomModel.getDescription());
-            address.setText(roomModel.getAddress());
-            UserModel use1r = roomModel.getRoomOwner();
+            conditionRoom.setText(room.getConditionRoom());
+            amountOfPeople.setText(room.getAmountOfPeople() + "");
+            acreageRoom.setText(room.getLengthRoom() + "m x " + room.getWidthRoom() + "m");
+            description.setText(room.getDescription());
+            address.setText(room.getAddress());
+
+            UserModel use1r = room.getRoomOwner();
             phoneContact.setText(use1r.getPhoneNumber());
 
             for(int i = 0; i < 4; i++) {
@@ -123,7 +145,7 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
             }
 
             // Set list services for recycler view
-            AdapterListServices adapterListServices = new AdapterListServices(roomModel);
+            AdapterListServices adapterListServices = new AdapterListServices(room);
             GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
             listServicesRoom.setLayoutManager(gridLayoutManager);
             listServicesRoom.setAdapter(adapterListServices);
