@@ -113,7 +113,8 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
             title.setText(room.getTitle());
             typeOfRoom.setText(room.getTypeOfRoom());
             int rentingRoomPrice = Integer.parseInt(room.getRentingPrice());
-            rentingPrice.setText((float)((float)rentingRoomPrice/1000000.0) + " triệu");
+            float rentingPriceFloat = (float)((float)rentingRoomPrice/1000000.0);
+            rentingPrice.setText(String.format("%.2f", rentingPriceFloat) + " triệu");
             conditionRoom.setText(room.getConditionRoom());
             amountOfPeople.setText(room.getAmountOfPeople() + "");
             acreageRoom.setText(room.getLengthRoom() + "m x " + room.getWidthRoom() + "m");

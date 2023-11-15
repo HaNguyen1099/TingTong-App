@@ -50,7 +50,8 @@ public class AdapterRoomSuggestion extends RecyclerView.Adapter<AdapterRoomSugge
             holder.address.setText(room.getAddress());
 
             int rentingRoomPrice = Integer.parseInt(room.getRentingPrice());
-            holder.rentingPrice.setText((float)((float)rentingRoomPrice/1000000.0) + " tr/tháng");
+            float rentingPriceFloat = (float)((float)rentingRoomPrice/1000000.0);
+            holder.rentingPrice.setText(String.format("%.2f", rentingPriceFloat) + " tr/tháng");
             holder.sizeRoom.setText(room.getLengthRoom() + "m x " + room.getWidthRoom() + "m");
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
