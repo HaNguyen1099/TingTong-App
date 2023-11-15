@@ -86,6 +86,7 @@ public class SignupView extends AppCompatActivity implements View.OnClickListene
 
                                         String uid = task.getResult().getUser().getUid();
                                         UserModel newUser = new UserModel(name, email, false, false, phone);
+                                        newUser.setUserID(uid);
                                         newUser.addUser(newUser, uid);
 
                                         Intent iSignup = new Intent(SignupView.this, LoginView.class);

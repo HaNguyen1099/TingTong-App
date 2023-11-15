@@ -107,4 +107,8 @@ public class UserModel implements Parcelable {
     public void setUserID(String userID) {
         this.userID = userID;
     }
+
+    public String getUserID(){
+        return userID;
+    }
 }
