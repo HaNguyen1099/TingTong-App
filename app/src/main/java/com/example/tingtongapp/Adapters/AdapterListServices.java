@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,9 +16,13 @@ import com.example.tingtongapp.R;
 import java.util.ArrayList;
 
 public class AdapterListServices extends RecyclerView.Adapter<AdapterListServices.ListServiceViewHolder>{
-    private ArrayList<String> listServicesRoom;
-    public AdapterListServices(Room roomModel){
-        listServicesRoom = roomModel.getListServicesAvailable();
+    private ArrayList<String> listServices = new ArrayList<>();
+
+    public AdapterListServices(String listInput){
+        String serv[] = listInput.split("\\|");
+        for(String i : serv){
+            listServices.add(i);
+        }
     }
 
     @NonNull
@@ -29,10 +34,11 @@ public class AdapterListServices extends RecyclerView.Adapter<AdapterListService
 
     @Override
     public void onBindViewHolder(@NonNull ListServiceViewHolder holder, int position) {
-        String nameServiceString = listServicesRoom.get(position);
-        holder.nameService.setText(nameServiceString);
+        String service = listServices.get(position);
+        holder.nameService.setText(service);
+        holder.serviceImgDemo.setImageResource(R.drawable.washing);
 
-        switch (nameServiceString) {
+        switch (service) {
             case "Tự do":
                 holder.serviceImgDemo.setImageResource(R.drawable.clock);
                 break;
@@ -73,8 +79,8 @@ public class AdapterListServices extends RecyclerView.Adapter<AdapterListService
 
     @Override
     public int getItemCount() {
-        if (listServicesRoom != null){
-            return listServicesRoom.size();
+        if (listServices != null){
+            return listServices.size();
         }
         return 0;
     }

@@ -112,18 +112,38 @@ public class PostRoomStep3 extends Fragment implements View.OnClickListener{
         } else {
             if(id == R.id.btn_nextStep3_post_room) {
                 imageUrisPostRoom = adapterImagePostRoomDemo.getImageUris();
-                Map<String, Boolean> listServicesRoom = new LinkedHashMap<>();
+                String listServicesRoom = "";
 
-                listServicesRoom.put("Tự do", chBoxClock.isChecked());
-                listServicesRoom.put("Giường", chBoxBed.isChecked());
-                listServicesRoom.put("Tủ lạnh", chBoxFridge.isChecked());
-                listServicesRoom.put("Máy giặt", chBoxWashmachine.isChecked());
-                listServicesRoom.put("Wifi", chBoxWifi.isChecked());
-                listServicesRoom.put("Tủ quần áo", chBoxWardrobe.isChecked());
-                listServicesRoom.put("Điều hóa", chBoxArcondition.isChecked());
-                listServicesRoom.put("Nóng lạnh", chBoxWaterheater.isChecked());
-                listServicesRoom.put("An ninh", chBoxSecurity.isChecked());
-                listServicesRoom.put("Chỗ để xe", chBoxParking.isChecked());
+                if(chBoxClock.isChecked()){
+                    listServicesRoom += (chBoxClock.getText().toString() + "|");
+                }
+                if(chBoxBed.isChecked()){
+                    listServicesRoom += (chBoxBed.getText().toString() + "|");
+                }
+                if(chBoxFridge.isChecked()){
+                    listServicesRoom += (chBoxFridge.getText().toString() + "|");
+                }
+                if(chBoxWashmachine.isChecked()){
+                    listServicesRoom += (chBoxWashmachine.getText().toString() + "|");
+                }
+                if(chBoxWifi.isChecked()){
+                    listServicesRoom += (chBoxWifi.getText().toString() + "|");
+                }
+                if(chBoxWardrobe.isChecked()){
+                    listServicesRoom += (chBoxWardrobe.getText().toString() + "|");
+                }
+                if(chBoxArcondition.isChecked()){
+                    listServicesRoom += (chBoxArcondition.getText().toString() + "|");
+                }
+                if(chBoxWaterheater.isChecked()){
+                    listServicesRoom += (chBoxWaterheater.getText().toString() + "|");
+                }
+                if(chBoxSecurity.isChecked()){
+                    listServicesRoom += (chBoxSecurity.getText().toString() + "|");
+                }
+                if(chBoxParking.isChecked()){
+                    listServicesRoom += (chBoxParking.getText().toString() + "|");
+                }
 
                 if(imageUrisPostRoom.size() > 3){
                     // Save data to SharePreferences
@@ -135,9 +155,7 @@ public class PostRoomStep3 extends Fragment implements View.OnClickListener{
                         editor.putString("imageUri" + i, imageUrisPostRoom.get(i).toString());
                     }
 
-                    for (Map.Entry<String, Boolean> entry : listServicesRoom.entrySet()) {
-                        editor.putBoolean(entry.getKey(), entry.getValue());
-                    }
+                    editor.putString("listServices", listServicesRoom);
                     editor.putBoolean("checkStep3", true);
                     editor.apply();
 

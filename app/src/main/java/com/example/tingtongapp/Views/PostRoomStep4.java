@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,10 @@ import com.example.tingtongapp.Model.ImageRoomModel;
 import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.Model.UserModel;
 import com.example.tingtongapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +33,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -58,7 +66,7 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
         btnNextStep4PostRoom =view.findViewById(R.id.btn_nextStep4_post_room);
         btnNextStep4PostRoom.setOnClickListener(this);
     }
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     @Override
     public void onClick(View view) {
         int id = view.getId();
@@ -93,8 +101,8 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                     int waterPrice = preferences.getInt("waterPrice", 0);
                     int internetPrice = preferences.getInt("internetPrice", 0);
                     int parkingFee = preferences.getInt("parkingFee", 0);
+                    String listServices = preferences.getString("listServices", "p|");
                     ArrayList<Uri> listImageUris = new ArrayList<>();
-                    Map<String, Boolean> listServicesRoom = new LinkedHashMap<>();
 
                     // Read list imageUris from SharedPreferences
                     int imageUrisSize = preferences.getInt("imageUrisSize", 0);
@@ -103,13 +111,6 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                         for(int i=0; i<imageUrisSize; ++i){
                             String uriString = preferences.getString("imageUri" + i, "null");
                             listImageUris.add(Uri.parse(uriString));
-                        }
-                    }
-
-                    // Read Map<String, Boolean> listServicesRoom from SharedPreferences
-                    for (Map.Entry<String, ?> entry : preferences.getAll().entrySet()) {
-                        if (entry.getValue() instanceof Boolean) {
-                            listServicesRoom.put(entry.getKey(), (Boolean) entry.getValue());
                         }
                     }
 
@@ -128,8 +129,7 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                     newPostRoom.setWidthRoom(widthRoom);
                     newPostRoom.setRentingPrice(rentingPriceRoom + "");
                     newPostRoom.setPricePostRoom(electricityPrice, waterPrice, internetPrice, parkingFee);
-                    newPostRoom.setImagesRoom(imageRoomModel);
-                    newPostRoom.setListServicesRoom(listServicesRoom);
+                    newPostRoom.setListServices(listServices);
                     newPostRoom.setConditionRoom("Còn");
 
                     FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -149,21 +149,47 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                                     UserModel userModel1 = userModel;
                                     newPostRoom.setRoomOwner(userModel1);
 
-                                    // Post room up to Firebase
-                                    DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("ListRoom");
-                                    String key = databaseRef.push().getKey();  // Tạo ID duy nhất
-                                    newPostRoom.setIdRoom(key);
-                                    databaseRef.child(key).setValue(newPostRoom, new DatabaseReference.CompletionListener() {
-                                        @Override
-                                        public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                                            if (error == null) {
-                                                Toast.makeText(getContext(), "Đăng phòng thành công", Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                Toast.makeText(getContext(), "Đăng phòng thất bại: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    });
+                                    // add image
+                                    final int sizeImageUrls = listImageUris.size() - 1;
+                                    StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images");
 
+                                    for (int i=0; i<listImageUris.size(); ++i){
+                                        Uri imageUri = Uri.parse(String.valueOf(listImageUris.get(i)));
+                                        StorageReference imageRef = storageReference.child(imageUri.getLastPathSegment());
+
+                                        UploadTask uploadTask = imageRef.putFile(imageUri);
+                                        int finalI = i;
+                                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                            @Override
+                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                imageRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Uri> task) {
+                                                        if(task.isSuccessful()){
+                                                            Uri downloadUri = task.getResult();
+                                                            if(downloadUri != null){
+                                                                String imgUrl = downloadUri.toString();
+                                                                newPostRoom.setImageUrlNew(imgUrl);
+
+                                                                if(finalI == sizeImageUrls){
+                                                                    // Post room up to Firebase
+                                                                    DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("ListRoom");
+                                                                    String key = databaseRef.push().getKey();  // Tạo ID duy nhất
+                                                                    newPostRoom.setIdRoom(key);
+                                                                    databaseRef.child(key).setValue(newPostRoom, new DatabaseReference.CompletionListener() {
+                                                                        @Override
+                                                                        public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+
+                                                                        }
+                                                                    });
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
                                 }
                             }
 
