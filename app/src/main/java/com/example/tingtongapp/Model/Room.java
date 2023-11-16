@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Room implements Parcelable {
-    private String idRoom = "n", title = "n", description = "n", address = "n", typeOfRoom = "n", rentingPrice = "n", timeCreated = "n", owner, conditionRoom = "n", dateAdded = "15/11/2023";
+    private String idRoom = "n", title = "n", description = "n", address = "n", typeOfRoom = "n", rentingPrice = "n", timeCreated = "n", owner, conditionRoom = "Còn", dateAdded = "15/11/2023";
     private int amountOfPeople = 0, lengthRoom = 0, widthRoom = 0, electricityPrice = 0, waterPrice = 0, internetPrice = 0, parkingFee = 0;
     private String imageUrlNew = "";
 
