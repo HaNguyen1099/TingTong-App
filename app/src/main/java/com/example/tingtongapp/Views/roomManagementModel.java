@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -36,6 +37,8 @@ public class roomManagementModel extends AppCompatActivity {
     NestedScrollView nestedScrollMyRoomsView;
     ProgressBar progressBarLoadMoreMyRooms;
     Toolbar toolbar;
+    Button btnChange;
+    Button btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,9 @@ public class roomManagementModel extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+
+        btnChange = findViewById(R.id.btn_change);
+        btnDelete = findViewById(R.id.btn_delete);
     }
 
     private void setView() {
