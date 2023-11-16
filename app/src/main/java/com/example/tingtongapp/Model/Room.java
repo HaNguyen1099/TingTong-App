@@ -31,8 +31,6 @@ public class Room implements Parcelable {
         return img;
     }
 
-    private Map<String, Boolean> listServicesRoom = new LinkedHashMap<>();
-
     //id để generate từ firebase
     private String typeID = "ids";
     private double rentalCosts = 3.11;
@@ -41,9 +39,9 @@ public class Room implements Parcelable {
     private long currentNumber = 0, maxNumber = 0;
     private List<String> listRoomsID = new ArrayList<>();
     private List<RoomPriceModel> listRoomPrice = new ArrayList<>();
+    private String listServices = "";
 
     public Room(){
-        initListServicesRoom();
         setDateAdded();
     }
 
@@ -51,36 +49,12 @@ public class Room implements Parcelable {
         return idRoom;
     }
 
-    public void initListServicesRoom(){
-        listServicesRoom.put("Tự do", false);
-        listServicesRoom.put("Giường", false);
-        listServicesRoom.put("Tủ lạnh", false);
-        listServicesRoom.put("Máy giặt", false);
-        listServicesRoom.put("Wifi", false);
-
-        listServicesRoom.put("Tủ quần áo", false);
-        listServicesRoom.put("Điều hóa", false);
-        listServicesRoom.put("Nóng lạnh", false);
-        listServicesRoom.put("An ninh", false);
-        listServicesRoom.put("Chỗ để xe", false);
+    public void setListServices(String input){
+        this.listServices = input;
     }
 
-    public void setListServicesRoom(Map<String, Boolean> userInput){
-        for (Map.Entry<String, Boolean> entry : userInput.entrySet()) {
-            if (listServicesRoom.containsKey(entry.getKey())) {
-                listServicesRoom.put(entry.getKey(), entry.getValue());
-            }
-        }
-    }
-
-    public ArrayList<String> getListServicesAvailable(){
-        ArrayList<String> listServiceAvailable = new ArrayList<>();
-        for (Map.Entry<String, Boolean> service : listServicesRoom.entrySet()) {
-            if (Boolean.TRUE.equals(service.getValue())) {
-                listServiceAvailable.add(service.getKey());
-            }
-        }
-        return listServiceAvailable;
+    public String getListServices(){
+        return listServices;
     }
 
     private void setDateAdded(){
@@ -327,19 +301,7 @@ public class Room implements Parcelable {
         waterPrice = in.readInt();
         internetPrice = in.readInt();
         parkingFee = in.readInt();
-
-        // Read ImageRoomModel from the Parcel
-//        imagesRoom = in.readParcelable(ImageRoomModel.class.getClassLoader());
-
-        // Read Map<String, Boolean> from the Parcel
-        int size = in.readInt();
-        listServicesRoom = new LinkedHashMap<>(size);
-        for (int i = 0; i < size; i++) {
-            String key = in.readString();
-            boolean value = in.readByte() != 0;
-            listServicesRoom.put(key, value);
-        }
-
+        listServices = in.readString();
         typeID = in.readString();
         rentalCosts = in.readDouble();
 
@@ -351,7 +313,6 @@ public class Room implements Parcelable {
         street = in.readString();
         ward = in.readString();
         city = in.readString();
-
         currentNumber = in.readLong();
         maxNumber = in.readLong();
     }
@@ -377,17 +338,7 @@ public class Room implements Parcelable {
         dest.writeInt(waterPrice);
         dest.writeInt(internetPrice);
         dest.writeInt(parkingFee);
-
-        // Write ImageRoomModel to the Parcel
-//        dest.writeParcelable(imagesRoom, flags);
-
-        // Write Map<String, Boolean> to the Parcel
-        dest.writeInt(listServicesRoom.size());
-        for (Map.Entry<String, Boolean> entry : listServicesRoom.entrySet()) {
-            dest.writeString(entry.getKey());
-            dest.writeByte((byte) (entry.getValue() ? 1 : 0));
-        }
-
+        dest.writeString(listServices);
         dest.writeString(typeID);
         dest.writeDouble(rentalCosts);
 
@@ -399,11 +350,9 @@ public class Room implements Parcelable {
         dest.writeString(street);
         dest.writeString(ward);
         dest.writeString(city);
-
         dest.writeLong(currentNumber);
         dest.writeLong(maxNumber);
     }
-
 
     @Override
     public int describeContents() {

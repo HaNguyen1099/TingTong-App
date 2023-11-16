@@ -101,8 +101,8 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                     int waterPrice = preferences.getInt("waterPrice", 0);
                     int internetPrice = preferences.getInt("internetPrice", 0);
                     int parkingFee = preferences.getInt("parkingFee", 0);
+                    String listServices = preferences.getString("listServices", "p|");
                     ArrayList<Uri> listImageUris = new ArrayList<>();
-                    Map<String, Boolean> listServicesRoom = new LinkedHashMap<>();
 
                     // Read list imageUris from SharedPreferences
                     int imageUrisSize = preferences.getInt("imageUrisSize", 0);
@@ -111,13 +111,6 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                         for(int i=0; i<imageUrisSize; ++i){
                             String uriString = preferences.getString("imageUri" + i, "null");
                             listImageUris.add(Uri.parse(uriString));
-                        }
-                    }
-
-                    // Read Map<String, Boolean> listServicesRoom from SharedPreferences
-                    for (Map.Entry<String, ?> entry : preferences.getAll().entrySet()) {
-                        if (entry.getValue() instanceof Boolean) {
-                            listServicesRoom.put(entry.getKey(), (Boolean) entry.getValue());
                         }
                     }
 
@@ -136,7 +129,7 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                     newPostRoom.setWidthRoom(widthRoom);
                     newPostRoom.setRentingPrice(rentingPriceRoom + "");
                     newPostRoom.setPricePostRoom(electricityPrice, waterPrice, internetPrice, parkingFee);
-                    newPostRoom.setListServicesRoom(listServicesRoom);
+                    newPostRoom.setListServices(listServices);
                     newPostRoom.setConditionRoom("Còn");
 
                     FirebaseAuth auth = FirebaseAuth.getInstance();

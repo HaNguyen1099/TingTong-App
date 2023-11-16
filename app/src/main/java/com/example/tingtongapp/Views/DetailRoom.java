@@ -144,7 +144,7 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
             }
 
             // Set list services for recycler view
-            AdapterListServices adapterListServices = new AdapterListServices(room);
+            AdapterListServices adapterListServices = new AdapterListServices(room.getListServices());
             GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
             listServicesRoom.setLayoutManager(gridLayoutManager);
             listServicesRoom.setAdapter(adapterListServices);
