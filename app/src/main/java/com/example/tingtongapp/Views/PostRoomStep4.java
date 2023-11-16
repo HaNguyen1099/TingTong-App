@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,10 @@ import com.example.tingtongapp.Model.ImageRoomModel;
 import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.Model.UserModel;
 import com.example.tingtongapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +33,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -149,20 +157,65 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                                     UserModel userModel1 = userModel;
                                     newPostRoom.setRoomOwner(userModel1);
 
-                                    // Post room up to Firebase
-                                    DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("ListRoom");
-                                    String key = databaseRef.push().getKey();  // Tạo ID duy nhất
-                                    newPostRoom.setIdRoom(key);
-                                    databaseRef.child(key).setValue(newPostRoom, new DatabaseReference.CompletionListener() {
+                                    // add image
+
+                                    StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images");
+
+                                    Uri imageUri = Uri.parse(String.valueOf(listImageUris.get(0)));
+
+                                    StorageReference imageRef = storageReference.child(imageUri.getLastPathSegment());
+
+                                    UploadTask uploadTask = imageRef.putFile(imageUri);
+
+                                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                         @Override
-                                        public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                                            if (error == null) {
-                                                Toast.makeText(getContext(), "Đăng phòng thành công", Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                Toast.makeText(getContext(), "Đăng phòng thất bại: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                                            }
+                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                            // Xử lý khi tải lên thành công
+
+                                            // Lấy URL của ảnh sau khi tải lên
+                                            imageRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Uri> task) {
+                                                    if (task.isSuccessful()) {
+                                                        // URL của ảnh
+                                                        Uri downloadUri = task.getResult();
+                                                        if (downloadUri != null) {
+                                                            String imageUrl = downloadUri.toString();
+                                                            // Sử dụng imageUrl theo nhu cầu của bạn (ví dụ: lưu vào Firebase Database)
+
+
+
+                                                            Log.d("ImageDownload", "Download URL: " + imageUrl);
+
+                                                            newPostRoom.setImageUrlNew(imageUrl);
+
+                                                            String img = newPostRoom.getImageUrlNew();
+
+                                                            if(!imageUrl.equals("")){
+                                                                // Post room up to Firebase
+                                                                DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("ListRoom");
+                                                                String key = databaseRef.push().getKey();  // Tạo ID duy nhất
+                                                                newPostRoom.setIdRoom(key);
+                                                                databaseRef.child(key).setValue(newPostRoom, new DatabaseReference.CompletionListener() {
+                                                                    @Override
+                                                                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+
+                                                                    }
+                                                                });
+                                                            }
+
+
+                                                        }
+                                                    } else {
+                                                        // Xử lý khi không thể lấy URL
+                                                        Log.e("ImageDownload", "Download URL failed: " + task.getException().getMessage());
+                                                    }
+                                                }
+                                            });
                                         }
                                     });
+
+
 
                                 }
                             }

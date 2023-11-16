@@ -14,6 +14,16 @@ public class Room implements Parcelable {
     private String idRoom = "n", title = "n", description = "n", address = "n", typeOfRoom = "n", rentingPrice = "n", timeCreated = "n", owner, conditionRoom = "n", dateAdded = "15/11/2023";
     private int amountOfPeople = 0, lengthRoom = 0, widthRoom = 0, electricityPrice = 0, waterPrice = 0, internetPrice = 0, parkingFee = 0;
     private ImageRoomModel imagesRoom = new ImageRoomModel();
+    private String imageUrlNew = "";
+
+    public void setImageUrlNew(String url){
+        this.imageUrlNew = url;
+    }
+
+    public String getImageUrlNew(){
+        return this.imageUrlNew;
+    }
+
     private Map<String, Boolean> listServicesRoom = new LinkedHashMap<>();
 
     //id để generate từ firebase
