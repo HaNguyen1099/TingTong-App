@@ -1,24 +1,34 @@
 package com.example.tingtongapp.Views;
 
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tingtongapp.Adapters.AdapterMyRoom;
 import com.example.tingtongapp.Controller.MainActivityController;
 import com.example.tingtongapp.Controller.RoomManagementControlller;
+import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.Model.RoomModel;
 import com.example.tingtongapp.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,15 +47,13 @@ public class roomManagementModel extends AppCompatActivity {
     NestedScrollView nestedScrollMyRoomsView;
     ProgressBar progressBarLoadMoreMyRooms;
     Toolbar toolbar;
-    Button btnChange;
-    Button btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.room_management_user_view);
 
-        String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        this.UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         initControl();
     }
@@ -53,7 +61,7 @@ public class roomManagementModel extends AppCompatActivity {
     private void initControl() {
         recyclerMainRoom = (RecyclerView)findViewById(R.id.recycler_Main_Room);
 
-        txtQuantityRoom = findViewById(R.id.txt_quantity_room);
+        txtQuantityRoom = (TextView) findViewById(R.id.txt_quantity_room);
 
         progressBarMyRooms = (ProgressBar) findViewById(R.id.progress_bar_my_rooms);
         progressBarMyRooms.getIndeterminateDrawable().setColorFilter(Color.parseColor("#F54500"),
@@ -75,9 +83,6 @@ public class roomManagementModel extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
-        btnChange = findViewById(R.id.btn_change);
-        btnDelete = findViewById(R.id.btn_delete);
     }
 
     private void setView() {
@@ -108,11 +113,40 @@ public class roomManagementModel extends AppCompatActivity {
         roomManagementControlller.loadQuantityInfo(UID, txtQuantityRoom);
         // lấy thông tin về số lượng phòng của người dùng UID và hiển thị nó trong txtQuantityRoom
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            mainActivityController = new MainActivityController(this, UID);
-        }
-        mainActivityController.ListRoomUser(UID, recyclerMainRoom, txtQuantityMyRooms, progressBarMyRooms,
-                lnLtQuantityTopMyRooms, nestedScrollMyRoomsView, progressBarLoadMoreMyRooms);
-        // lấy và hiển thị danh sách phòng với người dùng UID với các view
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("ListRoom");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Room> roomArrayList = new ArrayList<>();
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                FirebaseUser currentUser = auth.getCurrentUser();
+                String uidCurrentUser = currentUser.getUid();
+
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    try {
+                        Room room = dataSnapshot.getValue(Room.class);
+
+                        if(room.getIdOwner().equals(uidCurrentUser)){
+                            roomArrayList.add(room);
+                        }
+                    }catch (Exception e){
+                        Toast.makeText(roomManagementModel.this, "Lỗi tải dữ liệu phòng", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                AdapterMyRoom listMyRoom = new AdapterMyRoom(roomManagementModel.this, roomArrayList);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(roomManagementModel.this);
+                RecyclerView recyclerViewListMyRoom =  (RecyclerView)findViewById(R.id.recycler_Main_Room);
+                recyclerViewListMyRoom.setLayoutManager(linearLayoutManager);
+                recyclerViewListMyRoom.setAdapter(listMyRoom);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(roomManagementModel.this, "Lỗi kết nối cơ sở dữ liệu", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

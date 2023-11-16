@@ -114,11 +114,6 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                         }
                     }
 
-                    ImageRoomModel imageRoomModel = new ImageRoomModel();
-                    for(Uri uri : listImageUris){
-                        imageRoomModel.addImage(uri);
-                    }
-
                     Room newPostRoom = new Room();
                     newPostRoom.setTitle(title);
                     newPostRoom.setDescription(descriptionRoom);
