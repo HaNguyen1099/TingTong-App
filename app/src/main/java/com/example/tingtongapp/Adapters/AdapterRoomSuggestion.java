@@ -75,8 +75,7 @@ public class AdapterRoomSuggestion extends RecyclerView.Adapter<AdapterRoomSugge
         }
 
         try {
-            ImageRoomModel imageRoomModel = room.getImagesRoom();
-            Picasso.get().load(imageRoomModel.getFirstImage()).into(holder.demoRoomImg, new Callback() {
+            Picasso.get().load(room.getImageUrlNew()).into(holder.demoRoomImg, new Callback() {
                 @Override
                 public void onSuccess() {
                     // Do nothing

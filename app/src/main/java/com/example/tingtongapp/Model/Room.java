@@ -22,8 +22,23 @@ import java.util.Map;
 public class Room implements Parcelable {
     private String idRoom = "n", title = "n", description = "n", address = "n", typeOfRoom = "n", rentingPrice = "n", timeCreated = "n", owner, conditionRoom = "n", dateAdded = "15/11/2023";
     private int amountOfPeople = 0, lengthRoom = 0, widthRoom = 0, electricityPrice = 0, waterPrice = 0, internetPrice = 0, parkingFee = 0;
-    private ImageRoomModel imagesRoom = new ImageRoomModel();
-    private Map<String, Boolean> listServicesRoom = new LinkedHashMap<>();
+    private String imageUrlNew = "";
+
+    public void setImageUrlNew(String url){
+        this.imageUrlNew += (url + " ");
+    }
+
+    public String getImageUrlNew(){
+        return this.imageUrlNew;
+    }
+
+    public ArrayList<String> getAllImagesRoom(){
+        ArrayList<String> img = new ArrayList<>();
+        for(String i : imageUrlNew.split("\\s+")){
+            img.add(i);
+        }
+        return img;
+    }
 
     //id để generate từ firebase
     private String typeID = "ids";
@@ -33,9 +48,18 @@ public class Room implements Parcelable {
     private long currentNumber = 0, maxNumber = 0;
     private List<String> listRoomsID = new ArrayList<>();
     private List<RoomPriceModel> listRoomPrice = new ArrayList<>();
+    private String listServices = "";
+    private String idOwner = "";
+
+    private void setIdOwner(){
+        this.idOwner = roomOwner.getUserID();
+    }
+
+    public String getIdOwner(){
+        return idOwner;
+    }
 
     public Room(){
-        initListServicesRoom();
         setDateAdded();
     }
 
@@ -43,36 +67,12 @@ public class Room implements Parcelable {
         return idRoom;
     }
 
-    public void initListServicesRoom(){
-        listServicesRoom.put("Tự do", false);
-        listServicesRoom.put("Giường", false);
-        listServicesRoom.put("Tủ lạnh", false);
-        listServicesRoom.put("Máy giặt", false);
-        listServicesRoom.put("Wifi", false);
-
-        listServicesRoom.put("Tủ quần áo", false);
-        listServicesRoom.put("Điều hóa", false);
-        listServicesRoom.put("Nóng lạnh", false);
-        listServicesRoom.put("An ninh", false);
-        listServicesRoom.put("Chỗ để xe", false);
+    public void setListServices(String input){
+        this.listServices = input;
     }
 
-    public void setListServicesRoom(Map<String, Boolean> userInput){
-        for (Map.Entry<String, Boolean> entry : userInput.entrySet()) {
-            if (listServicesRoom.containsKey(entry.getKey())) {
-                listServicesRoom.put(entry.getKey(), entry.getValue());
-            }
-        }
-    }
-
-    public ArrayList<String> getListServicesAvailable(){
-        ArrayList<String> listServiceAvailable = new ArrayList<>();
-        for (Map.Entry<String, Boolean> service : listServicesRoom.entrySet()) {
-            if (Boolean.TRUE.equals(service.getValue())) {
-                listServiceAvailable.add(service.getKey());
-            }
-        }
-        return listServiceAvailable;
+    public String getListServices(){
+        return listServices;
     }
 
     private void setDateAdded(){
@@ -160,10 +160,6 @@ public class Room implements Parcelable {
         return widthRoom;
     }
 
-    public ImageRoomModel getImagesRoom() {
-        return imagesRoom;
-    }
-
     public String getTypeID() {
         return typeID;
     }
@@ -248,10 +244,6 @@ public class Room implements Parcelable {
         this.widthRoom = widthRoom;
     }
 
-    public void setImagesRoom(ImageRoomModel imagesRoom) {
-        this.imagesRoom = imagesRoom;
-    }
-
     public void setTypeID(String typeID) {
         this.typeID = typeID;
     }
@@ -266,6 +258,7 @@ public class Room implements Parcelable {
 
     public void setRoomOwner(UserModel roomOwner) {
         this.roomOwner = roomOwner;
+        setIdOwner();
     }
 
     public void setNo(String no) {
@@ -296,15 +289,15 @@ public class Room implements Parcelable {
         this.maxNumber = maxNumber;
     }
 
-    public static final Creator<RoomModel> CREATOR = new Creator<RoomModel>() {
+    public static final Creator<Room> CREATOR = new Creator<Room>() {
         @Override
-        public RoomModel createFromParcel(Parcel in) {
-            return new RoomModel(in);
+        public Room createFromParcel(Parcel in) {
+            return new Room(in);
         }
 
         @Override
-        public RoomModel[] newArray(int size) {
-            return new RoomModel[size];
+        public Room[] newArray(int size) {
+            return new Room[size];
         }
     };
 
@@ -327,19 +320,7 @@ public class Room implements Parcelable {
         waterPrice = in.readInt();
         internetPrice = in.readInt();
         parkingFee = in.readInt();
-
-        // Read ImageRoomModel from the Parcel
-//        imagesRoom = in.readParcelable(ImageRoomModel.class.getClassLoader());
-
-        // Read Map<String, Boolean> from the Parcel
-        int size = in.readInt();
-        listServicesRoom = new LinkedHashMap<>(size);
-        for (int i = 0; i < size; i++) {
-            String key = in.readString();
-            boolean value = in.readByte() != 0;
-            listServicesRoom.put(key, value);
-        }
-
+        listServices = in.readString();
         typeID = in.readString();
         rentalCosts = in.readDouble();
 
@@ -351,7 +332,6 @@ public class Room implements Parcelable {
         street = in.readString();
         ward = in.readString();
         city = in.readString();
-
         currentNumber = in.readLong();
         maxNumber = in.readLong();
     }
@@ -377,17 +357,7 @@ public class Room implements Parcelable {
         dest.writeInt(waterPrice);
         dest.writeInt(internetPrice);
         dest.writeInt(parkingFee);
-
-        // Write ImageRoomModel to the Parcel
-//        dest.writeParcelable(imagesRoom, flags);
-
-        // Write Map<String, Boolean> to the Parcel
-        dest.writeInt(listServicesRoom.size());
-        for (Map.Entry<String, Boolean> entry : listServicesRoom.entrySet()) {
-            dest.writeString(entry.getKey());
-            dest.writeByte((byte) (entry.getValue() ? 1 : 0));
-        }
-
+        dest.writeString(listServices);
         dest.writeString(typeID);
         dest.writeDouble(rentalCosts);
 
@@ -399,7 +369,6 @@ public class Room implements Parcelable {
         dest.writeString(street);
         dest.writeString(ward);
         dest.writeString(city);
-
         dest.writeLong(currentNumber);
         dest.writeLong(maxNumber);
     }

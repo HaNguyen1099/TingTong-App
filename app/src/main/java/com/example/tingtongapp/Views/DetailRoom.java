@@ -32,7 +32,6 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
     private Toolbar toolbar;
     private Room room;
     private TextView typeOfRoom, title, rentingPrice, conditionRoom, amountOfPeople, acreageRoom, description, address, phoneContact;
-    private ImageRoomModel imageRoomModel;
     private ArrayList<ImageView> imageView;
     private TextView moreImg;
     private RecyclerView listServicesRoom;
@@ -101,8 +100,7 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
 
     private void setInfoRoom(){
         try {
-            imageRoomModel = room.getImagesRoom();
-            ArrayList<String> imageUrls = imageRoomModel.getAll();
+            ArrayList<String> imageUrls = room.getAllImagesRoom();
 
             if(imageUrls.size() > 4){
                 moreImg.setText("+" + (imageUrls.size() - 4));
@@ -146,7 +144,7 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
             }
 
             // Set list services for recycler view
-            AdapterListServices adapterListServices = new AdapterListServices(room);
+            AdapterListServices adapterListServices = new AdapterListServices(room.getListServices());
             GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
             listServicesRoom.setLayoutManager(gridLayoutManager);
             listServicesRoom.setAdapter(adapterListServices);
