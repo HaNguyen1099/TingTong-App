@@ -66,7 +66,7 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
         btnNextStep4PostRoom =view.findViewById(R.id.btn_nextStep4_post_room);
         btnNextStep4PostRoom.setOnClickListener(this);
     }
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     @Override
     public void onClick(View view) {
         int id = view.getId();
@@ -136,7 +136,6 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                     newPostRoom.setWidthRoom(widthRoom);
                     newPostRoom.setRentingPrice(rentingPriceRoom + "");
                     newPostRoom.setPricePostRoom(electricityPrice, waterPrice, internetPrice, parkingFee);
-                    newPostRoom.setImagesRoom(imageRoomModel);
                     newPostRoom.setListServicesRoom(listServicesRoom);
                     newPostRoom.setConditionRoom("Còn");
 
@@ -158,65 +157,46 @@ public class PostRoomStep4 extends Fragment implements View.OnClickListener {
                                     newPostRoom.setRoomOwner(userModel1);
 
                                     // add image
-
+                                    final int sizeImageUrls = listImageUris.size() - 1;
                                     StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("images");
 
-                                    Uri imageUri = Uri.parse(String.valueOf(listImageUris.get(0)));
+                                    for (int i=0; i<listImageUris.size(); ++i){
+                                        Uri imageUri = Uri.parse(String.valueOf(listImageUris.get(i)));
+                                        StorageReference imageRef = storageReference.child(imageUri.getLastPathSegment());
 
-                                    StorageReference imageRef = storageReference.child(imageUri.getLastPathSegment());
+                                        UploadTask uploadTask = imageRef.putFile(imageUri);
+                                        int finalI = i;
+                                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                            @Override
+                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                imageRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Uri> task) {
+                                                        if(task.isSuccessful()){
+                                                            Uri downloadUri = task.getResult();
+                                                            if(downloadUri != null){
+                                                                String imgUrl = downloadUri.toString();
+                                                                newPostRoom.setImageUrlNew(imgUrl);
 
-                                    UploadTask uploadTask = imageRef.putFile(imageUri);
+                                                                if(finalI == sizeImageUrls){
+                                                                    // Post room up to Firebase
+                                                                    DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("ListRoom");
+                                                                    String key = databaseRef.push().getKey();  // Tạo ID duy nhất
+                                                                    newPostRoom.setIdRoom(key);
+                                                                    databaseRef.child(key).setValue(newPostRoom, new DatabaseReference.CompletionListener() {
+                                                                        @Override
+                                                                        public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
 
-                                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // Xử lý khi tải lên thành công
-
-                                            // Lấy URL của ảnh sau khi tải lên
-                                            imageRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Uri> task) {
-                                                    if (task.isSuccessful()) {
-                                                        // URL của ảnh
-                                                        Uri downloadUri = task.getResult();
-                                                        if (downloadUri != null) {
-                                                            String imageUrl = downloadUri.toString();
-                                                            // Sử dụng imageUrl theo nhu cầu của bạn (ví dụ: lưu vào Firebase Database)
-
-
-
-                                                            Log.d("ImageDownload", "Download URL: " + imageUrl);
-
-                                                            newPostRoom.setImageUrlNew(imageUrl);
-
-                                                            String img = newPostRoom.getImageUrlNew();
-
-                                                            if(!imageUrl.equals("")){
-                                                                // Post room up to Firebase
-                                                                DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("ListRoom");
-                                                                String key = databaseRef.push().getKey();  // Tạo ID duy nhất
-                                                                newPostRoom.setIdRoom(key);
-                                                                databaseRef.child(key).setValue(newPostRoom, new DatabaseReference.CompletionListener() {
-                                                                    @Override
-                                                                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-
-                                                                    }
-                                                                });
+                                                                        }
+                                                                    });
+                                                                }
                                                             }
-
-
                                                         }
-                                                    } else {
-                                                        // Xử lý khi không thể lấy URL
-                                                        Log.e("ImageDownload", "Download URL failed: " + task.getException().getMessage());
                                                     }
-                                                }
-                                            });
-                                        }
-                                    });
-
-
-
+                                                });
+                                            }
+                                        });
+                                    }
                                 }
                             }
 

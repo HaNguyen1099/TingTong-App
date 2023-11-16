@@ -13,15 +13,22 @@ import java.util.Map;
 public class Room implements Parcelable {
     private String idRoom = "n", title = "n", description = "n", address = "n", typeOfRoom = "n", rentingPrice = "n", timeCreated = "n", owner, conditionRoom = "n", dateAdded = "15/11/2023";
     private int amountOfPeople = 0, lengthRoom = 0, widthRoom = 0, electricityPrice = 0, waterPrice = 0, internetPrice = 0, parkingFee = 0;
-    private ImageRoomModel imagesRoom = new ImageRoomModel();
     private String imageUrlNew = "";
 
     public void setImageUrlNew(String url){
-        this.imageUrlNew = url;
+        this.imageUrlNew += (url + " ");
     }
 
     public String getImageUrlNew(){
         return this.imageUrlNew;
+    }
+
+    public ArrayList<String> getAllImagesRoom(){
+        ArrayList<String> img = new ArrayList<>();
+        for(String i : imageUrlNew.split("\\s+")){
+            img.add(i);
+        }
+        return img;
     }
 
     private Map<String, Boolean> listServicesRoom = new LinkedHashMap<>();
@@ -161,10 +168,6 @@ public class Room implements Parcelable {
         return widthRoom;
     }
 
-    public ImageRoomModel getImagesRoom() {
-        return imagesRoom;
-    }
-
     public String getTypeID() {
         return typeID;
     }
@@ -249,10 +252,6 @@ public class Room implements Parcelable {
         this.widthRoom = widthRoom;
     }
 
-    public void setImagesRoom(ImageRoomModel imagesRoom) {
-        this.imagesRoom = imagesRoom;
-    }
-
     public void setTypeID(String typeID) {
         this.typeID = typeID;
     }
@@ -297,15 +296,15 @@ public class Room implements Parcelable {
         this.maxNumber = maxNumber;
     }
 
-    public static final Creator<RoomModel> CREATOR = new Creator<RoomModel>() {
+    public static final Creator<Room> CREATOR = new Creator<Room>() {
         @Override
-        public RoomModel createFromParcel(Parcel in) {
-            return new RoomModel(in);
+        public Room createFromParcel(Parcel in) {
+            return new Room(in);
         }
 
         @Override
-        public RoomModel[] newArray(int size) {
-            return new RoomModel[size];
+        public Room[] newArray(int size) {
+            return new Room[size];
         }
     };
 
