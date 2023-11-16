@@ -40,6 +40,15 @@ public class Room implements Parcelable {
     private List<String> listRoomsID = new ArrayList<>();
     private List<RoomPriceModel> listRoomPrice = new ArrayList<>();
     private String listServices = "";
+    private String idOwner = "";
+
+    private void setIdOwner(){
+        this.idOwner = roomOwner.getUserID();
+    }
+
+    public String getIdOwner(){
+        return idOwner;
+    }
 
     public Room(){
         setDateAdded();
@@ -240,6 +249,7 @@ public class Room implements Parcelable {
 
     public void setRoomOwner(UserModel roomOwner) {
         this.roomOwner = roomOwner;
+        setIdOwner();
     }
 
     public void setNo(String no) {
