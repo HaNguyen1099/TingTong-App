@@ -1,6 +1,7 @@
 package com.example.tingtongapp.Views;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -101,7 +102,9 @@ public class roomManagementModel extends AppCompatActivity {
         roomManagementControlller.loadQuantityInfo(UID, txtQuantityRoom);
         // lấy thông tin về số lượng phòng của người dùng UID và hiển thị nó trong txtQuantityRoom
 
-        mainActivityController = new MainActivityController(this, UID);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mainActivityController = new MainActivityController(this, UID);
+        }
         mainActivityController.ListRoomUser(UID, recyclerMainRoom, txtQuantityMyRooms, progressBarMyRooms,
                 lnLtQuantityTopMyRooms, nestedScrollMyRoomsView, progressBarLoadMoreMyRooms);
         // lấy và hiển thị danh sách phòng với người dùng UID với các view

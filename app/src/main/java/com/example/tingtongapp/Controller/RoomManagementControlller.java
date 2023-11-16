@@ -4,15 +4,15 @@ import android.content.Context;
 import android.widget.TextView;
 
 import com.example.tingtongapp.Controller.Interfaces.IInfoOfAllRoomUser;
-import com.example.tingtongapp.Model.RoomModel;
+import com.example.tingtongapp.Model.Room;
 
 public class RoomManagementControlller {
-    RoomModel roomModel;
+    Room roomModel;
     Context context;
 
     public RoomManagementControlller(Context context){
         this.context = context;
-        roomModel = new RoomModel();
+        roomModel = new Room();
     }
 
     public void loadQuantityInfo(String UID, TextView txtQuantityRoom){

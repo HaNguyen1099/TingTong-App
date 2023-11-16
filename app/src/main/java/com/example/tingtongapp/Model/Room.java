@@ -3,6 +3,15 @@ package com.example.tingtongapp.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
+import com.example.tingtongapp.Controller.Interfaces.IInfoOfAllRoomUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -395,9 +404,32 @@ public class Room implements Parcelable {
         dest.writeLong(maxNumber);
     }
 
-
     @Override
     public int describeContents() {
         return 0;
     }
+
+    public void infoOfAllRoomOfUser(String UID, IInfoOfAllRoomUser iInfoOfAllRoomUser) {
+        // truy vấn đến csdl và lọc các phòng của từng người dùng
+        Query nodeRoomOrderbyUserID = FirebaseDatabase.getInstance().getReference().child("Room")
+                .orderByChild("owner")
+                .equalTo(UID);
+
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //Lấy ra tổng số phòng
+                int CountRoom = (int) dataSnapshot.getChildrenCount();
+                //Gửi thông tin tổng số phòng về UI
+                iInfoOfAllRoomUser.sendQuantity(CountRoom);
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        };
+        nodeRoomOrderbyUserID.addListenerForSingleValueEvent(valueEventListener);
+    }
+
+
 }
