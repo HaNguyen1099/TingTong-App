@@ -18,9 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tingtongapp.Adapters.AdapterMyRoom;
 import com.example.tingtongapp.Controller.MainActivityController;
-import com.example.tingtongapp.Controller.RoomManagementControlller;
 import com.example.tingtongapp.Model.Room;
-import com.example.tingtongapp.Model.RoomModel;
 import com.example.tingtongapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,12 +29,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class roomManagementModel extends AppCompatActivity {
     RecyclerView recyclerMainRoom;
     MainActivityController mainActivityController;
-    List<RoomModel> roomModelList = new ArrayList<>();
     ProgressBar progressBarMyRooms;
     LinearLayout lnLtQuantityTopMyRooms;
     // Số lượng trả về.

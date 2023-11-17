@@ -1,5 +1,6 @@
 package com.example.tingtongapp.Adapters;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -136,27 +137,54 @@ public class AdapterMyRoom extends RecyclerView.Adapter<AdapterMyRoom.MyRoomView
         holder.deleteRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idRoom = room.getIdRoom();
+                Dialog dialogConfirmDeleteRoom = new Dialog(context);
+                dialogConfirmDeleteRoom.setContentView(R.layout.delete_dialog);
 
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference databaseReference = firebaseDatabase.getReference("ListRoom");
+                Button confirmDeleteRoom = (Button) dialogConfirmDeleteRoom.findViewById(R.id.button_confirm_dialog_delete_room);
+                Button closeDialogDeleteRoom = (Button) dialogConfirmDeleteRoom.findViewById(R.id.button_close_dialog_delete_room);
 
-                databaseReference.child(idRoom).removeValue().addOnSuccessListener(
-                    new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(context, "Có lỗi, vui lòng thử lại", Toast.LENGTH_SHORT).show();
-                        }
+                confirmDeleteRoom.setEnabled(true);
+                confirmDeleteRoom.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        deleteRoom(room);
+                        dialogConfirmDeleteRoom.cancel();
                     }
-                );
+                });
+
+                closeDialogDeleteRoom.setEnabled(true);
+                closeDialogDeleteRoom.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogConfirmDeleteRoom.cancel();
+                    }
+                });
+
+                dialogConfirmDeleteRoom.show();
             }
         });
+    }
+
+    private void deleteRoom(Room room){
+        String idRoom = room.getIdRoom();
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("ListRoom");
+
+        databaseReference.child(idRoom).removeValue().addOnSuccessListener(
+            new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(context, "Có lỗi, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                }
+            }
+        );
     }
 
     @Override

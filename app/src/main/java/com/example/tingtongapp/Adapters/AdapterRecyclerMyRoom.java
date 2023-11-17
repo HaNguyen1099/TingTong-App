@@ -40,7 +40,7 @@ public class AdapterRecyclerMyRoom extends Adapter<AdapterRecyclerMyRoom.ViewHol
             txtAddress = (TextView) itemView.findViewById(R.id.txt_address);
             imgRoom = (ImageView) itemView.findViewById(R.id.img_room);
 //            btnUpdate =(Button)itemView.findViewById(R.id.btn_update);
-            btnDelete =(Button)itemView.findViewById(R.id.btn_delete);
+//            btnDelete =(Button)itemView.findViewById(R.id.btn_delete);
 //            btnChange = itemView.findViewById(R.id.btn_change);
         }
     }

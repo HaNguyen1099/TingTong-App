@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,17 +11,11 @@
         android:layout_centerInParent="true"
         android:background="@drawable/custom_button_delete">
 
-        <ImageView
-            android:id="@+id/img_close"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:padding="3dp"
-            android:src="@drawable/remove" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
@@ -30,7 +26,7 @@
                 android:src="@drawable/cry" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="center_horizontal"
@@ -39,16 +35,35 @@
                 android:textColor="#271C1C"
                 android:textSize="15sp" />
 
-            <Button
-                android:id="@+id/btn_delete"
-                android:layout_marginBottom="10dp"
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="7dp"
-                android:background="@drawable/custom_button_delete_room"
-                android:text="Xóa"
-                android:textColor="@color/white" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="18dp">
+
+                <Button
+                    android:id="@+id/button_confirm_dialog_delete_room"
+                    android:layout_width="100dp"
+                    android:layout_height="44dp"
+                    android:text="Xóa"
+                    app:layout_constraintEnd_toStartOf="@+id/button_close_dialog_delete_room"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="0dp" />
+
+                <Button
+                    android:id="@+id/button_close_dialog_delete_room"
+                    android:layout_width="100dp"
+                    android:layout_height="44dp"
+                    android:text="Hủy"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/button_confirm_dialog_delete_room"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="0dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </RelativeLayout>
 
