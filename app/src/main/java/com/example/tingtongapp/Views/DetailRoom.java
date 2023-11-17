@@ -7,14 +7,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tingtongapp.Adapters.AdapterListServices;
-import com.example.tingtongapp.Model.ImageRoomModel;
 import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.Model.UserModel;
 import com.example.tingtongapp.R;
@@ -92,7 +90,7 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle("Quay lại");
+            getSupportActionBar().setTitle("Phòng mới đăng");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }

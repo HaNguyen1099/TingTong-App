@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="180dp"
         android:orientation="horizontal">
         <LinearLayout
             android:layout_width="150dp"
@@ -22,8 +22,8 @@
                 <com.makeramen.roundedimageview.RoundedImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/my_room_image_view_demo_room"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_marginLeft="10dp"
                     android:scaleType="centerCrop"
                     app:riv_corner_radius="5dip"
@@ -131,7 +131,6 @@
                     android:layout_weight="1"
                     android:text="Chưa thuê"
                     android:textSize="13dp" />
-
                 <Button
                     android:id="@+id/my_room_button_delete_room"
                     android:layout_width="120dp"
