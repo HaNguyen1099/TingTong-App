@@ -51,7 +51,6 @@ public class AdapterMyRoom extends RecyclerView.Adapter<AdapterMyRoom.MyRoomView
         // display info room
         try {
             holder.title.setText(room.getTitle());
-            holder.typeOfRoom.setText(room.getTypeOfRoom());
             holder.address.setText(room.getAddress());
 
             int rentingRoomPrice = Integer.parseInt(room.getRentingPrice());
@@ -169,7 +168,7 @@ public class AdapterMyRoom extends RecyclerView.Adapter<AdapterMyRoom.MyRoomView
     }
 
     class MyRoomViewHolder extends RecyclerView.ViewHolder{
-        private TextView title, address, typeOfRoom, rentingPrice, sizeRoom, dateAdded;
+        private TextView title, address, rentingPrice, sizeRoom, dateAdded;
         private ImageView demoRoomImg;
         private Button updateRoom, deleteRoom;
 
@@ -178,7 +177,6 @@ public class AdapterMyRoom extends RecyclerView.Adapter<AdapterMyRoom.MyRoomView
             if (itemView == null)
                 return;
             title = (TextView) itemView.findViewById(R.id.my_room_text_view_name_room);
-            typeOfRoom = (TextView) itemView.findViewById(R.id.my_room_text_view_type_room);
             rentingPrice = (TextView) itemView.findViewById(R.id.my_room_text_view_price_room);
             address = (TextView) itemView.findViewById(R.id.my_room_text_view_address_room);
             sizeRoom = (TextView) itemView.findViewById(R.id.my_room_text_view_area_room);
