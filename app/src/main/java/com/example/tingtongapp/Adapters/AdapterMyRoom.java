@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.R;
 import com.example.tingtongapp.Views.DetailRoom;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -70,7 +75,12 @@ public class AdapterMyRoom extends RecyclerView.Adapter<AdapterMyRoom.MyRoomView
                 }
             }
 
-            holder.updateRoom.setText("Chưa thuê");
+            String conditionRoom = room.getConditionRoom();
+            if(conditionRoom.equals("Còn")){
+                holder.updateRoom.setText("Chưa thuê");
+            }else{
+                holder.updateRoom.setText("Đã thuê");
+            }
 
         }catch (Exception e){
             e.printStackTrace();
@@ -106,6 +116,48 @@ public class AdapterMyRoom extends RecyclerView.Adapter<AdapterMyRoom.MyRoomView
                 }
             }
         });
+
+        holder.updateRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String idRoom = room.getIdRoom();
+
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference databaseReference = firebaseDatabase.getReference("ListRoom");
+
+                databaseReference.child(idRoom).child("conditionRoom").setValue("Hết").addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        holder.deleteRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String idRoom = room.getIdRoom();
+
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference databaseReference = firebaseDatabase.getReference("ListRoom");
+
+                databaseReference.child(idRoom).removeValue().addOnSuccessListener(
+                    new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(context, "Có lỗi, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                );
+            }
+        });
     }
 
     @Override
@@ -138,126 +190,3 @@ public class AdapterMyRoom extends RecyclerView.Adapter<AdapterMyRoom.MyRoomView
         }
     }
 }
-
-
-
-
-//package com.example.tingtongapp.Adapters;
-//
-//import android.content.Context;
-//import android.content.Intent;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.widget.Button;
-//import android.widget.ImageView;
-//import android.widget.TextView;
-//
-//import androidx.annotation.NonNull;
-//import androidx.recyclerview.widget.RecyclerView;
-//
-//import com.example.tingtongapp.Model.Room;
-//import com.example.tingtongapp.R;
-//import com.example.tingtongapp.Views.DetailRoom;
-//import com.squareup.picasso.Callback;
-//import com.squareup.picasso.Picasso;
-//
-//import java.util.ArrayList;
-//
-//public class AdapterMyRoom extends RecyclerView.Adapter<AdapterMyRoom.MyRoomHolder>{
-//    private ArrayList<Room> rooms = new ArrayList<>();
-//    private Context context;
-//
-//    public AdapterMyRoom(ArrayList<Room> rooms, Context context){
-//        this.rooms = rooms;
-//        this.context = context;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public MyRoomHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_room_element_list_view, parent, false);
-//        return new MyRoomHolder(view);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull MyRoomHolder holder, int position) {
-//        Room room = rooms.get(position);
-//
-//        if(room == null)
-//            return;
-//
-//        try {
-//            holder.dateAddedRoom.setText(room.getDateAdded());
-//            holder.typeOfRoom.setText(room.getTypeOfRoom());
-//            holder.titleRoom.setText(room.getTitle());
-//            holder.areaRoom.setText(room.getLengthRoom() + "m x " + room.getWidthRoom() + "m");
-//            holder.addressRoom.setText(room.getAddress());
-//
-//            int price = Integer.parseInt(room.getRentingPrice());
-//            float rentingPriceFloat = (float)((float)price / 1000000.0);
-//            holder.rentingPriceRoom.setText(String.format("%.2f", rentingPriceFloat) + " tr/tháng");
-//
-//            if(room.getConditionRoom().equals("Còn")){
-//                holder.updateRoom.setText("Chưa thuê");
-//            }else{
-//                holder.updateRoom.setText("Đã thuê");
-//            }
-//
-//            Picasso.get().load(room.getImageUrlNew()).into(holder.imageDemoRoom, new Callback() {
-//                @Override
-//                public void onSuccess() {
-//                    // Do nothing
-//                }
-//
-//                @Override
-//                public void onError(Exception e) {
-//                    int resId = context.getResources().getIdentifier("ic_room", "drawable", context.getPackageName());
-//                    holder.imageDemoRoom.setImageResource(resId);
-//                    e.printStackTrace();
-//                }
-//            });
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
-//
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Room room = rooms.get(holder.getAdapterPosition());
-//
-//                if(room != null){
-//                    Intent intent = new Intent(context, DetailRoom.class);
-//                    intent.putExtra("intentDetailRoom", room.getIdRoom());
-//                    context.startActivity(intent);
-//                }
-//            }
-//        });
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return 0;
-//    }
-//
-//    class MyRoomHolder extends RecyclerView.ViewHolder {
-//        TextView dateAddedRoom, titleRoom, typeOfRoom, rentingPriceRoom, areaRoom, addressRoom;
-//        ImageView imageDemoRoom;
-//        Button updateRoom, deleteRoom;
-//
-//        public MyRoomHolder(@NonNull View itemView) {
-//            super(itemView);
-//
-//            dateAddedRoom = (TextView) itemView.findViewById(R.id.my_room_text_view_time_added);
-//            titleRoom = (TextView) itemView.findViewById(R.id.my_room_text_view_name_room);
-//            typeOfRoom = (TextView) itemView.findViewById(R.id.my_room_text_view_type_room);
-//            rentingPriceRoom = (TextView) itemView.findViewById(R.id.my_room_text_view_price_room);
-//            areaRoom = (TextView) itemView.findViewById(R.id.my_room_text_view_address_room);
-//
-//            imageDemoRoom = (ImageView) itemView.findViewById(R.id.my_room_image_view_demo_room);
-//
-//            updateRoom = (Button) itemView.findViewById(R.id.my_room_button_update_room);
-//            deleteRoom = (Button) itemView.findViewById(R.id.my_room_button_delete_room);
-//        }
-//    }
-//}
