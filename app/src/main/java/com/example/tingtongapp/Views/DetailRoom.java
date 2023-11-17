@@ -1,8 +1,13 @@
 package com.example.tingtongapp.Views;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,8 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.tingtongapp.Adapters.AdapterListServices;
+import com.example.tingtongapp.Adapters.AdapterViewPagerImageShow;
 import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.Model.UserModel;
 import com.example.tingtongapp.R;
@@ -98,6 +105,16 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
             getSupportActionBar().setTitle("Phòng mới đăng");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
+        // Add event click to open dialog show detail imagesRoom
+        for(ImageView imgView : imageView){
+            imgView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showImageDialog();
+                }
+            });
         }
     }
 
@@ -187,6 +204,59 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private void showImageDialog() {
+        ArrayList<String> listImagesUrlString = room.getAllImagesRoom();
+        int listImagesUrlSize = listImagesUrlString.size();
+        Dialog dialogShowImageDetailRoom = new Dialog(DetailRoom.this);
+
+        dialogShowImageDetailRoom.setContentView(R.layout.dialog_show_image_detail_room);
+        ViewPager viewPagerShowImageRoom = (ViewPager) dialogShowImageDetailRoom.findViewById(R.id.viewPager_showImage_detail_room);
+        Button closeDialog = (Button) dialogShowImageDetailRoom.findViewById(R.id.btn_closeShowImage_detail_room);
+        TextView positionImageShow = (TextView) dialogShowImageDetailRoom.findViewById(R.id.txt_positionImage_detail_room);
+
+        AdapterViewPagerImageShow adapterViewPagerImageShow = new AdapterViewPagerImageShow(DetailRoom.this, listImagesUrlString);
+        viewPagerShowImageRoom.setAdapter(adapterViewPagerImageShow);
+        positionImageShow.setText("1/" + listImagesUrlSize);
+
+        viewPagerShowImageRoom.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+                int index = viewPagerShowImageRoom.getCurrentItem() + 1;
+                positionImageShow.setText(index + "/" + listImagesUrlSize);
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
+
+        closeDialog.setEnabled(true);
+        closeDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogShowImageDetailRoom.cancel();
+            }
+        });
+
+        dialogShowImageDetailRoom.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialogShowImageDetailRoom.getWindow().setDimAmount(0.9f);
+
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        Window window = dialogShowImageDetailRoom.getWindow();
+        layoutParams.copyFrom(window.getAttributes());
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+        window.setAttributes(layoutParams);
+
+        dialogShowImageDetailRoom.show();
     }
 
     @Override
