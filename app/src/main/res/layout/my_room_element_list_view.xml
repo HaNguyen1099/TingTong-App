@@ -127,15 +127,15 @@
                 <Button
                     android:id="@+id/my_room_button_update_room"
                     android:layout_width="120dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
                     android:text="Chưa thuê"
                     android:textSize="13dp" />
                 <Button
                     android:id="@+id/my_room_button_delete_room"
                     android:layout_width="120dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:text="Xóa phòng"
