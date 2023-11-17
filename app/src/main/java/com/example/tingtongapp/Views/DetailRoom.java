@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class DetailRoom extends AppCompatActivity implements View.OnClickListener {
@@ -31,7 +32,7 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
     private Room room;
     private TextView typeOfRoom, title, rentingPrice, conditionRoom, amountOfPeople, acreageRoom, description, address, phoneContact;
     private ArrayList<ImageView> imageView;
-    private TextView moreImg;
+    private TextView moreImg, electricityPrice, waterPrice, wifiPrice, parkingPrice;
     private RecyclerView listServicesRoom;
 
     @Override
@@ -77,6 +78,10 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
         description = findViewById(R.id.txt_roomDescription);
         address = findViewById(R.id.txt_roomAddress);
         phoneContact = findViewById(R.id.txt_room_phonenumber);
+        electricityPrice = findViewById(R.id.text_view_detail_room_electricity_price);
+        waterPrice = findViewById(R.id.text_view_detail_room_water_price);
+        wifiPrice = findViewById(R.id.text_view_detail_room_wifi_price);
+        parkingPrice = findViewById(R.id.text_view_detail_room_parking_price);
 
         moreImg = findViewById(R.id.txt_more_img);
         imageView = new ArrayList<>();
@@ -116,6 +121,32 @@ public class DetailRoom extends AppCompatActivity implements View.OnClickListene
             acreageRoom.setText(room.getLengthRoom() + "m x " + room.getWidthRoom() + "m");
             description.setText(room.getDescription());
             address.setText(room.getAddress());
+
+            DecimalFormat formatPrice = new DecimalFormat("#.#");
+            float electricityPriceFloat = room.getElectricityPrice() + 0.0f;
+            float waterPriceFloat = room.getWaterPrice() + 0.0f;
+            float wifiPriceFloat = room.getInternetPrice() + 0.0f;
+            float parkingPriceFloat = room.getParkingFee() + 0.0f;
+            if(electricityPriceFloat > 0.0){
+                electricityPrice.setText(formatPrice.format(electricityPriceFloat / 1000.0) + "k");
+            }else{
+                electricityPrice.setText("Miễn phí");
+            }
+            if(waterPriceFloat > 0.0){
+                waterPrice.setText(formatPrice.format(waterPriceFloat / 1000.0) + "k");
+            }else{
+                waterPrice.setText("Miễn phí");
+            }
+            if(wifiPriceFloat > 0.0){
+                wifiPrice.setText(formatPrice.format(wifiPriceFloat / 1000.0) + "k");
+            }else{
+                wifiPrice.setText("Miễn phí");
+            }
+            if(parkingPriceFloat > 0.0){
+                parkingPrice.setText(formatPrice.format(parkingPriceFloat / 1000.0) + "k");
+            }else{
+                parkingPrice.setText("Miễn phí");
+            }
 
             UserModel use1r = room.getRoomOwner();
             phoneContact.setText(use1r.getPhoneNumber());
