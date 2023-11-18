@@ -320,7 +320,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/ic_svg_light_100" />
+                            android:src="@drawable/water" />
 
                         <TextView
                             android:id="@+id/text_view_detail_room_water_price"
