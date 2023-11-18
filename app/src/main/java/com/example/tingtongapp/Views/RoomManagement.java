@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tingtongapp.Adapters.AdapterMyRoom;
 import com.example.tingtongapp.Model.Room;
+import com.example.tingtongapp.Model.UserModel;
 import com.example.tingtongapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,9 +24,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class RoomManagement extends AppCompatActivity {
     RecyclerView recyclerMainRoom;
@@ -94,36 +101,44 @@ public class RoomManagement extends AppCompatActivity {
     // Get user's room list
     private void getData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference("ListRoom");
+        DatabaseReference databaseReference = firebaseDatabase.getReference();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        Query query = databaseReference.child("ListRoom").orderByChild("idOwner").equalTo(currentUser.getUid());
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ArrayList<Room> roomArrayList = new ArrayList<>();
-                FirebaseAuth auth = FirebaseAuth.getInstance();
-                FirebaseUser currentUser = auth.getCurrentUser();
-                String uidCurrentUser = currentUser.getUid();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<Room> listUserRoom = new ArrayList<>();
 
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
                     try {
-                        Room room = dataSnapshot.getValue(Room.class);
-
-                        // Filter room by idOwner
-                        if(room.getIdOwner().equals(uidCurrentUser)){
-                            roomArrayList.add(room);
-                        }
-                    }catch (Exception e){
+                        Room room = data.getValue(Room.class);
+                        listUserRoom.add(room);
+                    } catch (Exception e){
                         Toast.makeText(RoomManagement.this, "Lỗi tải dữ liệu phòng", Toast.LENGTH_SHORT).show();
                     }
                 }
 
-                int quantityMyRooms = roomArrayList.size();
+                Collections.sort(listUserRoom, new Comparator<Room>() {
+                    DateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+                    @Override
+                    public int compare(Room r1, Room r2) {
+                        try {
+                            return f.parse(r2.getDateAdded()).compareTo(f.parse(r1.getDateAdded()));
+                        } catch (ParseException e) {
+                            throw new IllegalArgumentException(e);
+                        }
+                    }
+                });
+
+                int quantityMyRooms = listUserRoom.size();
                 lnLtQuantityTopMyRooms.setVisibility(View.VISIBLE);
                 progressBarMyRooms.setVisibility(View.GONE);
                 txtQuantityMyRooms.setText("" + quantityMyRooms);
                 txtQuantityRoom.setText("" + quantityMyRooms);
 
-                AdapterMyRoom listMyRoom = new AdapterMyRoom(RoomManagement.this, roomArrayList);
+                AdapterMyRoom listMyRoom = new AdapterMyRoom(RoomManagement.this, listUserRoom);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RoomManagement.this);
                 RecyclerView recyclerViewListMyRoom =  (RecyclerView)findViewById(R.id.recycler_Main_Room);
                 recyclerViewListMyRoom.setLayoutManager(linearLayoutManager);
@@ -131,7 +146,7 @@ public class RoomManagement extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(RoomManagement.this, "Lỗi kết nối cơ sở dữ liệu", Toast.LENGTH_SHORT).show();
             }
         });
