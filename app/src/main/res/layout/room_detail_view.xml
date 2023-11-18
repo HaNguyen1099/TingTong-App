@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".Views.DetailRoom">
 
     <RelativeLayout
@@ -262,21 +263,135 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:orientation="horizontal">
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_price_room_detail"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                            android:stretchMode="spacingWidthUniform">
-
-                        </androidx.recyclerview.widget.RecyclerView>
-                    </LinearLayout>
+                        android:orientation="horizontal" />
 
                 </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- LinearLayout 1 -->
+                    <LinearLayout
+                        android:id="@+id/linear1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/linear2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_svg_light_100" />
+
+                        <TextView
+                            android:id="@+id/text_view_detail_room_electricity_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:text="Text 1" />
+
+                    </LinearLayout>
+
+                    <!-- LinearLayout 2 -->
+                    <LinearLayout
+                        android:id="@+id/linear2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/linear3"
+                        app:layout_constraintStart_toEndOf="@+id/linear1"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_svg_light_100" />
+
+                        <TextView
+                            android:id="@+id/text_view_detail_room_water_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:text="Text 2" />
+
+                    </LinearLayout>
+
+                    <!-- LinearLayout 3 -->
+                    <LinearLayout
+                        android:id="@+id/linear3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/linear4"
+                        app:layout_constraintStart_toEndOf="@+id/linear2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/wifi" />
+
+                        <TextView
+                            android:id="@+id/text_view_detail_room_wifi_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:text="Text 3" />
+
+                    </LinearLayout>
+
+                    <!-- LinearLayout 4 -->
+                    <LinearLayout
+                        android:id="@+id/linear4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/linear3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/motorcycle" />
+
+                        <TextView
+                            android:id="@+id/text_view_detail_room_parking_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:text="Text 4" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -405,21 +520,21 @@
                             android:height="30dp"
                             android:background="@drawable/custom_button_call_detail"
                             android:text="Liên hệ"
-                            android:textSize="16dp"
                             android:textAllCaps="false"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="16dp" />
 
                         <Button
                             android:id="@+id/btn_directMap"
                             android:layout_width="150dp"
                             android:layout_height="40dp"
-                            android:height="30dp"
                             android:layout_marginLeft="20dp"
+                            android:height="30dp"
                             android:background="@drawable/custom_button_call_detail"
                             android:text="Check map"
-                            android:textSize="16dp"
                             android:textAllCaps="false"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/white"
+                            android:textSize="16dp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -468,8 +583,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
                         android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
                         android:text="Cùng tiêu chí"
                         android:textColor="#666666"
                         android:textSize="20dp"
@@ -493,7 +608,7 @@
                             android:paddingLeft="5dp"
                             android:paddingRight="5dp"
                             android:stretchMode="spacingWidth"
-                            android:verticalSpacing="30dp"/>
+                            android:verticalSpacing="30dp" />
                         <!--End Hiển thị danh sách trọ random-->
 
                         <!--Processbar-->

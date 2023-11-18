@@ -18,9 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tingtongapp.Adapters.AdapterMyRoom;
 import com.example.tingtongapp.Controller.MainActivityController;
-import com.example.tingtongapp.Controller.RoomManagementControlller;
 import com.example.tingtongapp.Model.Room;
-import com.example.tingtongapp.Model.RoomModel;
 import com.example.tingtongapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,13 +29,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class roomManagementModel extends AppCompatActivity {
     RecyclerView recyclerMainRoom;
     MainActivityController mainActivityController;
-    RoomManagementControlller roomManagementControlller;
-    List<RoomModel> roomModelList = new ArrayList<>();
     ProgressBar progressBarMyRooms;
     LinearLayout lnLtQuantityTopMyRooms;
     // Số lượng trả về.
@@ -109,10 +104,6 @@ public class roomManagementModel extends AppCompatActivity {
 
     // lấy và hiển thị dữ liệu của phòng
     private void getData(){
-        roomManagementControlller = new RoomManagementControlller(this);
-        roomManagementControlller.loadQuantityInfo(UID, txtQuantityRoom);
-        // lấy thông tin về số lượng phòng của người dùng UID và hiển thị nó trong txtQuantityRoom
-
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("ListRoom");
 
@@ -135,6 +126,12 @@ public class roomManagementModel extends AppCompatActivity {
                         Toast.makeText(roomManagementModel.this, "Lỗi tải dữ liệu phòng", Toast.LENGTH_SHORT).show();
                     }
                 }
+
+                int quantityMyRooms = roomArrayList.size();
+                lnLtQuantityTopMyRooms.setVisibility(View.VISIBLE);
+                progressBarMyRooms.setVisibility(View.GONE);
+                txtQuantityMyRooms.setText("" + quantityMyRooms);
+                txtQuantityRoom.setText("" + quantityMyRooms);
 
                 AdapterMyRoom listMyRoom = new AdapterMyRoom(roomManagementModel.this, roomArrayList);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(roomManagementModel.this);
