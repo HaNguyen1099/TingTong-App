@@ -27,11 +27,9 @@ import com.example.tingtongapp.Adapters.AdapterImagePostRoomDemo;
 import com.example.tingtongapp.R;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class PostRoomStep3 extends Fragment implements View.OnClickListener{
-    private ArrayList<Uri> imageUrisPostRoom;
+    private ArrayList<Uri> imageUrisPostRoom = new ArrayList<>();
     private AdapterImagePostRoomDemo adapterImagePostRoomDemo;
     private ActivityResultLauncher<Intent> pickImageLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -111,7 +109,11 @@ public class PostRoomStep3 extends Fragment implements View.OnClickListener{
             pickImageLauncher.launch(intent);
         } else {
             if(id == R.id.btn_nextStep3_post_room) {
-                imageUrisPostRoom = adapterImagePostRoomDemo.getImageUris();
+                try {
+                    imageUrisPostRoom = adapterImagePostRoomDemo.getImageUris();
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
                 String listServicesRoom = "";
 
                 if(chBoxClock.isChecked()){

@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tingtongapp.Model.ImageRoomModel;
 import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.R;
 import com.example.tingtongapp.Views.DetailRoom;

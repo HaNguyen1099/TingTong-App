@@ -53,7 +53,7 @@ public class SearchRoomModel {
     }
 
     private DataSnapshot dataRoot;
-    private List<RoomModel> listSearchRoomsModel = new ArrayList<>();
+    private ArrayList<Room> listSearchRoomsModel = new ArrayList<>();
     // Số lượng phòng đã duyệt khi load more.
     private int filterDataQuantity = 0;
 

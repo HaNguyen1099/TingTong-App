@@ -1,9 +1,9 @@
 package com.example.tingtongapp.Controller.Interfaces;
 
-import com.example.tingtongapp.Model.RoomModel;
+import com.example.tingtongapp.Model.Room;
 
 public interface IMainRoomModel {
-    public void getListMainRoom(RoomModel valueRoom);
+    public void getListMainRoom(Room valueRoom);
     public void makeToast(String message);
     public void setButtonLoadMoreVerifiedRooms();
     public void setProgressBarLoadMore();

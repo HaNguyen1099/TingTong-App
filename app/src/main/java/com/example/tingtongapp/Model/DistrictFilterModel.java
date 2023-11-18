@@ -18,7 +18,6 @@ public class DistrictFilterModel {
         nodeRoot = FirebaseDatabase.getInstance().getReference().child("LocationRoom");
     }
 
-
     //Hàm trả về danh sách quận có trong firebase
     // nhận tham số filterString để lọc dữ liệu và dùng interface để gửi dữ liệu quận
     public void listDistrictLocation(String filterString, IDistrictFilterModel iDistrictFilterModel){
