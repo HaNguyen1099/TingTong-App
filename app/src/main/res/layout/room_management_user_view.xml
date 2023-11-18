@@ -42,6 +42,7 @@
                             android:layout_gravity="center_horizontal"
                             android:src="@drawable/ic_png_room_100"
                             android:layout_marginTop="10dp"/>
+
                         <TextView
                             android:id="@+id/txt_quantity_room"
                             android:layout_width="match_parent"
@@ -52,6 +53,7 @@
                             android:textColor="#FFFFFF"
                             android:textSize="18dp"
                             android:textStyle="bold" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
