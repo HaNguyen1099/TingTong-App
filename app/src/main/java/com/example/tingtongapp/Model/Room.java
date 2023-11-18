@@ -3,21 +3,9 @@ package com.example.tingtongapp.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
-
-import com.example.tingtongapp.Controller.Interfaces.IInfoOfAllRoomUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Room implements Parcelable {
     private String idRoom = "n", title = "n", description = "n", address = "n", typeOfRoom = "n", rentingPrice = "n", timeCreated = "n", owner, conditionRoom = "Còn", dateAdded = "15/11/2023";
@@ -40,14 +28,7 @@ public class Room implements Parcelable {
         return img;
     }
 
-    //id để generate từ firebase
-    private String typeID = "ids";
-    private double rentalCosts = 3.11;
     private UserModel roomOwner = new UserModel();
-    private String no = "n", county = "n", street = "n", ward = "n", city = "n";
-    private long currentNumber = 0, maxNumber = 0;
-    private List<String> listRoomsID = new ArrayList<>();
-    private List<RoomPriceModel> listRoomPrice = new ArrayList<>();
     private String listServices = "";
     private String idOwner = "";
 
@@ -59,6 +40,7 @@ public class Room implements Parcelable {
         return idOwner;
     }
 
+    // Constructor
     public Room(){
         setDateAdded();
     }
@@ -132,14 +114,6 @@ public class Room implements Parcelable {
         return rentingPrice;
     }
 
-    public String getTimeCreated() {
-        return timeCreated;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
     public String getConditionRoom() {
         return conditionRoom;
     }
@@ -160,44 +134,23 @@ public class Room implements Parcelable {
         return widthRoom;
     }
 
-    public String getTypeID() {
-        return typeID;
-    }
-
-    public double getRentalCosts() {
-        return rentalCosts;
-    }
-
-    public long getCurrentNumber() {
-        return currentNumber;
-    }
-
-    public long getMaxNumber() {
-        return maxNumber;
-    }
-
     public UserModel getRoomOwner() {
         return roomOwner;
     }
 
-    public String getNo() {
-        return no;
+    public String getCity() {
+        String s[] = this.address.split(", ");
+        return s[s.length - 1];
     }
 
-    public String getCounty() {
-        return county;
-    }
-
-    public String getStreet() {
-        return street;
+    public String getDistrict() {
+        String s[] = this.address.split(", ");
+        return s[s.length - 2];
     }
 
     public String getWard() {
-        return ward;
-    }
-
-    public String getCity() {
-        return city;
+        String s[] = this.address.split(", ");
+        return s[s.length - 3];
     }
 
     public void setTitle(String title) {
@@ -220,14 +173,6 @@ public class Room implements Parcelable {
         this.rentingPrice = rentingPrice;
     }
 
-    public void setTimeCreated(String timeCreated) {
-        this.timeCreated = timeCreated;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
     public void setConditionRoom(String conditionRoom) {
         this.conditionRoom = conditionRoom;
     }
@@ -244,49 +189,13 @@ public class Room implements Parcelable {
         this.widthRoom = widthRoom;
     }
 
-    public void setTypeID(String typeID) {
-        this.typeID = typeID;
-    }
-
     public void setIdRoom(String idRoom) {
         this.idRoom = idRoom;
-    }
-
-    public void setRentalCosts(double rentalCosts) {
-        this.rentalCosts = rentalCosts;
     }
 
     public void setRoomOwner(UserModel roomOwner) {
         this.roomOwner = roomOwner;
         setIdOwner();
-    }
-
-    public void setNo(String no) {
-        this.no = no;
-    }
-
-    public void setCounty(String county) {
-        this.county = county;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public void setWard(String ward) {
-        this.ward = ward;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setCurrentNumber(long currentNumber) {
-        this.currentNumber = currentNumber;
-    }
-
-    public void setMaxNumber(long maxNumber) {
-        this.maxNumber = maxNumber;
     }
 
     public static final Creator<Room> CREATOR = new Creator<Room>() {
@@ -321,21 +230,10 @@ public class Room implements Parcelable {
         internetPrice = in.readInt();
         parkingFee = in.readInt();
         listServices = in.readString();
-        typeID = in.readString();
-        rentalCosts = in.readDouble();
 
         // Read UserModel from the Parcel
         roomOwner = in.readParcelable(UserModel.class.getClassLoader());
-
-        no = in.readString();
-        county = in.readString();
-        street = in.readString();
-        ward = in.readString();
-        city = in.readString();
-        currentNumber = in.readLong();
-        maxNumber = in.readLong();
     }
-
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -358,47 +256,13 @@ public class Room implements Parcelable {
         dest.writeInt(internetPrice);
         dest.writeInt(parkingFee);
         dest.writeString(listServices);
-        dest.writeString(typeID);
-        dest.writeDouble(rentalCosts);
 
         // Write UserModel to the Parcel
         dest.writeParcelable(roomOwner, flags);
-
-        dest.writeString(no);
-        dest.writeString(county);
-        dest.writeString(street);
-        dest.writeString(ward);
-        dest.writeString(city);
-        dest.writeLong(currentNumber);
-        dest.writeLong(maxNumber);
     }
 
     @Override
     public int describeContents() {
         return 0;
     }
-
-    public void infoOfAllRoomOfUser(String UID, IInfoOfAllRoomUser iInfoOfAllRoomUser) {
-        // truy vấn đến csdl và lọc các phòng của từng người dùng
-        Query nodeRoomOrderbyUserID = FirebaseDatabase.getInstance().getReference().child("Room")
-                .orderByChild("owner")
-                .equalTo(UID);
-
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //Lấy ra tổng số phòng
-                int CountRoom = (int) dataSnapshot.getChildrenCount();
-                //Gửi thông tin tổng số phòng về UI
-                iInfoOfAllRoomUser.sendQuantity(CountRoom);
-
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        };
-        nodeRoomOrderbyUserID.addListenerForSingleValueEvent(valueEventListener);
-    }
-
-
 }

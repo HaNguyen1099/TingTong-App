@@ -192,9 +192,5 @@ public class searchView extends AppCompatActivity implements View.OnClickListene
         lnLtResultReturnSearchView.setVisibility(View.GONE);
         // Ẩn progress bar load more
         progressBarLoadMoreSearchView.setVisibility(View.GONE);
-
-//        searchViewController controller = new searchViewController(this, district, filterList, userId);
-//        controller.loadSearchRoom(recyclerSearchRoom,txtNumberRoom,progessBarLoad,lnLtResultReturnSearchView,
-//                nestedScrollSearchView, progressBarLoadMoreSearchView);
     }
 }

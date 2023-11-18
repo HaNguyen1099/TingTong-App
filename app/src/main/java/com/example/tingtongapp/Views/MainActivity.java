@@ -28,7 +28,6 @@ import com.example.tingtongapp.Controller.MainActivityController;
 import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.R;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -136,16 +135,13 @@ public class MainActivity extends Fragment {
         });
     }
 
-    //Load dữ liệu vào List danh sách trong lần đầu chạy
     @Override
     public void onStart() {
         super.onStart();
         setView();
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            mainActivityController = new MainActivityController(getContext(), userId);
-        }
-        //Load top địa điểm nhiều phòng
+
+        //Load top location has many rooms
+        mainActivityController = new MainActivityController(getContext());
         mainActivityController.loadTopLocation(grVLocation);
         progressBarMain.setVisibility(View.GONE);
     }

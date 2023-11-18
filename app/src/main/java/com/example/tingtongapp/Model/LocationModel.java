@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LocationModel implements Comparable<LocationModel> {
@@ -64,11 +65,9 @@ public class LocationModel implements Comparable<LocationModel> {
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                //Tạo list mới
+            // Init list location in Ha noi
                 List<LocationModel> listLocationModel = new ArrayList<LocationModel>();
-                //Khởi tạo giá trị cho list
-                listLocationModel.add(new LocationModel(R.drawable.qhd,"Quận Hà Đông",10));
+                listLocationModel.add(new LocationModel(R.drawable.qhd,"Quận Hà Đông",0));
                 listLocationModel.add(new LocationModel(R.drawable.qhm,"Quận Hoàng Mai",0));
                 listLocationModel.add(new LocationModel(R.drawable.qlb,"Quận Long Biên",0));
                 listLocationModel.add(new LocationModel(R.drawable.qtx,"Quận Thanh Xuân",0));
@@ -77,10 +76,9 @@ public class LocationModel implements Comparable<LocationModel> {
                 listLocationModel.add(new LocationModel(R.drawable.qcg,"Quận Cầu Giấy",0));
                 listLocationModel.add(new LocationModel(R.drawable.qdd,"Quận Đống Đa",0));
                 listLocationModel.add(new LocationModel(R.drawable.qhbt,"Quận Hai Bà Trưng",0));
-                listLocationModel.add(new LocationModel(R.drawable.qhk,"Quận Hoàn Kiếm",9));
+                listLocationModel.add(new LocationModel(R.drawable.qhk,"Quận Hoàn Kiếm",0));
                 listLocationModel.add(new LocationModel(R.drawable.qth,"Quận Tây Hồ",0));
-                listLocationModel.add(new LocationModel(R.drawable.qntl,"Quận Nam Từ Liêm",8));
-                //End khởi tạo giá trị cho list
+                listLocationModel.add(new LocationModel(R.drawable.qntl,"Quận Nam Từ Liêm",0));
 
                 //Lặp và thêm số lượng phòng vào trong list
                 for(int i=0;i<12;i++){
@@ -104,48 +102,6 @@ public class LocationModel implements Comparable<LocationModel> {
 
                 //Kích hoạt interface
                 locationModelInterface.getListTopRoom(dataSend);
-                //End tạo mới data và gửi
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        };
-
-        nodeLocationRoom.addListenerForSingleValueEvent(valueEventListener);
-    }
-
-    public void Top_1_Location(IStringCallBack iStringCallBack){
-        DatabaseReference nodeRoot = FirebaseDatabase.getInstance().getReference();
-
-        DatabaseReference nodeLocationRoom=nodeRoot.child("LocationRoom");
-
-        ValueEventListener valueEventListener = new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int count =0;
-                String Top_1_location = "";
-                int Top_Child=0;
-                for(DataSnapshot SnapShotDicstrict:dataSnapshot.getChildren()){
-                    count++;
-                    int currentNumber = 0;
-                    for(DataSnapshot SnapShotWarn:SnapShotDicstrict.getChildren()){
-                        for(DataSnapshot SnapShotStreet:SnapShotWarn.getChildren()){
-                            //Lấy ra số phòng trên đường đó
-                            currentNumber+=SnapShotStreet.getChildrenCount();
-                        }
-                    }
-                    Log.d("checklocate", SnapShotDicstrict.getKey());
-                    if(currentNumber>Top_Child){
-                        Top_Child=currentNumber;
-                        Top_1_location = SnapShotDicstrict.getKey();
-
-                    }
-                    currentNumber=0;
-                }
-                iStringCallBack.sendString(Top_1_location);
             }
 
             @Override
