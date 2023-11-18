@@ -13,11 +13,11 @@ import com.example.tingtongapp.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class locationSearchController {
+public class LocationSearchController {
     Context context;
     DistrictFilterModel districtFilterModel;
 
-    public locationSearchController(Context context){
+    public LocationSearchController(Context context){
         this.context = context;
         this.districtFilterModel = new DistrictFilterModel();
     }

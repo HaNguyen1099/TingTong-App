@@ -33,7 +33,7 @@ public class LoginView extends AppCompatActivity implements View.OnClickListener
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
-            Intent iMain = new Intent(LoginView.this, Main_Menu.class);
+            Intent iMain = new Intent(LoginView.this, MainMenu.class);
             startActivity(iMain);
             finish();
         }
@@ -77,7 +77,7 @@ public class LoginView extends AppCompatActivity implements View.OnClickListener
                                 if (task.isSuccessful()) {
                                     Toast.makeText(LoginView.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
 
-                                    Intent iMain = new Intent(LoginView.this, Main_Menu.class);
+                                    Intent iMain = new Intent(LoginView.this, MainMenu.class);
                                     startActivity(iMain);
                                 } else {
                                     Toast.makeText(LoginView.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();

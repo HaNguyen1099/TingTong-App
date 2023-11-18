@@ -26,18 +26,17 @@ import com.example.tingtongapp.Adapters.AdapterRecyclerSuggestions;
 import com.example.tingtongapp.ClassOther.myFilter;
 import com.example.tingtongapp.Controller.Interfaces.ICallBackSearchView;
 import com.example.tingtongapp.R;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class searchView extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, ICallBackSearchView {
+public class SearchView extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, ICallBackSearchView {
 
     public static final String REQUEST = "requestcode";
     public final static int REQUEST_DISTRICT = 99;
 
-    //Lưu lại trạng thái của 4 fragment thay vì tạo mới
+    // Save state of 4 fragment instead reload
     private HashMap<Integer, Fragment> fragmentHashMap = new HashMap<>();
     ImageView ivBack;
     CheckBox chBoxPrice, chBoxType, chBoxNumber, chBoxConvenient;
@@ -54,16 +53,11 @@ public class searchView extends AppCompatActivity implements View.OnClickListene
     String district;
     List<myFilter> filterList;
     AdapterRecyclerFilter adapterRecyclerFilter;
-    String userId;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_view);
-
-        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
         initData();
         initControl();
         getDistrict();
@@ -92,20 +86,19 @@ public class searchView extends AppCompatActivity implements View.OnClickListene
         edTSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(searchView.this, LocationSearch.class);
+                Intent intent = new Intent(SearchView.this, LocationSearch.class);
                 intent.putExtra(REQUEST,REQUEST_DISTRICT);
                 startActivityForResult(intent,REQUEST_DISTRICT);
             }
         });
 
         txtNumberRoom = findViewById(R.id.txt_number_room);
-        //Ẩn text
 
         progessBarLoad = findViewById(R.id.progress_bar_search_view);
-        //Đổi màu cho progessbar
+        // Edit color for progressbar
         progessBarLoad.getIndeterminateDrawable().setColorFilter(Color.parseColor("#F54500"),
                 android.graphics.PorterDuff.Mode.MULTIPLY);
-        //Ẩn lần đầu
+        // Hide on the first load
         progessBarLoad.setVisibility(View.GONE);
 
         lnLtResultReturnSearchView = (LinearLayout) findViewById(R.id.lnLt_resultReturn_search_view);
@@ -144,7 +137,7 @@ public class searchView extends AppCompatActivity implements View.OnClickListene
         btnsSubmit = findViewById(R.id.btn_submit);
         btnsSubmit.setOnClickListener(this);
 
-        //Ẩn nút bấm lần đầu khởi tạo
+        // Hide for the first create
         btnsSubmit.setVisibility(View.GONE);
 
         btnDeleteAllFilter = findViewById(R.id.btn_delete_all_filter);
@@ -184,13 +177,12 @@ public class searchView extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    //Hàm gọi hàm tìm kiếm trong controller
     private void callSearchRoomController(){
-        //Hiện progess bar
+        // Display progress bar
         progessBarLoad.setVisibility(View.VISIBLE);
-        //Ẩn số lượng kết quả
+        // Hide quantity result
         lnLtResultReturnSearchView.setVisibility(View.GONE);
-        // Ẩn progress bar load more
+        // Hide progress bar load more
         progressBarLoadMoreSearchView.setVisibility(View.GONE);
     }
 }

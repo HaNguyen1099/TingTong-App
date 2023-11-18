@@ -35,7 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class personalPage extends AppCompatActivity {
+public class PersonalPage extends AppCompatActivity {
     private EditText edtNamePersonalPage, edtPhonePersonalPage ;
     private Spinner spnGenderPersonalPage ;
     private CheckBox chBoxEditPersonalPage;
@@ -69,24 +69,21 @@ public class personalPage extends AppCompatActivity {
             }
         });
 
-        // quản lý xác thực người dùng
         firebaseAuth = FirebaseAuth.getInstance();
-        // lấy thông tin người dùng hiện tại đã đăng nhập vào ứng dụng
         firebaseUser = firebaseAuth.getCurrentUser();
 
         initControl();
         EditPersonal();
     }
 
-    // lấy dữ liệu từ các thành phần giao diện người dùng và gán cho các biến dữ liệu
     private void getDataFromControl(){
         name = edtNamePersonalPage.getText().toString();
         phoneNumber = edtPhonePersonalPage.getText().toString();
     }
 
-    // hiển thì thông tin cá nhân hiện tại của người dùng lên giao diện
+    // Display info current user
     private void initControl(){
-        // tạo giao diện thả xuống cho giới tính
+        // Create layout display drop down for user gender
         List<String> list = new ArrayList<>();
         list.add("Nam");
         list.add("Nữ");
@@ -108,15 +105,14 @@ public class personalPage extends AppCompatActivity {
             }
         });
 
+        // Get current user
         String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        // tạo tham chiếu tới nút của người dùng trong firebase -> xác định được hiển thị thông tin của ai
         DatabaseReference nodeUser = FirebaseDatabase.getInstance().getReference().child("Users").child(UID);
 
-        // lắng nghe sự thay đổi dữ liệu trong nút của người dùng -> điền vào các trường của giao diện
         ValueEventListener valueEventListener = new ValueEventListener() {
-            // onDataChange, dl được đọc và chuyển thành 1 UserModel -> điển vào các trường EditText
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Display info current user
                 UserModel userModel = dataSnapshot.getValue(UserModel.class);
                 edtNamePersonalPage.setText(userModel.getName());
                 edtPhonePersonalPage.setText(userModel.getPhoneNumber());
@@ -134,13 +130,12 @@ public class personalPage extends AppCompatActivity {
         nodeUser.addListenerForSingleValueEvent(valueEventListener);
     }
 
-    // chỉnh sửa thông tin cá nhân
     private void EditPersonal(){
+        // Get info current user
         String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        // tạo tham chiếu tới nút của người dùng trong firebase -> xác định được hiển thị thông tin của ai
         DatabaseReference nodeUser = FirebaseDatabase.getInstance().getReference().child("Users").child(UID);
 
-        // lắng nghe sự kiện nhấn checkbox
+        // Checkbox listener
         chBoxEditPersonalPage.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
@@ -172,14 +167,13 @@ public class personalPage extends AppCompatActivity {
         });
     }
 
-    // đổi mật khẩu
     public void ChangePass(View v){
         edtOldPasswordPersonalPage.setVisibility(View.VISIBLE);
         edtNewPasswordPersonalPage.setVisibility(View.VISIBLE);
         edtRetypeNewPasswordPersonalPage.setVisibility(View.VISIBLE);
         btnChangePasswordPersonalPage.setVisibility(View.VISIBLE);
 
-        // khi người dùng ấn text đổi mật khẩu
+        // When user click change password
         btnChangePasswordPersonalPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,10 +183,10 @@ public class personalPage extends AppCompatActivity {
                 final String oldPass = edtOldPasswordPersonalPage.getText().toString();
 
                 if(oldPass.equals("")==true||newPass.equals("")==true||retypeNewPass.equals("")==true){
-                    Toast.makeText(personalPage.this, "Hãy điền đủ thông tin yêu cầu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PersonalPage.this, "Hãy điền đủ thông tin yêu cầu", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    // kiểm tra mật khẩu cũ có giống vs mk đăng ký không, nếu giống thì updatepassword
+                    // Update password if new password is different from old password
                     AuthCredential credential = EmailAuthProvider.getCredential(email, oldPass);
                     firebaseUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -203,9 +197,9 @@ public class personalPage extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (!task.isSuccessful()) {
-                                                Toast.makeText(personalPage.this, "Lỗi!!!Xin thực hiện lại", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(PersonalPage.this, "Lỗi!!!Xin thực hiện lại", Toast.LENGTH_SHORT).show();
                                             } else {
-                                                Toast.makeText(personalPage.this, "Thay đổi mật khẩu thành  công", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(PersonalPage.this, "Thay đổi mật khẩu thành  công", Toast.LENGTH_SHORT).show();
                                                 edtOldPasswordPersonalPage.setVisibility(View.INVISIBLE);
                                                 edtNewPasswordPersonalPage.setVisibility(View.INVISIBLE);
                                                 edtRetypeNewPasswordPersonalPage.setVisibility(View.INVISIBLE);
@@ -215,11 +209,11 @@ public class personalPage extends AppCompatActivity {
                                     });
                                 }
                                 else {
-                                    Toast.makeText(personalPage.this, "Xác nhận mật khẩu mới không đúng!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(PersonalPage.this, "Xác nhận mật khẩu mới không đúng!", Toast.LENGTH_SHORT).show();
                                 }
                             }
                             else {
-                                Toast.makeText(personalPage.this, "Xác thực người dùng thất bại do nhập mật khẩu không đúng!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PersonalPage.this, "Xác thực người dùng thất bại do nhập mật khẩu không đúng!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

@@ -14,26 +14,26 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/app"
+        android:icon="@drawable/house"
         android:label="TingTong"
-        android:roundIcon="@drawable/rapp"
+        android:roundIcon="@drawable/house"
         android:supportsRtl="true"
         android:theme="@style/Theme.TingTongApp"
         tools:targetApi="31">
         <activity
-            android:name=".Views.searchView"
+            android:name=".Views.SearchView"
             android:exported="false" />
         <activity
             android:name=".Views.LocationSearch"
             android:exported="false" />
         <activity
-            android:name=".Views.Account_View"
+            android:name=".Views.AccountView"
             android:exported="false" />
         <activity
-            android:name=".Views.personalPage"
+            android:name=".Views.PersonalPage"
             android:exported="false" />
         <activity
-            android:name=".Views.roomManagementModel"
+            android:name=".Views.RoomManagement"
             android:exported="false" />
         <activity
             android:name=".Views.DetailRoom"
@@ -42,7 +42,7 @@
             android:name=".Views.PostRoom"
             android:exported="false" />
         <activity
-            android:name=".Views.Main_Menu"
+            android:name=".Views.MainMenu"
             android:exported="false" />
         <activity
             android:name=".Views.ResetPassword"

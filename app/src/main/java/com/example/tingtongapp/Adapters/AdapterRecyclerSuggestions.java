@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tingtongapp.R;
-import com.example.tingtongapp.Views.searchView;
+import com.example.tingtongapp.Views.SearchView;
 
 import java.util.List;
 
@@ -67,7 +67,7 @@ public class AdapterRecyclerSuggestions extends RecyclerView.Adapter<AdapterRecy
                 //Trường hợp gọi từ màn hình chính
                 if(isSearchRoomCall == false){
                     // Tạo một Intent để chuyển từ màn hình hiện tại (context) sang searchView (một màn hình khác).
-                    Intent intent = new Intent(context, searchView.class);
+                    Intent intent = new Intent(context, SearchView.class);
                     // Đặt dữ liệu (quận) để chuyển đến màn hình mới thông qua Intent.
                     intent.putExtra(INTENT_DISTRICT, stringListDistrictLocation.get(position));
                     // Khởi chạy màn hình mới (searchView) bằng cách sử dụng Intent.

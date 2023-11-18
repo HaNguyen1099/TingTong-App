@@ -6,7 +6,6 @@ import android.widget.GridView;
 import com.example.tingtongapp.Adapters.AdapterLocation;
 import com.example.tingtongapp.Controller.Interfaces.ILocationModel;
 import com.example.tingtongapp.Model.LocationModel;
-import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.R;
 
 import java.util.ArrayList;

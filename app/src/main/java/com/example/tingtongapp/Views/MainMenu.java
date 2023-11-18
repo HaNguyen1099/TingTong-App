@@ -12,16 +12,16 @@ import android.widget.FrameLayout;
 
 import com.example.tingtongapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
-public class Main_Menu extends AppCompatActivity {
+public class MainMenu extends AppCompatActivity {
 
     BottomNavigationView bottomNavigation;
     FrameLayout fragmentContainer;
 
     MainActivity HomeView;
 
-    Account_View AccountView;
-    PostRoom PostRoomView;
+    AccountView AccountView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +29,15 @@ public class Main_Menu extends AppCompatActivity {
         setContentView(R.layout.main__menu);
 
         initControl();
-        //Chạy lần đầu tiên sẽ load vào màn hình main
         HomeView = new MainActivity();
         setFragment(HomeView);
     }
 
-    //Khởi tạo control
     private void initControl() {
         fragmentContainer = findViewById(R.id.fragment_container);
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
-        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
@@ -48,12 +46,12 @@ public class Main_Menu extends AppCompatActivity {
                     return true;
                 }
                 else if(id == R.id.nav_room){
-                    Intent intent = new Intent(Main_Menu.this, PostRoom.class);
+                    Intent intent = new Intent(MainMenu.this, PostRoom.class);
                     startActivity(intent);
                     return true;
                 }
                 else if(id == R.id.nav_acount) {
-                    AccountView = new Account_View();
+                    AccountView = new AccountView();
                     setFragment(AccountView);
                     return true;
                 }

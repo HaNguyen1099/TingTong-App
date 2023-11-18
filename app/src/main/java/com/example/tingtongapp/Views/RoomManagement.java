@@ -3,7 +3,6 @@ package com.example.tingtongapp.Views;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -12,12 +11,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tingtongapp.Adapters.AdapterMyRoom;
-import com.example.tingtongapp.Controller.MainActivityController;
 import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,17 +27,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class roomManagementModel extends AppCompatActivity {
+public class RoomManagement extends AppCompatActivity {
     RecyclerView recyclerMainRoom;
-    MainActivityController mainActivityController;
-    ProgressBar progressBarMyRooms;
+    ProgressBar progressBarMyRooms, progressBarLoadMoreMyRooms;
     LinearLayout lnLtQuantityTopMyRooms;
-    // Số lượng trả về.
-    TextView txtQuantityMyRooms;
-    TextView txtQuantityRoom;
+    TextView txtQuantityMyRooms, txtQuantityRoom;
     String UID;
-    NestedScrollView nestedScrollMyRoomsView;
-    ProgressBar progressBarLoadMoreMyRooms;
     Toolbar toolbar;
 
     @Override
@@ -54,18 +46,15 @@ public class roomManagementModel extends AppCompatActivity {
     }
 
     private void initControl() {
+        lnLtQuantityTopMyRooms = (LinearLayout) findViewById(R.id.lnLt_quantity_top_my_rooms);
+        txtQuantityMyRooms = (TextView) findViewById(R.id.txt_quantity_my_rooms);
         recyclerMainRoom = (RecyclerView)findViewById(R.id.recycler_Main_Room);
-
         txtQuantityRoom = (TextView) findViewById(R.id.txt_quantity_room);
 
         progressBarMyRooms = (ProgressBar) findViewById(R.id.progress_bar_my_rooms);
         progressBarMyRooms.getIndeterminateDrawable().setColorFilter(Color.parseColor("#F54500"),
                 android.graphics.PorterDuff.Mode.MULTIPLY);
 
-        lnLtQuantityTopMyRooms = (LinearLayout) findViewById(R.id.lnLt_quantity_top_my_rooms);
-        txtQuantityMyRooms = (TextView) findViewById(R.id.txt_quantity_my_rooms);
-
-        nestedScrollMyRoomsView = (NestedScrollView) findViewById(R.id.nested_scroll_my_rooms);
         progressBarLoadMoreMyRooms = (ProgressBar) findViewById(R.id.progress_bar_load_more_my_rooms);
         progressBarLoadMoreMyRooms.getIndeterminateDrawable().setColorFilter(Color.parseColor("#F54500"),
                 android.graphics.PorterDuff.Mode.MULTIPLY);
@@ -81,11 +70,11 @@ public class roomManagementModel extends AppCompatActivity {
     }
 
     private void setView() {
-        // Hiện progress bar.
+        // Hide progress bar.
         progressBarMyRooms.setVisibility(View.VISIBLE);
-        // Ẩn progress bar load more.
+        // Hide progress bar load more.
         progressBarLoadMoreMyRooms.setVisibility(View.GONE);
-        // Ẩn layout kết quả trả vể.
+        // Hide layout
         lnLtQuantityTopMyRooms.setVisibility(View.GONE);
     }
 
@@ -102,7 +91,7 @@ public class roomManagementModel extends AppCompatActivity {
         return true;
     }
 
-    // lấy và hiển thị dữ liệu của phòng
+    // Get user's room list
     private void getData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("ListRoom");
@@ -119,11 +108,12 @@ public class roomManagementModel extends AppCompatActivity {
                     try {
                         Room room = dataSnapshot.getValue(Room.class);
 
+                        // Filter room by idOwner
                         if(room.getIdOwner().equals(uidCurrentUser)){
                             roomArrayList.add(room);
                         }
                     }catch (Exception e){
-                        Toast.makeText(roomManagementModel.this, "Lỗi tải dữ liệu phòng", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RoomManagement.this, "Lỗi tải dữ liệu phòng", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -133,8 +123,8 @@ public class roomManagementModel extends AppCompatActivity {
                 txtQuantityMyRooms.setText("" + quantityMyRooms);
                 txtQuantityRoom.setText("" + quantityMyRooms);
 
-                AdapterMyRoom listMyRoom = new AdapterMyRoom(roomManagementModel.this, roomArrayList);
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(roomManagementModel.this);
+                AdapterMyRoom listMyRoom = new AdapterMyRoom(RoomManagement.this, roomArrayList);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(RoomManagement.this);
                 RecyclerView recyclerViewListMyRoom =  (RecyclerView)findViewById(R.id.recycler_Main_Room);
                 recyclerViewListMyRoom.setLayoutManager(linearLayoutManager);
                 recyclerViewListMyRoom.setAdapter(listMyRoom);
@@ -142,7 +132,7 @@ public class roomManagementModel extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(roomManagementModel.this, "Lỗi kết nối cơ sở dữ liệu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RoomManagement.this, "Lỗi kết nối cơ sở dữ liệu", Toast.LENGTH_SHORT).show();
             }
         });
     }

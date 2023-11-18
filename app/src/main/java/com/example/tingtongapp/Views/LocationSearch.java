@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tingtongapp.Controller.locationSearchController;
+import com.example.tingtongapp.Controller.LocationSearchController;
 import com.example.tingtongapp.R;
 
 public class LocationSearch extends AppCompatActivity implements TextWatcher {
@@ -24,7 +24,7 @@ public class LocationSearch extends AppCompatActivity implements TextWatcher {
     Button btnFilter;
     ImageView ivOk;
     RecyclerView recyclerSuggestion,recyclerHistorySearch;
-    locationSearchController SearchController;
+    LocationSearchController SearchController;
     boolean isSearchViewCall;
     String stringFilter;
 
@@ -38,7 +38,7 @@ public class LocationSearch extends AppCompatActivity implements TextWatcher {
         Intent intent = getIntent();
         if(intent != null){
             // Kiểm tra xem giá trị được truyền từ Intent với khóa là searchView.REQUEST có bằng searchView.REQUEST_DISTRICT không
-            if(intent.getIntExtra(searchView.REQUEST,0) == searchView.REQUEST_DISTRICT){
+            if(intent.getIntExtra(SearchView.REQUEST,0) == SearchView.REQUEST_DISTRICT){
                 isSearchViewCall=true;
                 Log.d("check3", "onCreate: ");
             }
@@ -48,7 +48,7 @@ public class LocationSearch extends AppCompatActivity implements TextWatcher {
             }
         }
         // locationSearchController là một lớp được tạo ra để quản lý logic và tương tác với dữ liệu trong màn hình location_search
-        SearchController = new locationSearchController(this);
+        SearchController = new LocationSearchController(this);
     }
 
     private void initControl(){

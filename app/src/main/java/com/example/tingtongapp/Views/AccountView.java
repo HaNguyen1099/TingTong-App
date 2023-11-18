@@ -22,14 +22,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Account_View extends Fragment implements View.OnClickListener {
+public class AccountView extends Fragment implements View.OnClickListener {
 
     private Button btnEditAccount;
     private Button btnMyRoom;
     private Button btnMyFavoriteRoom;
     private Button btnMyFindRoom;
     private Button btnLogout;
-    FirebaseAuth firebaseAuth;
     View layout;
 
     @Override
@@ -102,11 +101,11 @@ public class Account_View extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.btn_edit_account){
-            Intent intent = new Intent(getContext(), personalPage.class);
+            Intent intent = new Intent(getContext(), PersonalPage.class);
             startActivity(intent);
         }
         else if (id == R.id.btn_my_Room) {
-            Intent intent1 = new Intent(getContext(), roomManagementModel.class);
+            Intent intent1 = new Intent(getContext(), RoomManagement.class);
             startActivity(intent1);
         }
         else if(id == R.id.btn_logout){

@@ -31,7 +31,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class AdapterMyRoom extends RecyclerView.Adapter<AdapterMyRoom.MyRoomViewHolder>{
     private ArrayList<Room> rooms;

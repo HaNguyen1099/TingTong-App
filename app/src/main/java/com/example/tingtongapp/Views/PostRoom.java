@@ -94,7 +94,7 @@ public class PostRoom extends AppCompatActivity implements View.OnClickListener 
         @Override
         public Fragment getItem(int position) {
             Fragment fragment = null;
-            //Check neu da put vao trong hashmap tuc la da khoi tao gia tri thi tra ve trong hashmap
+
             if (fragmentHashMap.get(position) != null) {
                 return fragmentHashMap.get(position);
             }

@@ -21,16 +21,12 @@ public class DistrictFilterModel {
     //Hàm trả về danh sách quận có trong firebase
     // nhận tham số filterString để lọc dữ liệu và dùng interface để gửi dữ liệu quận
     public void listDistrictLocation(String filterString, IDistrictFilterModel iDistrictFilterModel){
-        // lắng nghe sự thay đổi trong cơ sở dữ liệu
         ValueEventListener valueEventListener = new ValueEventListener() {
-            // khi có sự thay đổi csdl
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Log.d("Firebase", "onDataChange: Data received");
                 for(DataSnapshot data : dataSnapshot.getChildren()){
-                    // Lọc bằng vòng for
                     if(data.getKey().toLowerCase().contains(filterString.toLowerCase())){
-                        //Kích hoạt interface và gửi dữ liệu
                         iDistrictFilterModel.sendDistrict(data.getKey());
                     }
                 }

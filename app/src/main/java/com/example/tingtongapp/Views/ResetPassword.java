@@ -15,7 +15,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.time.Instant;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -50,20 +49,20 @@ public class ResetPassword extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
                 }else{
                     FirebaseAuth.getInstance().sendPasswordResetEmail(emailRecover)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(ResetPassword.this, "Gửi email khôi phục thành công, vui lòng làm theo hướng dẫn trong email để đặt lại mật khẩu", Toast.LENGTH_SHORT).show();
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(ResetPassword.this, "Gửi email khôi phục thành công, vui lòng làm theo hướng dẫn trong email để đặt lại mật khẩu", Toast.LENGTH_SHORT).show();
 
-                                        Intent toSignIn = new Intent(ResetPassword.this, LoginView.class);
-                                        startActivity(toSignIn);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(ResetPassword.this, "Thất bại. Vui lòng kiểm tra địa chỉ email và thử lại.", Toast.LENGTH_SHORT).show();
-                                    }
+                                    Intent toSignIn = new Intent(ResetPassword.this, LoginView.class);
+                                    startActivity(toSignIn);
+                                    finish();
+                                } else {
+                                    Toast.makeText(ResetPassword.this, "Thất bại. Vui lòng kiểm tra địa chỉ email và thử lại.", Toast.LENGTH_SHORT).show();
                                 }
-                            });
+                            }
+                        });
                 }
             }
         }

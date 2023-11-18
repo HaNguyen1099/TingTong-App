@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.example.tingtongapp.Model.LocationModel;
 import com.example.tingtongapp.R;
-import com.example.tingtongapp.Views.searchView;
+import com.example.tingtongapp.Views.SearchView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -74,7 +74,7 @@ public class AdapterLocation extends BaseAdapter {
         holder.rLTImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, searchView.class);
+                Intent intent = new Intent(context, SearchView.class);
                 intent.putExtra(INTENT_DISTRICT,lstLocation.get(position).getCounty());
                 context.startActivity(intent);
             }
