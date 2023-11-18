@@ -14,9 +14,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/house"
+        android:icon="@drawable/app"
         android:label="TingTong"
-        android:roundIcon="@drawable/house"
+        android:roundIcon="@drawable/rapp"
         android:supportsRtl="true"
         android:theme="@style/Theme.TingTongApp"
         tools:targetApi="31">
