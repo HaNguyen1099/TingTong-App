@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,74 +8,85 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/custom_button_delete">
-        <ImageView
-            android:id="@+id/img_close"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:padding="3dp"
-            android:src="@drawable/remove" />
+        android:background="@drawable/custom_button_delete"
+        android:padding="8dp">
 
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/linear_layout_change_condition_room"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/ffffff"
+            android:orientation="vertical"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="18dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
-                android:orientation="vertical"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/exchange" />
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/exchange"/>
-                <TextView
-                    android:layout_marginBottom="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center_horizontal"
-                    android:padding="3dp"
-                    android:text="Thay đổi trạng thái của phòng"
-                    android:textColor="#271C1C"
-                    android:textSize="15sp" />
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="32dp"
+                android:gravity="center_horizontal"
+                android:padding="3dp"
+                android:text="Thay đổi trạng thái của phòng"
+                android:textColor="#271C1C"
+                android:textSize="15sp" />
 
             <RadioGroup
+                android:id="@+id/radio_group_change_condition_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="horizontal"
-                android:weightSum="2"
-                android:layout_alignParentRight="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RadioButton
-                    android:id="@+id/rad_clear"
-                    android:textColor="@drawable/custom_radio_text_color"
-                    android:background="@drawable/custom_radio_button_gender"
-                    android:padding="10dp"
-                    android:gravity="center_horizontal"
-                    android:button="@android:color/transparent"
-                    android:text="Còn phòng"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
-                <RadioButton
-                    android:id="@+id/rad_rent"
-                    android:textColor="@drawable/custom_radio_text_color"
-                    android:background="@drawable/custom_radio_button_gender"
-                    android:padding="10dp"
-                    android:gravity="center_horizontal"
-                    android:button="@android:color/transparent"
-                    android:text="Cho thuê"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
-            </RadioGroup>
+                android:weightSum="2">
 
+                <RadioButton
+                    android:id="@+id/radio_check_renting_room"
+                    android:layout_width="125dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_radio_change_condition_room"
+                    android:button="@android:color/transparent"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="10dp"
+                    android:text="Còn phòng"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/radio_check_clear_room"
+                    android:layout_width="125dp"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_radio_change_condition_room"
+                    android:button="@android:color/transparent"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="10dp"
+                    android:text="Đã cho thuê"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </RadioGroup>
         </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/img_button_close_dialog_update_room"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/icon_delete_img" />
+
     </RelativeLayout>
 
 </RelativeLayout>

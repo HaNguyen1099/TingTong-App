@@ -39,9 +39,6 @@ public class AdapterRecyclerMyRoom extends Adapter<AdapterRecyclerMyRoom.ViewHol
             txtName = (TextView) itemView.findViewById(R.id.txt_name);
             txtAddress = (TextView) itemView.findViewById(R.id.txt_address);
             imgRoom = (ImageView) itemView.findViewById(R.id.img_room);
-//            btnUpdate =(Button)itemView.findViewById(R.id.btn_update);
-//            btnDelete =(Button)itemView.findViewById(R.id.btn_delete);
-//            btnChange = itemView.findViewById(R.id.btn_change);
         }
     }
     @NonNull
@@ -65,29 +62,6 @@ public class AdapterRecyclerMyRoom extends Adapter<AdapterRecyclerMyRoom.ViewHol
         viewHolder.txtTimeCreated.setText(roomModel.getTimeCreated());
         // hiển thị ảnh từ roomModel vào imgRoom
         roomModel.getImagesRoom().loadInto(viewHolder.imgRoom);
-
-//        viewHolder.btnUpdate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent ipostRoomUpdate = new Intent(context, postRoomAdapterUpdate.class);
-//                ipostRoomUpdate.putExtra("phongtro", roomModel);
-//                context.startActivity(ipostRoomUpdate);
-//            }
-//        });
-//
-//        viewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showDialog(roomModel.getRoomID(), position);
-//            }
-//        });
-//
-//        viewHolder.btnChange.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showDialogChange(roomModel.getRoomID(), position);
-//            }
-//        });
     }
 
     @Override

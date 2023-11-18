@@ -7,7 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class AdapterMyRoom extends RecyclerView.Adapter<AdapterMyRoom.MyRoomViewHolder>{
     private ArrayList<Room> rooms;
@@ -120,17 +124,34 @@ public class AdapterMyRoom extends RecyclerView.Adapter<AdapterMyRoom.MyRoomView
         holder.updateRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idRoom = room.getIdRoom();
+                Dialog dialogUpdateConditionRoom = new Dialog(context);
+                dialogUpdateConditionRoom.setContentView(R.layout.change_state_room_dialog);
 
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference databaseReference = firebaseDatabase.getReference("ListRoom");
+                ImageButton closeDialog = (ImageButton) dialogUpdateConditionRoom.findViewById(R.id.img_button_close_dialog_update_room);
+                RadioGroup conditionRoomChange = (RadioGroup) dialogUpdateConditionRoom.findViewById(R.id.radio_group_change_condition_room);
 
-                databaseReference.child(idRoom).child("conditionRoom").setValue("Hết").addOnSuccessListener(new OnSuccessListener<Void>() {
+                conditionRoomChange.setEnabled(true);
+                conditionRoomChange.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                    public void onCheckedChanged(RadioGroup group, int checkedId) {
+                        RadioButton radioButtonChangeCondition = (RadioButton) dialogUpdateConditionRoom.findViewById(checkedId);
+                        if (radioButtonChangeCondition != null){
+                            String condition = radioButtonChangeCondition.getText().toString();
+
+                            updateConditionRoom(room, condition.equals("Còn phòng"));
+                            dialogUpdateConditionRoom.cancel();
+                        }
                     }
                 });
+
+                closeDialog.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogUpdateConditionRoom.cancel();
+                    }
+                });
+
+                dialogUpdateConditionRoom.show();
             }
         });
 
@@ -163,6 +184,29 @@ public class AdapterMyRoom extends RecyclerView.Adapter<AdapterMyRoom.MyRoomView
                 dialogConfirmDeleteRoom.show();
             }
         });
+    }
+
+    private void updateConditionRoom(Room room, Boolean condition){
+        String idRoom = room.getIdRoom();
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("ListRoom");
+
+        if(condition) {
+            databaseReference.child(idRoom).child("conditionRoom").setValue("Còn").addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            databaseReference.child(idRoom).child("conditionRoom").setValue("Hết").addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     private void deleteRoom(Room room){
