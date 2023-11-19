@@ -4,9 +4,7 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
@@ -52,7 +49,6 @@ public class MainActivity extends Fragment {
         requestPermission();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -80,7 +76,6 @@ public class MainActivity extends Fragment {
                 android.graphics.PorterDuff.Mode.MULTIPLY);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void initRecyclerView() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("ListRoom");
@@ -114,9 +109,9 @@ public class MainActivity extends Fragment {
     }
 
     private void setView() {
-        // Hiển thị progress bar main
+        // Display progress bar main
         progressBarMain.setVisibility(View.VISIBLE);
-        // Ẩn progress bar load more grid main rooms
+        // Hide progress bar load more grid main rooms
         progressBarLoadMoreGridMainRoom.setVisibility(View.GONE);
     }
 
@@ -128,7 +123,6 @@ public class MainActivity extends Fragment {
         edTSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("checkclick", "onClick: ");
                 Intent intentSearchLocation = new Intent(getContext(),LocationSearch.class);
                 startActivity(intentSearchLocation);
             }
