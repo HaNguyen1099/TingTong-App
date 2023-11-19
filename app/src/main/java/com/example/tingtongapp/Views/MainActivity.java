@@ -88,7 +88,7 @@ public class MainActivity extends Fragment {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     try {
                         Room room = dataSnapshot.getValue(Room.class);
-                        roomArrayList.add(room);
+                        roomArrayList.add(0, room);
                     }catch (Exception e){
                         Toast.makeText(getContext(), "Lỗi tải dữ liệu phòng", Toast.LENGTH_SHORT).show();
                     }

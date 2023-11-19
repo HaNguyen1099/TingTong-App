@@ -67,7 +67,6 @@ public class AdapterLocation extends BaseAdapter {
         ViewHolder holder = (ViewHolder) view.getTag();
 
         Picasso.get().load(itemLocation.getImage()).centerCrop().fit().into(holder.image);
-        //holder.image.setImageResource(itemLocation.getImage());
         holder.name.setText(itemLocation.getCounty());
         holder.room.setText(itemLocation.getRoomNumber() + " Phòng");
 
@@ -75,7 +74,7 @@ public class AdapterLocation extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SearchView.class);
-                intent.putExtra(INTENT_DISTRICT,lstLocation.get(position).getCounty());
+                intent.putExtra(INTENT_DISTRICT, lstLocation.get(position).getCounty());
                 context.startActivity(intent);
             }
         });

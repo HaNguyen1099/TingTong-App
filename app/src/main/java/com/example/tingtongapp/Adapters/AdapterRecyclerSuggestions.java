@@ -19,7 +19,7 @@ import com.example.tingtongapp.Views.SearchView;
 import java.util.List;
 
 public class AdapterRecyclerSuggestions extends RecyclerView.Adapter<AdapterRecyclerSuggestions.ViewHolder> {
-    public final static String INTENT_DISTRICT = "DICTRICT";
+    public final static String INTENT_DISTRICT = "DISTRICT";
     Context context;
     int resource;
     List<String> stringListDistrictLocation;

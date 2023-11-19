@@ -15,17 +15,26 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.tingtongapp.Adapters.AdapterRecyclerFilter;
 import com.example.tingtongapp.Adapters.AdapterRecyclerSuggestions;
+import com.example.tingtongapp.Adapters.AdapterRoomSuggestion;
 import com.example.tingtongapp.ClassOther.myFilter;
 import com.example.tingtongapp.Controller.Interfaces.ICallBackSearchView;
+import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,8 +75,8 @@ public class SearchView extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onStart() {
         super.onStart();
-        //Gọi hàm tìm kiếm
         callSearchRoomController();
+        getDistrict();
     }
 
     private void getDistrict(){
@@ -75,6 +84,39 @@ public class SearchView extends AppCompatActivity implements View.OnClickListene
         district = intent.getStringExtra(AdapterRecyclerSuggestions.INTENT_DISTRICT);
         //Set text cho district
         edTSearch.setText(district);
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("ListRoom");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    try {
+                        ArrayList<Room> listRoom = new ArrayList<>();
+                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                            Room room = dataSnapshot.getValue(Room.class);
+                            if(room.getDistrict().equals(district)){
+                                listRoom.add(room);
+                            }
+                        }
+                        AdapterRoomSuggestion adapterRoomSuggestion = new AdapterRoomSuggestion(SearchView.this, listRoom);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SearchView.this);
+                        recyclerSearchRoom.setLayoutManager(linearLayoutManager);
+                        recyclerSearchRoom.setAdapter(adapterRoomSuggestion);
+
+                        progessBarLoad.setVisibility(View.GONE);
+                        lnLtResultReturnSearchView.setVisibility(View.VISIBLE);
+                        txtNumberRoom.setText(listRoom.size() + "");
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void initData(){
