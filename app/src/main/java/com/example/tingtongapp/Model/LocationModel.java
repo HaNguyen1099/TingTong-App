@@ -111,6 +111,6 @@ public class LocationModel implements Comparable<LocationModel> {
 
     @Override
     public int compareTo(LocationModel o) {
-        return this.getRoomNumber() - o.getRoomNumber();
+        return o.getRoomNumber() - this.getRoomNumber();
     }
 }

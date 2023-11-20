@@ -17,22 +17,45 @@ import com.example.tingtongapp.R;
 import com.example.tingtongapp.Views.SearchView;
 import com.squareup.picasso.Picasso;
 
+import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class AdapterLocation extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<LocationModel> lstLocation;
+    private List<LocationModel> listLocation = new ArrayList<>();
 
-    public AdapterLocation(Context context, int layout, List<LocationModel> lstLocation) {
+    public AdapterLocation(Context context, Map<String, Integer> listDistrict) {
         this.context = context;
-        this.layout = layout;
-        this.lstLocation = lstLocation;
+        this.layout = R.layout.row_element_grid_view_locaion;
+
+        for(Map.Entry<String, Integer> entry : listDistrict.entrySet()){
+            LocationModel locationModel = new LocationModel();
+            locationModel.setRoomNumber(entry.getValue());
+            locationModel.setCounty(entry.getKey());
+            String imageNameResource = convertDistrictNameToImageName(entry.getKey());
+            int resId = context.getResources().getIdentifier(imageNameResource, "drawable", context.getPackageName());
+            locationModel.setImage(resId);
+
+            listLocation.add(locationModel);
+        }
+        Collections.sort(listLocation);
+    }
+
+    public String convertDistrictNameToImageName(String districtName) {
+        // Convert districtName to unsigned text
+        String normalized = Normalizer.normalize(districtName.toLowerCase().trim(), Normalizer.Form.NFD);
+        String withoutD = normalized.replace('đ', 'd');
+        String normalizedDistrictName = withoutD.replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+        return normalizedDistrictName.replaceAll("\\s+", "");
     }
 
     @Override
     public int getCount() {
-        return this.lstLocation.size();
+        return this.listLocation.size();
     }
     @Override
     public Object getItem(int position) {
@@ -62,7 +85,7 @@ public class AdapterLocation extends BaseAdapter {
         }
 
         // gan gia tri
-        LocationModel itemLocation = lstLocation.get(position);
+        LocationModel itemLocation = listLocation.get(position);
 
         ViewHolder holder = (ViewHolder) view.getTag();
 
@@ -74,7 +97,7 @@ public class AdapterLocation extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SearchView.class);
-                intent.putExtra(INTENT_DISTRICT, lstLocation.get(position).getCounty());
+                intent.putExtra(INTENT_DISTRICT, listLocation.get(position).getCounty());
                 context.startActivity(intent);
             }
         });
