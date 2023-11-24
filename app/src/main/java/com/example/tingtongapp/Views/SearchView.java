@@ -19,7 +19,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tingtongapp.Adapters.AdapterRecyclerFilter;
 import com.example.tingtongapp.Adapters.AdapterRecyclerSuggestions;
 import com.example.tingtongapp.Adapters.AdapterRoomSuggestion;
 import com.example.tingtongapp.ClassOther.myFilter;
@@ -51,7 +50,7 @@ public class SearchView extends AppCompatActivity implements View.OnClickListene
     FrameLayout fragmentContainer;
     String district;
     List<myFilter> filterList;
-    AdapterRecyclerFilter adapterRecyclerFilter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
