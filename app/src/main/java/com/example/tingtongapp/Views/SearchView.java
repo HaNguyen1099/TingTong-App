@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -48,11 +45,8 @@ public class SearchView extends AppCompatActivity implements View.OnClickListene
     // Save state of 4 fragment instead reload
     private HashMap<Integer, Fragment> fragmentHashMap = new HashMap<>();
     ImageView ivBack;
-    CheckBox chBoxPrice, chBoxType, chBoxNumber, chBoxConvenient;
     RecyclerView recyclerFilter,recyclerSearchRoom;
-    Button btnsSubmit;
     EditText edTSearch;
-    ImageButton btnDeleteAllFilter ;
     ProgressBar progessBarLoad;
     LinearLayout lnLtResultReturnSearchView;
     TextView txtNumberRoom;
@@ -150,24 +144,9 @@ public class SearchView extends AppCompatActivity implements View.OnClickListene
         progressBarLoadMoreSearchView.getIndeterminateDrawable().setColorFilter(Color.parseColor("#F54500"),
                 android.graphics.PorterDuff.Mode.MULTIPLY);
 
-        chBoxPrice=findViewById(R.id.chBox_price);
-        chBoxConvenient=findViewById(R.id.chBox_convenient);
-        chBoxType=findViewById(R.id.chBox_type);
-        chBoxNumber=findViewById(R.id.chBox_number);
-
-        chBoxPrice.setOnClickListener(this);
-        chBoxConvenient.setOnClickListener(this);
-        chBoxType.setOnClickListener(this);
-        chBoxNumber.setOnClickListener(this);
-
-        chBoxPrice.setOnCheckedChangeListener(this);
-        chBoxConvenient.setOnCheckedChangeListener(this);
-        chBoxType.setOnCheckedChangeListener(this);
-        chBoxNumber.setOnCheckedChangeListener(this);
 
         fragmentContainer = findViewById(R.id.fragment_container);
 
-        recyclerFilter = findViewById(R.id.recycler_filter);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL);
         recyclerFilter.setLayoutManager(staggeredGridLayoutManager);
 
@@ -176,14 +155,6 @@ public class SearchView extends AppCompatActivity implements View.OnClickListene
 
         recyclerSearchRoom = findViewById(R.id.recycler_search_room);
 
-        btnsSubmit = findViewById(R.id.btn_submit);
-        btnsSubmit.setOnClickListener(this);
-
-        // Hide for the first create
-        btnsSubmit.setVisibility(View.GONE);
-
-        btnDeleteAllFilter = findViewById(R.id.btn_delete_all_filter);
-        btnDeleteAllFilter.setOnClickListener(this);
 
         ivBack = findViewById(R.id.iv_back);
         ivBack.setOnClickListener(new View.OnClickListener() {
