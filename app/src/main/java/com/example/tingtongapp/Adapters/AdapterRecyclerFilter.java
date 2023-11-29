@@ -8,16 +8,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.tingtongapp.ClassOther.myFilter;
 import com.example.tingtongapp.R;
-
-import java.util.List;
 
 public class AdapterRecyclerFilter extends RecyclerView.Adapter<AdapterRecyclerFilter.ViewHolder> {
     Context context;
     int resource;
-    List<myFilter> listFilter;
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgDelete;
         TextView displayName;
@@ -27,10 +23,9 @@ public class AdapterRecyclerFilter extends RecyclerView.Adapter<AdapterRecyclerF
             displayName = itemView.findViewById(R.id.display_name);
         }
     }
-    public AdapterRecyclerFilter(Context context,int resource,List<myFilter> listFilter){
+    public AdapterRecyclerFilter(Context context,int resource){
         this.context=context;
         this.resource=resource;
-        this.listFilter = listFilter;
     }
     @NonNull
     @Override

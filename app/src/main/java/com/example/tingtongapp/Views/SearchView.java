@@ -21,8 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tingtongapp.Adapters.AdapterRecyclerSuggestions;
 import com.example.tingtongapp.Adapters.AdapterRoomSuggestion;
-import com.example.tingtongapp.ClassOther.myFilter;
-import com.example.tingtongapp.Controller.Interfaces.ICallBackSearchView;
 import com.example.tingtongapp.Model.Room;
 import com.example.tingtongapp.R;
 import com.google.firebase.database.DataSnapshot;
@@ -33,8 +31,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-public class SearchView extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, ICallBackSearchView {
+
+public class SearchView extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
     public static final String REQUEST = "requestcode";
     public final static int REQUEST_DISTRICT = 99;
     // Save state of 4 fragment instead reload
@@ -49,13 +47,11 @@ public class SearchView extends AppCompatActivity implements View.OnClickListene
     ProgressBar progressBarLoadMoreSearchView;
     FrameLayout fragmentContainer;
     String district;
-    List<myFilter> filterList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_view);
-        initData();
         initControl();
         getDistrict();
     }
@@ -100,9 +96,7 @@ public class SearchView extends AppCompatActivity implements View.OnClickListene
             }
         });
     }
-    private void initData(){
-        filterList = new ArrayList<myFilter>();
-    }
+
     private void initControl(){
         edTSearch = findViewById(R.id.edT_search);
         edTSearch.setOnClickListener(new View.OnClickListener() {
@@ -143,15 +137,7 @@ public class SearchView extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
     }
-    @Override
-    public void addFilter(myFilter filter) {
-    }
-    @Override
-    public void replaceFilter(myFilter filter) {
-    }
-    @Override
-    public void removeFilter(myFilter filter) {
-    }
+
     private void callSearchRoomController(){
         // Display progress bar
         progessBarLoad.setVisibility(View.VISIBLE);
