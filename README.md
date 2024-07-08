@@ -27,10 +27,8 @@ This project utilizes the following technologies:
 <img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/2d4d704e-90ab-4255-b322-c5f217335f7d" width="283" height="550"> 
 <img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/5d7fad29-ff7e-4daf-86f0-51a74b64254b" width="283" height="550"> 
 <img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/4eb366ec-895e-4f42-a74c-853ffa8c0c51" width="283" height="550"> 
-<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/25aa305e-8bb6-4eb4-83f5-38c664bff262" width="283" height="550"> 
-<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/599198d9-ab9e-4414-af80-1a40ae8f6c49" width="283" height="550"> 
+<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/25aa305e-8bb6-4eb4-83f5-38c664bff262" width="283" height="550">  
 <img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/a43798b2-1517-48e5-bd38-fcecffc6b7b8" width="283" height="550"> 
-<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/6f6161e5-35ba-444a-8983-c2d1ec721162" width="283" height="550"> 
 <img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/682fbd7b-ed55-41ff-b220-9ecc9048a1d8" width="283" height="550"> 
 <img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/eb16ba7b-5cc3-4094-8d2d-37f53593ddcd" width="283" height="550"> 
 <img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/da8382ed-ea3b-4976-830f-e7a5f40ea065" width="283" height="550"> 
