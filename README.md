@@ -10,12 +10,12 @@ This project utilizes the following technologies:
 <code><img src="https://developer.android.com/studio/images/studio-icon-preview.svg" alt="Android Studio" height="50"></code>
 
 ## GUI
-<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/b4f506dd-cdcd-4f9d-b179-c85bf2e7dbbb" width="283" height="550"> 
-<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/7d7a9380-f982-468f-95ba-6850bd9d439e" width="283" height="550"> 
-<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/b9c13b41-0ba4-4a35-aed9-d0e2714a48b8" width="283" height="550"> 
-<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/c89d9a0f-1db0-4151-a09d-a53ac6935629" width="283" height="550"> 
-<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/0f553db5-3e57-4ddc-af18-3e4cd5e6e13f" width="283" height="550"> 
-<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/a337ddaa-4d42-4215-9376-55cd8cffa078" width="283" height="550"> 
+<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/b4f506dd-cdcd-4f9d-b179-c85bf2e7dbbb" width="223" height="450"> 
+<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/7d7a9380-f982-468f-95ba-6850bd9d439e" width="223" height="450"> 
+<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/b9c13b41-0ba4-4a35-aed9-d0e2714a48b8" width="223" height="450"> 
+<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/c89d9a0f-1db0-4151-a09d-a53ac6935629" width="223" height="450"> 
+<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/0f553db5-3e57-4ddc-af18-3e4cd5e6e13f" width="223" height="450"> 
+<img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/a337ddaa-4d42-4215-9376-55cd8cffa078" width="223" height="450"> 
 <img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/bb373a86-cc60-4917-a796-ec368f6872cd" width="283" height="550"> 
 <img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/9e82ce7a-61cc-4d9b-9060-13cd9d114475" width="283" height="550"> 
 <img alt="Image is not loaded" src="https://github.com/HaNguyen1099/TingTong-App/assets/98647965/63f07335-04d8-42b2-be95-0dd418be718d" width="283" height="550"> 
